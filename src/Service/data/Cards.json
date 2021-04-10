@@ -1,0 +1,60 @@
+{
+    "cards": [
+        {
+            "id": "0",
+            "frontSide": "1 + 3",
+            "backSide": "4",
+            "health": 100,
+            "speed": 10,
+            "damage": 100
+        },
+        {
+            "id": "1",
+            "frontSide": "12 + 26",
+            "backSide": "38",
+            "health": 100,
+            "speed": 7,
+            "damage": 100
+        },
+        {
+            "id": "2",
+            "frontSide": "74 + 57",
+            "backSide": "131",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "3",
+            "frontSide": "123 + 432",
+            "backSide": "555",
+            "health": 100,
+            "speed": 10,
+            "damage": 100
+        },
+        {
+            "id": "4",
+            "frontSide": "10032 - 39",
+            "backSide": "9993",
+            "health": 100,
+            "speed": 7,
+            "damage": 100
+        },
+        {
+            "id": "5",
+            "frontSide": "928 + 325",
+            "backSide": "1253",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "6",
+            "frontSide": "1 + 1",
+            "backSide": "1253",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        }
+    ]
+}

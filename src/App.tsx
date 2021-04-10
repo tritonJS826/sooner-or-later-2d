@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'mobx-react';
+import { Route, Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { store } from 'Store/CombineStores';
+import MainMenu from 'Pages/MainMenu';
+import BattleField from 'Pages/BattleField';
+import Help from 'Pages/Help';
+import About from 'Pages/About';
+import Options from 'Pages/Options';
+import 'App.css';
 
-function App() {
-  return (
+export const history = createBrowserHistory();
+export const routes = {
+  base: '/',
+  battleField: '/battleField',
+  about: '/about',
+  help: '/help',
+  options: '/options',
+};
+
+const App = () => (
+  <Provider store={store}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+
+        <Route exact path="/"><MainMenu /></Route>
+
+        <Route path="/battleField"><BattleField /></Route>
+
+        <Route path="/help"><Help /></Route>
+
+        <Route path="/options"><Options /></Route>
+
+        <Route path="/about"><About /></Route>
+
+      </Router>
     </div>
-  );
-}
+  </Provider>
+);
 
 export default App;

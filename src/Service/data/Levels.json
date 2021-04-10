@@ -1,0 +1,73 @@
+{
+    "levels": [
+        {
+            "id": "fddassada",
+            "header": "Welcome to the first level!",
+            "description": "Your first level",
+            "startText": "Something interesting story.....",
+            "startImgUrl": null,
+            "finishText": "The end of the first level",
+            "finishImgUrl": null,
+            "enemies": [
+                {
+                    "showTime": 2,
+                    "cardsId": [1]
+                },
+                {
+                    "showTime": 3,
+                    "cardsId": [2]
+                },
+                {
+                    "showTime": 10,
+                    "cardsId": [3,4,5]
+                }
+            ]
+        },
+        {
+            "id": "Skdj;lklkm",
+            "header": "Welcome to the second level!",
+            "description": "Continuation",
+            "startText": "Continiating of Something interesting story.....",
+            "startImgUrl": null,
+            "finishText": "The end of the second level",
+            "finishImgUrl": null,
+            "enemies": [
+                {
+                    "showTime": 2,
+                    "cardsId": [1,2]
+                },
+                {
+                    "showTime": 3,
+                    "cardsId": [3,5]
+                },
+                {
+                    "showTime": 7,
+                    "cardsId": [4,6]
+                }
+            ]
+        },
+        {
+            "id": "sdfzc2lsdzzx",
+            "header": "Welcome to the last level!",
+            "description": "thit es the last level",
+            "startText": "Second continiating of Something interesting story.....",
+            "startImgUrl": null,
+            "finishText": "The end of the game! thankYou)",
+            "finishImgUrl": null,
+            "enemies": [
+                {
+                    "showTime": 2,
+                    "cardsId": [1,2,3,4,5,6]
+                },
+                {
+                    "showTime": 3,
+                    "cardsId": []
+                },
+                {
+                    "showTime": 4,
+                    "cardsId": []
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+.battle-field {
+    display: block;
+    position: relative;
+    background: rgb(161, 192, 201);
+    width: 50vw;
+    height: 80vh;
+}
+
+.battle-field:fullscreen > .not-on-full-screen {
+    display: none;
+}

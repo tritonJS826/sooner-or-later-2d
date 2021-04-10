@@ -1,0 +1,7 @@
+.hero {
+    width:  10%;
+    height: 10%;
+    display: inline-block;
+    position: absolute;
+    background-color: red;
+}

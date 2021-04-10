@@ -1,0 +1,33 @@
+.help {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 75%;
+    word-wrap: normal;
+    margin-top: 10%;
+    color: rgb(120, 95, 153);
+}
+
+.header {
+    font-size: 60px;
+    color: rgb(65, 81, 224);
+    text-decoration:  none;
+}
+
+.link, .text {
+    font-size: 40px;
+    text-decoration: none;
+    color: rgb(120, 95, 153);
+}
+
+.link:link {
+    font-size: 40px;
+    color: rgb(120, 95, 153);
+}
+
+.link:hover {
+    font-size: 40px;
+    text-decoration: none;
+    color: rgb(65, 81, 224);
+}

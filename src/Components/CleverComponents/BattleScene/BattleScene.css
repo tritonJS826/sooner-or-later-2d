@@ -1,0 +1,7 @@
+.battle-scene {
+    display: block;
+    position: relative;
+    background: rgb(161, 192, 201);
+    width: 50vw;
+    height: 80vh;
+}

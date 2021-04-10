@@ -1,0 +1,8 @@
+.hero-info {
+    display: block;
+    position: relative;
+    background: rgb(155, 35, 101);
+    width: 50vw;
+    height: 3vh;
+    color: white;
+}

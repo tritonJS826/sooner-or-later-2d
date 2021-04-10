@@ -1,0 +1,8 @@
+.target-info {
+    display: block;
+    /* position: relative; */
+    background: rgb(5, 71, 3);
+    /* width: 50vw; */
+    /* height: 3vh; */
+    color: white;
+}
