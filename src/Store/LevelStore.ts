@@ -3,7 +3,7 @@ import generator from "../Service/IdGenerator";
 import enemiesStore, { EnemiesStore } from "./Enemies";
 import hero, { Hero } from "./Hero";
 
-enum ELevelStage {
+export enum ELevelStage {
   introduction = "introduction",
   game = "game",
   levelCompleted = "levelCompleted",

@@ -1,12 +1,11 @@
 SOONER OR LATER project)
 
-***Main issues for prototype***:
-    * targetInfoBlock component  
-    * create text component  
-    * storyBlock/storyInterface  
-    * victory condition  
+***Main issues for prototype***:  
+    * add image in levelFinish, levelsIntro and levelFail
+    * add failText and failImg in levelStore and json
+    * victory game condition  
     * realization of logic when hero died
-    * add vim navigation in menu
+    * add vim and arrows navigation in menu
     * onClickOnEnemy (for mobiles instead ctrl)
     * back to menu button  
     * add good styles & images/gifs  

@@ -26,7 +26,6 @@ const HeroInfo: React.FC = observer(() => {
         if (event.key === 'Enter') {
             heroStore.shoot(enemiesStore.getEnemyById(heroStore.targetId));
             heroStore.setAttackPhrase('');
-            console.log(enemiesStore.enemies)
         }
 
         //change hero's target

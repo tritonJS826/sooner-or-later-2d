@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 import { routes } from '../../App';
 import gameStore from '../../Store/GameStore';
 import styles from './BattleField.module.scss';
+import levelStore, { ELevelStage } from 'Store/LevelStore';
+import LevelFinish from 'Components/CleverComponents/LevelFinish';
+import LevelIntro from 'Components/CleverComponents/LevelIntro';
+import LevelFail from 'Components/CleverComponents/LevelFail';
 
 const BattleField: React.FC = observer(() => {
     const battleField = useRef<HTMLDivElement>(null);
@@ -18,9 +22,12 @@ const BattleField: React.FC = observer(() => {
 
     useEffect(() => {
         gameStore.startLevel();
-    });
+    }, []);
 
-    return (
+    if (levelStore.levelStage === ELevelStage.introduction) return <LevelIntro />;
+    if (levelStore.levelStage === ELevelStage.levelCompleted) return <LevelFinish/>;
+
+    if (levelStore.levelStage === ELevelStage.game) return (
         <>
             <div className={styles["battle-field"]} ref={battleField}>
                 <BattleScene />
@@ -31,6 +38,12 @@ const BattleField: React.FC = observer(() => {
             </div>
         </>
     );
+
+    if (levelStore.levelStage === ELevelStage.heroDied) return <LevelFail/>;
+
+    return (<span>Strange levelStage: {levelStore.levelStage}</span>);
+
+
 });
 
 export default BattleField;

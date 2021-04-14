@@ -15,7 +15,7 @@ const BattleScene: React.FC = observer(() => {
             {levelStore.timer}
             {enemiesStore.enemies.map((enemy: SimpleEnemy) => <SimpleEnemyView key={enemy.id} enemy={enemy} hero={heroStore} />)}
             <HeroView hero={heroStore} />
-            {levelStore.levelStage}<button onClick={() => levelStore.nextLevelStage()}>nextLevelStage</button>
+            {levelStore.levelStage}
         </div>
     );
 });
