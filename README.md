@@ -1,7 +1,6 @@
 SOONER OR LATER project)
 
 ***Main issues for prototype***:
-    * add style modules instead css  
     * targetInfoBlock component  
     * create text component  
     * storyBlock/storyInterface  

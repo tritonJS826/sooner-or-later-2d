@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import SimpleEnemy from '../../../Models/SimpleEnemy';
-import './SimpleEnemy.css';
 import { Hero } from '../../../Store/Hero';
+import styles from './SimpleEnemy.module.scss';
 
 interface ISimpleEnemy {
   enemy: SimpleEnemy;
@@ -18,10 +18,11 @@ const SimpleEnemyView: React.FC<ISimpleEnemy> = observer(({ enemy, hero }) => {
   return (
     <>
       {enemy.health > 0 && (
-        <div className={`simple-enemy ${hero.targetId === enemy.id ? 'enemy-captured' : ''}`} style={{
-          left: `${enemy.coords[0] * 100 - 5}%`,
-          top: `${enemy.coords[1] * 100 - 5}%`,
-        }}>
+        <div className={`${styles["simple-enemy"]} ${hero.targetId === enemy.id ? styles['enemy-captured'] : ''}`}
+          style={{
+            left: `${enemy.coords[0] * 100 - 5}%`,
+            top: `${enemy.coords[1] * 100 - 5}%`,
+          }}>
           {`I am Enemy ${enemy.frontSide}`}
         </div>
       )}

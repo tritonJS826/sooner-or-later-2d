@@ -8,7 +8,7 @@ import BattleField from 'Pages/BattleField';
 import Help from 'Pages/Help';
 import About from 'Pages/About';
 import Options from 'Pages/Options';
-import 'App.css';
+import styles from 'App.module.scss';
 
 export const history = createBrowserHistory();
 export const routes = {
@@ -21,7 +21,7 @@ export const routes = {
 
 const App = () => (
   <Provider store={store}>
-    <div className="App">
+    <div className={styles["App"]}>
       <Router history={history}>
 
         <Route exact path="/"><MainMenu /></Route>

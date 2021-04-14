@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { useStore } from '../../../Store/CombineStores';
 import EventListener from '../../StupidComponents/EventListener/EventListener';
 import InputText from 'Components/BaseComponents/InputText';
-import './HeroInfo.css';
+import styles from './HeroInfo.module.scss';
 
 
 const HeroInfo: React.FC = observer(() => {
@@ -58,7 +58,7 @@ const HeroInfo: React.FC = observer(() => {
     };
     
     return (
-        <div className="hero-info">
+        <div className={styles["hero-info"]}>
             <EventListener callback={onKeyPress}/>
 
             health = {heroStore.health}

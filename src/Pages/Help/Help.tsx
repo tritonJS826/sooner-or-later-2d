@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { routes } from '../../App';
 import AnimatedSpan from '../../Components/BaseComponents/AnimatedSpan';
-import './Help.css';
+import styles from './Help.module.scss';
 
 
 const Help: React.FC = observer(() => {
@@ -12,9 +12,9 @@ const Help: React.FC = observer(() => {
         <div className="help">            
 
             <AnimatedSpan text="Hi) this is one of the best learning games! I hope, that learning \
-            will be easier with it) Rules and shortcuts on this page..." className="text"/>
+            will be easier with it) Rules and shortcuts on this page..." className={styles["text"]}/>
             
-            <Link to={routes.base}><AnimatedSpan text="<-- back to menu..." className="link" /></Link>
+            <Link to={routes.base}><AnimatedSpan text="<-- back to menu..." className={styles["link"]} /></Link>
         </div>
     );
 });
