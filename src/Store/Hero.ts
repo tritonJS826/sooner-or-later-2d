@@ -25,6 +25,7 @@ export class Hero {
       name: observable,
       setAttackPhrase: action,
       setTarget: action,
+      shoot: action,
     });
   }
 
@@ -38,6 +39,7 @@ export class Hero {
     this.targetId = targetId;
   }
 
+  @action.bound
   public shoot(target: SimpleEnemy | undefined) {
     target?.getDamage(100, this.attackPhrase);
   }

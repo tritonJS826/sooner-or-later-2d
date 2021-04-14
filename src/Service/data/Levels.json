@@ -11,15 +11,15 @@
             "enemies": [
                 {
                     "showTime": 2,
-                    "cardsId": [1]
+                    "cardsId": [1,1,1]
                 },
                 {
                     "showTime": 3,
-                    "cardsId": [2]
+                    "cardsId": [1,1]
                 },
                 {
                     "showTime": 10,
-                    "cardsId": [3,4,5]
+                    "cardsId": [3]
                 }
             ]
         },
@@ -34,7 +34,7 @@
             "enemies": [
                 {
                     "showTime": 2,
-                    "cardsId": [1,2]
+                    "cardsId": [1, 2]
                 },
                 {
                     "showTime": 3,

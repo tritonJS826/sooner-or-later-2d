@@ -2,20 +2,19 @@ SOONER OR LATER project)
 
 ***Main issues for prototype***:
     * add style modules instead css  
-    * add good styles & images/gifs  
     * targetInfoBlock component  
     * create text component  
     * storyBlock/storyInterface  
     * victory condition  
-    * we need to create unique id's for cards instead cards id from json. It will allow to create similar cards at the same time  
-    * create input component  
     * realization of logic when hero died
     * add vim navigation in menu
     * onClickOnEnemy (for mobiles instead ctrl)
-    * back to menu button
+    * back to menu button  
+    * add good styles & images/gifs  
 
 ---
 ***Additional issues***:  
+    * add feature: pause round
     * create animation of shooting  
     * realization logic with ammo  
     * add sound

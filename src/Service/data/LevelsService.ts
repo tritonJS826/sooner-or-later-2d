@@ -2,7 +2,7 @@ import { levels } from './Levels.json';
 
 class LevelsService {
   getLevels() {
-    console.log(this);
+    console.log(levels);
     return levels;
   }
 }

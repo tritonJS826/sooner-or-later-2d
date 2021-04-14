@@ -39,7 +39,7 @@ export class LevelStore {
     finishImgUrl,
     enemies,
     timer,
-    onCompleteLevel: onFinishLevel,
+    onCompleteLevel,
     onFailLevel,
     enemiesStore,
     hero,
@@ -53,7 +53,7 @@ export class LevelStore {
     this.finishImgUrl = finishImgUrl ?? null;
     this.timer = timer ?? 0;
     this.levelStage = ELevelStage.introduction;
-    this.onCompleteLevel = onFinishLevel;
+    this.onCompleteLevel = onCompleteLevel;
     this.onFailLevel = onFailLevel;
     this.enemiesData = enemies;
 
@@ -71,8 +71,10 @@ export class LevelStore {
       finishText: observable,
       finishImgUrl: observable,
       timer: observable,
+      nextLevelStage: action,
       resetLevel: action,
       levelStage: observable,
+      enemiesStore: observable,
     });
   }
 
@@ -84,7 +86,7 @@ export class LevelStore {
   private isLevelEnded() {
     if (!this.enemiesData) return;
 
-    console.log(this.enemiesData.length - 1);
+    // console.log(this.enemiesData.length - 1);
 
     const isEnemiesStoreEmpty = this.enemiesStore.enemies.length === 0;
     const isNewEnemyAbsent =
@@ -95,7 +97,7 @@ export class LevelStore {
   }
 
   private startTimer() {
-    return () => {
+    const setTimer = () => {
       this.timerId = setInterval(() => {
         this.timer++;
 
@@ -110,6 +112,7 @@ export class LevelStore {
         }
       }, 1000);
     };
+    return setTimer();
   }
 
   private resetTimer() {
@@ -124,7 +127,7 @@ export class LevelStore {
     switch (this.levelStage) {
       case ELevelStage.introduction:
         this.levelStage = ELevelStage.game;
-        this.startTimer()();
+        this.startTimer();
         return;
 
       case ELevelStage.game:
@@ -156,7 +159,7 @@ export class LevelStore {
     this.onCompleteLevel = levelData.onCompleteLevel;
     // enemiesStore.refresh();
 
-    this.startTimer();
+    // this.startTimer();
   }
 }
 

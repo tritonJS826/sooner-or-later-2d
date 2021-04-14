@@ -1,17 +1,19 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
-import './HeroInfo.css';
 import { useStore } from '../../../Store/CombineStores';
 import EventListener from '../../StupidComponents/EventListener/EventListener';
+import InputText from 'Components/BaseComponents/InputText';
+import './HeroInfo.css';
 
 
-const HeroInfo: React.FC = (observer(() => {
+const HeroInfo: React.FC = observer(() => {
     const {
         heroStore,
         enemiesStore,
     } = useStore();
-    const inputRef = useRef<HTMLInputElement>(null);
+
+    const inputRef = React.createRef<HTMLInputElement>();
 
     const onChangeAttackPhrase = (event: React.FormEvent<HTMLInputElement>) => {
         heroStore.setAttackPhrase(event.currentTarget.value);
@@ -24,6 +26,7 @@ const HeroInfo: React.FC = (observer(() => {
         if (event.key === 'Enter') {
             heroStore.shoot(enemiesStore.getEnemyById(heroStore.targetId));
             heroStore.setAttackPhrase('');
+            console.log(enemiesStore.enemies)
         }
 
         //change hero's target
@@ -53,7 +56,7 @@ const HeroInfo: React.FC = (observer(() => {
             }
         }
     };
-
+    
     return (
         <div className="hero-info">
             <EventListener callback={onKeyPress}/>
@@ -62,7 +65,7 @@ const HeroInfo: React.FC = (observer(() => {
 
             id = {heroStore.id}
 
-            <input type="text"
+            <InputText 
                 ref={inputRef}
                 value={heroStore.attackPhrase}
                 onChange={onChangeAttackPhrase}
@@ -71,6 +74,6 @@ const HeroInfo: React.FC = (observer(() => {
             target = {heroStore.targetId}
         </div>
     );
-}));
+});
 
 export default HeroInfo;

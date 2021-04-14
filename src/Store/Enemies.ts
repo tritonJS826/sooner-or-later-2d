@@ -3,10 +3,8 @@ import SimpleEnemy from "../Models/SimpleEnemy";
 import idGenerator from "../Service/IdGenerator";
 import CardsService from "../Service/data/CardsService";
 
-
 export class EnemiesStore {
   @observable enemies: SimpleEnemy[];
-
 
   constructor() {
     this.enemies = [];
@@ -14,9 +12,10 @@ export class EnemiesStore {
       enemies: observable,
       killEnemy: action,
       setEnemies: action,
-    })
+    });
   }
-  
+
+  @action.bound
   setEnemies(cards: SimpleEnemy[]) {
     this.enemies = cards.map((enemyData) => {
       const id = idGenerator.generateId();
@@ -30,9 +29,11 @@ export class EnemiesStore {
     });
   }
 
-
+  @action.bound
   killEnemy(enemyId: string) {
-    this.enemies = this.enemies.filter((enemy: SimpleEnemy) => enemy.id !== enemyId);
+    this.enemies = this.enemies.filter(
+      (enemy: SimpleEnemy) => enemy.id !== enemyId
+    );
   }
 
   // addRandomSimpleEnemy() {
@@ -55,10 +56,18 @@ export class EnemiesStore {
   addEnemyByIndex(enemyIndex: number) {
     const enemyData = CardsService.getCards()[enemyIndex];
 
-    if (!enemyData) return alert('Error! Index of enemy in unavailable');
+    if (!enemyData) return alert("Error! Index of enemy in unavailable");
 
-    const enemy = new SimpleEnemy({ ...enemyData, coords: [Math.random(), 0], killMyself: () => this.killEnemy(enemyData.id) });
-    this.enemies.push(enemy)
+    const id = idGenerator.generateId();
+
+    const enemy = new SimpleEnemy({
+      ...enemyData,
+      id,
+      coords: [Math.random(), 0],
+      killMyself: () => this.killEnemy(id),
+    });
+
+    this.enemies.push(enemy);
   }
 
   getEnemyIndexById(id: string | null) {

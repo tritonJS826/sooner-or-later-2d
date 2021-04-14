@@ -34,6 +34,8 @@ export default class SimpleEnemy {
       speed: observable,
       // damage: observable,
       doSomething: action,
+      getDamage: action,
+      killMyself: action,
     });
   }
 
