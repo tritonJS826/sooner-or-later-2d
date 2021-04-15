@@ -1,5 +1,4 @@
 import React from 'react';
-import { JsxElement } from 'typescript';
 import generator from '../../../Service/IdGenerator';
 import styles from './AnimatedSpan.module.scss';
 
@@ -18,11 +17,11 @@ const textAppearance = (text: string) => {
       );
     });
   });
-  const noBreakWord = (children: JSX.Element[]) => {
-    return <span style={{whiteSpace: "nowrap"}}>{children}</span>
+  const noBreakWord = (children: JSX.Element[], key: number) => {
+    return <span key={key} style={{whiteSpace: "nowrap"}}>{children}</span>
   };
 
-  return animatedWords.flatMap((word) => [noBreakWord(word), ' ']);
+  return animatedWords.flatMap((word, number) => [noBreakWord(word, number), ' ']);
 };
 
 export default textAppearance;

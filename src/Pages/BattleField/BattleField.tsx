@@ -8,12 +8,14 @@ import { Link } from 'react-router-dom';
 import { routes } from '../../App';
 import gameStore from '../../Store/GameStore';
 import styles from './BattleField.module.scss';
-import levelStore, { ELevelStage } from 'Store/LevelStore';
+import { ELevelStage } from 'Store/LevelStore';
 import LevelFinish from 'Components/CleverComponents/LevelFinish';
 import LevelIntro from 'Components/CleverComponents/LevelIntro';
 import LevelFail from 'Components/CleverComponents/LevelFail';
+import { useStore } from 'Store/CombineStores';
 
 const BattleField: React.FC = observer(() => {
+    const { levelStore } = useStore();
     const battleField = useRef<HTMLDivElement>(null);
 
     const openFullScreen = () => {

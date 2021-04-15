@@ -24,7 +24,7 @@ export default class SimpleEnemy {
     this.frontSide = frontSide;
     this.backSide = backSide;
     this.health = health;
-    this.speed = (Math.random() + 0.1) * 0.001;
+    this.speed = (Math.random() + 0.1) * 0.01;
     this.damage = damage;
     this.coords = coords;
     this.killMyself = killMyself;

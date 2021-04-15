@@ -1,16 +1,16 @@
 SOONER OR LATER project)
 
 ***Main issues for prototype***:  
-    * add images in levelFinish, levelsIntro and levelFail
     * victory game condition  
     * realization logic when hero died
-    * add vim and arrows navigation in menu
     * onClickOnEnemy (for mobiles instead ctrl)
-    * back to menu button
+    * back to menu button (fullscreen mobile)
     * add good styles & images/gifs  
+    * investigate why killMyself not real killing enemy
 
 ---
 ***Additional issues***:  
+    * add vim and arrows navigation in menu
     * add feature: pause round
     * create animation of shooting  
     * realization logic with ammo  

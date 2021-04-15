@@ -1,6 +1,6 @@
 
 import React from 'react';
-import styles from'./InputButton.module.scss';
+import styles from'./Image.module.scss';
 
 interface IImage extends React.ImgHTMLAttributes<HTMLImageElement>{
 }

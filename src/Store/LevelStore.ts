@@ -22,6 +22,7 @@ export class LevelStore {
   failImg: string | null;
   timer: number;
   levelStage: ELevelStage;
+  
   onCompleteLevel: () => void;
   onFailLevel: () => void;
 
@@ -59,6 +60,7 @@ export class LevelStore {
     this.failImg = failImg ?? null;
     this.timer = timer ?? 0;
     this.levelStage = ELevelStage.introduction;
+
     this.onCompleteLevel = onCompleteLevel;
     this.onFailLevel = onFailLevel;
     this.enemiesData = enemies;
@@ -79,10 +81,13 @@ export class LevelStore {
       failText: observable,
       failImg: observable,
       timer: observable,
+      levelStage: observable,
+      
+      enemiesStore: observable,
+      hero: observable,
+
       nextLevelStage: action,
       resetLevel: action,
-      levelStage: observable,
-      enemiesStore: observable,
     });
   }
 
@@ -91,52 +96,12 @@ export class LevelStore {
   //   console.log("addRandomSimpleEnemies");
   // }
 
-  private isLevelEnded() {
-    if (!this.enemiesData) return;
-
-    // console.log(this.enemiesData.length - 1);
-
-    const isEnemiesStoreEmpty = this.enemiesStore.enemies.length === 0;
-    const isNewEnemyAbsent =
-      this.enemiesData[this.enemiesData.length - 1].showTime < this.timer;
-    const isStageGame = this.levelStage === ELevelStage.game;
-
-    return isEnemiesStoreEmpty && isNewEnemyAbsent && isStageGame;
-  }
-
-  private startTimer() {
-    const setTimer = () => {
-      this.timerId = setInterval(() => {
-        this.timer++;
-
-        if (this.enemiesData?.length) {
-          const requiredToCreate = this.enemiesData.find(
-            (enemyData) => this.timer === enemyData.showTime
-          );
-          requiredToCreate?.cardsId.forEach((enemyIndex) =>
-            enemiesStore.addEnemyByIndex(enemyIndex)
-          );
-        }
-
-        if (this.isLevelEnded()) {
-          this.nextLevelStage();
-          alert("nextLevelStage");
-        }
-      }, 1000);
-    };
-    return setTimer();
-  }
-
-  private resetTimer() {
-    this.timer = 0;
-  }
-
-  private stopTimer() {
-    clearInterval(this.timerId);
-  }
-
   nextLevelStage() {
     switch (this.levelStage) {
+      case ELevelStage.heroDied:
+        this.levelStage = ELevelStage.introduction;
+        return;
+
       case ELevelStage.introduction:
         this.levelStage = ELevelStage.game;
         this.startTimer();
@@ -157,6 +122,7 @@ export class LevelStore {
   }
 
   resetLevel(levelData: ILevelSeed) {
+    // нужно переписать!! наверно
     this.id = levelData.id;
     this.header = levelData.header ?? null;
     this.description = levelData.description ?? null;
@@ -175,7 +141,68 @@ export class LevelStore {
 
     // this.startTimer();
   }
+
+  private isHeroDied() {
+    return this.hero.health < 1;
+  }
+
+  private isLevelEnded() {
+    if (!this.enemiesData) return;
+
+    const isEnemiesStoreEmpty = this.enemiesStore.enemies.length === 0;
+    const isNewEnemyAbsent =
+      this.enemiesData[this.enemiesData.length - 1].showTime < this.timer;
+    const isStageGame = this.levelStage === ELevelStage.game;
+
+    return isEnemiesStoreEmpty && isNewEnemyAbsent && isStageGame;
+  }
+
+  private tick() {
+    this.timer++;
+    
+    // add enemies if required
+    if (this.enemiesData?.length) {
+      const requiredToCreate = this.enemiesData.find(
+        (enemyData) => this.timer === enemyData.showTime
+      );
+      requiredToCreate?.cardsId.forEach((enemyIndex) =>
+        enemiesStore.addEnemyByIndex(enemyIndex)
+      );
+    }
+
+    if (this.isLevelEnded()) {
+      this.nextLevelStage();
+    }
+
+    if (this.isHeroDied()) {
+      this.stopTimer(); 
+      
+      this.hero.resetHero();
+      // next line is wrong. Enemies are not removed from scene, they are continuating to damaging the hero
+      this.enemiesStore.enemies.forEach((enemy) => enemy.killMyself());
+
+      
+      this.resetTimer();
+      this.levelStage = ELevelStage.heroDied;
+    }
+  }
+
+  private startTimer() {
+    const timer = () => {
+      this.timerId = setInterval(this.tick.bind(this), 1000);
+    };
+    return timer();
+  }
+
+  private resetTimer() {
+    this.timer = 0;
+  }
+
+  private stopTimer() {
+    clearInterval(this.timerId);
+  }
 }
+
 
 const levelStore = new LevelStore({
   id: generator.generateId(),

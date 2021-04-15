@@ -6,8 +6,8 @@ import levelStore, { LevelStore } from "./LevelStore";
 export class Game {
   allLevelsData: any[];
   allEnemiesData: any[];
-  currentLevelIndex: number;
 
+  currentLevelIndex: number;
   levelStore: LevelStore;
 
   constructor({ currentLevelIndex, levelStore }: IGameSeed) {
@@ -23,17 +23,16 @@ export class Game {
       allEnemiesData: observable,
       currentLevelIndex: observable,
       startLevel: action,
+      onCompleteLevel: action,
+      onFailLevel: action,
     });
-  }
-
-  private nextLevel() {
-    this.currentLevelIndex += 1;
   }
 
   startLevel() {
     this.levelStore.resetLevel({
       ...this.allLevelsData[this?.currentLevelIndex ?? 0],
       onCompleteLevel: this.onCompleteLevel.bind(this),
+      onFailLevel: this.onFailLevel.bind(this),
     });
   }
 
@@ -51,7 +50,11 @@ export class Game {
     this.startLevel();
   }
 
-  onGameComplete() {
+  private nextLevel() {
+    this.currentLevelIndex += 1;
+  }
+
+  private onGameComplete() {
     alert('this is the end of the game) Thank u) ');
   }
 

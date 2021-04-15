@@ -2,12 +2,12 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useStore } from '../../../Store/CombineStores';
-import styles from './LevelFail.module.scss';
 import AnimatedSpan from 'Components/BaseComponents/AnimatedSpan';
 import InputButton from 'Components/BaseComponents/InputButton';
 import Image from 'Components/BaseComponents/Image';
+import styles from './LevelFail.module.scss';
 
-const LevelFail: React.FC = (observer(() => {
+const LevelFail: React.FC = observer(() => {
     const {
         levelStore,
         gameStore,
@@ -17,9 +17,9 @@ const LevelFail: React.FC = (observer(() => {
         <div className={styles["level-finish"]}>
             <AnimatedSpan text={levelStore.failText} />
             <Image src={levelStore.failImg ?? undefined} />
-            <InputButton value="nextLevelStage" onClick={() => gameStore.onFailLevel()} />
+            <InputButton value="nextLevelStage" onClick={() => gameStore.levelStore.nextLevelStage()} />
         </div>
     );
-}));
+});
 
 export default LevelFail;

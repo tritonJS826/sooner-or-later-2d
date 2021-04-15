@@ -10,8 +10,13 @@ export class EnemiesStore {
     this.enemies = [];
     makeObservable(this, {
       enemies: observable,
-      killEnemy: action,
+
       setEnemies: action,
+      resetEnemies: action,
+      killEnemy: action,
+      addEnemyByIndex: action,
+      getEnemyIndexById: action,
+      getEnemyById: action,
     });
   }
 
@@ -53,6 +58,7 @@ export class EnemiesStore {
   //   this.enemies.push(newEnemy());
   // }
 
+  @action.bound
   addEnemyByIndex(enemyIndex: number) {
     const enemyData = CardsService.getCards()[enemyIndex];
 
@@ -70,11 +76,18 @@ export class EnemiesStore {
     this.enemies.push(enemy);
   }
 
+  @action.bound
+  resetEnemies() {
+    this.setEnemies([]);
+  }
+
+  @action.bound
   getEnemyIndexById(id: string | null) {
     if (id === null) return;
     return this.enemies.findIndex((enemy: SimpleEnemy) => enemy.id === id);
   }
 
+  @action.bound
   getEnemyById(id: string | null) {
     if (id === null) return;
     return this.enemies.find((enemy: SimpleEnemy) => enemy.id === id);

@@ -19,14 +19,23 @@ export class Hero {
     this.name = 'triton'; 
     makeObservable(this, {
       health: observable,
-      attackPhrase: observable,
       targetId: observable,
+      attackPhrase: observable,
       coords: observable,
       name: observable,
+
+      resetHero: action,
       setAttackPhrase: action,
       setTarget: action,
       shoot: action,
     });
+  }
+
+  @action.bound
+  resetHero() {
+    this.health = 100;
+    this.attackPhrase = '';
+    this.targetId = null;
   }
 
   @action.bound

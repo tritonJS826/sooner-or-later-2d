@@ -13,15 +13,15 @@
             "enemies": [
                 {
                     "showTime": 2,
-                    "cardsId": [1,1,1]
+                    "cardsId": [1]
                 },
                 {
                     "showTime": 3,
-                    "cardsId": [1,1]
+                    "cardsId": []
                 },
                 {
                     "showTime": 10,
-                    "cardsId": [3]
+                    "cardsId": []
                 }
             ]
         },
