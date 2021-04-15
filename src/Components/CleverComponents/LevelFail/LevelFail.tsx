@@ -5,6 +5,7 @@ import { useStore } from '../../../Store/CombineStores';
 import styles from './LevelFail.module.scss';
 import AnimatedSpan from 'Components/BaseComponents/AnimatedSpan';
 import InputButton from 'Components/BaseComponents/InputButton';
+import Image from 'Components/BaseComponents/Image';
 
 const LevelFail: React.FC = (observer(() => {
     const {
@@ -14,7 +15,8 @@ const LevelFail: React.FC = (observer(() => {
 
     return (
         <div className={styles["level-finish"]}>
-            {/* <AnimatedSpan text={levelStore.failText} /> */}
+            <AnimatedSpan text={levelStore.failText} />
+            <Image src={levelStore.failImg ?? undefined} />
             <InputButton value="nextLevelStage" onClick={() => gameStore.onFailLevel()} />
         </div>
     );

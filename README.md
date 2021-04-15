@@ -1,13 +1,12 @@
 SOONER OR LATER project)
 
 ***Main issues for prototype***:  
-    * add image in levelFinish, levelsIntro and levelFail
-    * add failText and failImg in levelStore and json
+    * add images in levelFinish, levelsIntro and levelFail
     * victory game condition  
-    * realization of logic when hero died
+    * realization logic when hero died
     * add vim and arrows navigation in menu
     * onClickOnEnemy (for mobiles instead ctrl)
-    * back to menu button  
+    * back to menu button
     * add good styles & images/gifs  
 
 ---
@@ -35,9 +34,9 @@ SOONER OR LATER project)
     * monetizing:  
     - patreon  
     - kickstarter 
-    - socialNetwork  
-    - linkedin(adv)
-    - youtube  
+    - socialNetworks  
+        - linkedin(adv)
+        - youtube  
 
 ---
 

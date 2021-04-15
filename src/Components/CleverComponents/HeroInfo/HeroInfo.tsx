@@ -2,7 +2,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useStore } from '../../../Store/CombineStores';
-import EventListener from '../../StupidComponents/EventListener/EventListener';
+import EventListener from '../../BaseComponents/EventListener/EventListener';
 import InputText from 'Components/BaseComponents/InputText';
 import styles from './HeroInfo.module.scss';
 

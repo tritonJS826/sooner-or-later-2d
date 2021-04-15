@@ -18,6 +18,8 @@ export class LevelStore {
   startImgUrl: string | null;
   finishText: string | null;
   finishImgUrl: string | null;
+  failText: string | null;
+  failImg: string | null;
   timer: number;
   levelStage: ELevelStage;
   onCompleteLevel: () => void;
@@ -37,6 +39,8 @@ export class LevelStore {
     startImgUrl,
     finishText,
     finishImgUrl,
+    failText,
+    failImg,
     enemies,
     timer,
     onCompleteLevel,
@@ -51,6 +55,8 @@ export class LevelStore {
     this.startImgUrl = startImgUrl ?? null;
     this.finishText = finishText ?? null;
     this.finishImgUrl = finishImgUrl ?? null;
+    this.failText = failText ?? null;
+    this.failImg = failImg ?? null;
     this.timer = timer ?? 0;
     this.levelStage = ELevelStage.introduction;
     this.onCompleteLevel = onCompleteLevel;
@@ -70,6 +76,8 @@ export class LevelStore {
       startImgUrl: observable,
       finishText: observable,
       finishImgUrl: observable,
+      failText: observable,
+      failImg: observable,
       timer: observable,
       nextLevelStage: action,
       resetLevel: action,
@@ -102,8 +110,12 @@ export class LevelStore {
         this.timer++;
 
         if (this.enemiesData?.length) {
-          const requiredToCreate = this.enemiesData.find((enemyData) => this.timer === enemyData.showTime);
-          requiredToCreate?.cardsId.forEach((enemyIndex) => enemiesStore.addEnemyByIndex(enemyIndex));
+          const requiredToCreate = this.enemiesData.find(
+            (enemyData) => this.timer === enemyData.showTime
+          );
+          requiredToCreate?.cardsId.forEach((enemyIndex) =>
+            enemiesStore.addEnemyByIndex(enemyIndex)
+          );
         }
 
         if (this.isLevelEnded()) {
@@ -152,6 +164,8 @@ export class LevelStore {
     this.startImgUrl = levelData.startImgUrl ?? null;
     this.finishText = levelData.finishText ?? null;
     this.finishImgUrl = levelData.finishImgUrl ?? null;
+    this.failText = levelData.failText ?? null;
+    this.failImg = levelData.failImg ?? null;
     this.timer = levelData.timer ?? 0;
     this.levelStage = ELevelStage.introduction;
     this.enemiesData = levelData.enemies ?? [];
@@ -189,6 +203,8 @@ interface ILevelSeed {
   startImgUrl?: string;
   finishText?: string;
   finishImgUrl?: string;
+  failText?: string;
+  failImg?: string;
   timer?: number;
   onCompleteLevel: () => void;
   onFailLevel: () => void;
@@ -199,27 +215,3 @@ interface ILevelSeed {
     cardsId: number[];
   }[];
 }
-
-// {
-//   "id": "fddassada",
-//   "header": "Welcome to the first level!",
-//   "description": "Your first level",
-//   "startText": "Something interesting story.....",
-//   "startImgUrl": null,
-//   "finishText": "The end of the first level",
-//   "finishImgUrl": null,
-//   "enemies": [
-//       {
-//           "showTime": 2000,
-//           "cardsId": [1]
-//       },
-//       {
-//           "showTime": 3000,
-//           "cardsId": [2]
-//       },
-//       {
-//           "showTime": 7000,
-//           "cardsId": [1,2,3]
-//       }
-//   ]
-// }
