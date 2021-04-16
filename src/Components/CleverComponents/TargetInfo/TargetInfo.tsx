@@ -12,8 +12,9 @@ const HeroInfo: React.FC = (observer(() => {
 
     return (
         <div className={styles["target-info"]}>
-            targetId={heroStore.targetId}
-            frontSide={enemiesStore.getEnemyById(heroStore.targetId)?.frontSide}
+            <span className={styles["target-info__line"]}>
+            {enemiesStore.getEnemyById(heroStore.targetId)?.frontSide}
+            </span>
         </div>
     );
 }));

@@ -68,6 +68,7 @@ const HeroInfo: React.FC = observer(() => {
                 ref={inputRef}
                 value={heroStore.attackPhrase}
                 onChange={onChangeAttackPhrase}
+                className={styles["attack-phrase"]}
             />
 
             target = {heroStore.targetId}

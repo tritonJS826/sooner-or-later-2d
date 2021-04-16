@@ -1,3 +1,16 @@
+
 .input-text {
-    color: orangered;
+    background-color: transparent;
+    border: none;
+    color: darkred;
+    font-size: 20px;
+    text-decoration: none;
+    margin: auto;
+    cursor: pointer;
+    margin: 10px;
+    color: rgb(120, 95, 153);
+    
+    &:hover {
+        color: rgb(65, 81, 224);
+    }
 }

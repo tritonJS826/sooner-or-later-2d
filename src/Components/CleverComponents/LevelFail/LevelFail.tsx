@@ -14,10 +14,10 @@ const LevelFail: React.FC = observer(() => {
     } = useStore();
 
     return (
-        <div className={styles["level-finish"]}>
+        <div className={styles["level-fail"]}>
             <AnimatedSpan text={levelStore.failText} />
             <Image src={levelStore.failImg ?? undefined} />
-            <InputButton value="nextLevelStage" onClick={() => gameStore.levelStore.nextLevelStage()} />
+            <InputButton value="nextLevelStage" autoFocus onClick={() => gameStore.levelStore.nextLevelStage()} />
         </div>
     );
 });

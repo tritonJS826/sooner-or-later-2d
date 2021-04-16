@@ -1,7 +1,10 @@
 .hero {
-    width:  10%;
-    height: 10%;
     display: inline-block;
     position: absolute;
-    background-color: red;
+    
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    // it's better to add some blinking animation here
+    background: radial-gradient(darkorange, black);
 }

@@ -23,7 +23,6 @@ const SimpleEnemyView: React.FC<ISimpleEnemy> = observer(({ enemy, hero }) => {
             left: `${enemy.coords[0] * 100 - 5}%`,
             top: `${enemy.coords[1] * 100 - 5}%`,
           }}>
-          {`I am Enemy ${enemy.frontSide}`}
         </div>
       )}
 

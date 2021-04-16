@@ -13,6 +13,7 @@ import LevelFinish from 'Components/CleverComponents/LevelFinish';
 import LevelIntro from 'Components/CleverComponents/LevelIntro';
 import LevelFail from 'Components/CleverComponents/LevelFail';
 import { useStore } from 'Store/CombineStores';
+import InputButton from 'Components/BaseComponents/InputButton';
 
 const BattleField: React.FC = observer(() => {
     const { levelStore } = useStore();
@@ -27,7 +28,7 @@ const BattleField: React.FC = observer(() => {
     }, []);
 
     if (levelStore.levelStage === ELevelStage.introduction) return <LevelIntro />;
-    if (levelStore.levelStage === ELevelStage.levelCompleted) return <LevelFinish/>;
+    if (levelStore.levelStage === ELevelStage.levelCompleted) return <LevelFinish />;
 
     if (levelStore.levelStage === ELevelStage.game) return (
         <>
@@ -35,13 +36,15 @@ const BattleField: React.FC = observer(() => {
                 <BattleScene />
                 <HeroInfo />
                 <TargetInfo />
-                <input type="button" value="FULL_SCREEN" onClick={openFullScreen} className={`${styles["button"]} ${styles["not-on-full-screen"]}`} />
-                <Link to={routes.base} className={styles["not-on-full-screen"]}>Menu</Link>
+                <div className={styles.buttons}>
+                    <InputButton value="Full screen" onClick={openFullScreen} className={`${styles["button"]} ${styles["not-on-full-screen"]}`} />
+                    <Link to={routes.base} className={`${styles["not-on-full-screen"]} ${styles["button"]}`}>Menu</Link>
+                </div>
             </div>
         </>
     );
 
-    if (levelStore.levelStage === ELevelStage.heroDied) return <LevelFail/>;
+    if (levelStore.levelStage === ELevelStage.heroDied) return <LevelFail />;
 
     return (<span>Strange levelStage: {levelStore.levelStage}</span>);
 

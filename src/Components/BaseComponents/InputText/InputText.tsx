@@ -9,7 +9,7 @@ interface IInputText extends React.HTMLAttributes<HTMLInputElement>{
 
 const InputText: React.FC<IInputText> = React.forwardRef((props: IInputText, ref: any) => {
   return (
-    <input type="text" {...props} ref={ref} className={styles["input-text"]}/>
+    <input type="text" className={styles["input-text"]} {...props} ref={ref} />
 )
 });
 

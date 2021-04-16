@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { observer } from 'mobx-react';
 import { useStore } from '../../../Store/CombineStores';
@@ -13,10 +12,10 @@ const HeroInfo: React.FC = (observer(() => {
     } = useStore();
 
     return (
-        <div className={styles["target-info"]}>
+        <div className={styles["level-intro"]}>
             <AnimatedSpan text={levelStore.startText} />
             <Image src={levelStore.startImgUrl ?? undefined} />
-            <InputButton value="try this level" onClick={() => levelStore.nextLevelStage()} />
+            <InputButton value="try this level" autoFocus onClick={() => levelStore.nextLevelStage()} />
         </div>
     );
 }));

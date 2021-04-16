@@ -18,7 +18,7 @@ const textAppearance = (text: string) => {
     });
   });
   const noBreakWord = (children: JSX.Element[], key: number) => {
-    return <span key={key} style={{whiteSpace: "nowrap"}}>{children}</span>
+    return <span key={key} className={styles.span}>{children}</span>
   };
 
   return animatedWords.flatMap((word, number) => [noBreakWord(word, number), ' ']);

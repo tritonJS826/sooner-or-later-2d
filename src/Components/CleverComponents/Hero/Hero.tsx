@@ -1,18 +1,18 @@
 
 import { observer } from 'mobx-react';
 import React from 'react';
-import hero from 'Store/Hero';
+import { useStore } from 'Store/CombineStores';
 import styles from './Hero.module.scss';
 
 
 const HeroView: React.FC = observer(() => {
+  const { heroStore } = useStore();
   return (
-      <div className={styles["hero"]} key={hero.id} 
+      <div className={styles["hero"]} key={heroStore.id} 
       style={{
-         left: `${hero.coords[0] * 100 - 5}%`,
-         top: `${hero.coords[1] * 100 - 5}%`
+         left: `${heroStore.coords[0] * 100 - 5}%`,
+         top: `${heroStore.coords[1] * 100 - 5}%`
          }}>
-        {`I am ${ hero.name }`}
       </div>
   )
 });

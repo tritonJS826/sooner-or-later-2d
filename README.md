@@ -4,7 +4,10 @@ SOONER OR LATER project)
     * victory game condition
     * onClickOnEnemy (for mobiles instead ctrl)
     * back to menu button (fullscreen mobile)
-    * add good styles & images/gifs  
+    * add good styles 
+    * create sidebar for buttons
+    * fix fullscrean (brokes when nex level started)
+    * take out styles from modules
 
 ---
 ***Additional issues***:  
@@ -14,9 +17,10 @@ SOONER OR LATER project)
     * realization logic with ammo  
     * add sound
     * create good world(levels and enemies)
-
+    * find and insert good images / videos
 ---
-***After first prototype*** 
+***After first prototype***
+    * a lot of worlds!!!
     * save/load game   
     * logic with health
     * multilingual  

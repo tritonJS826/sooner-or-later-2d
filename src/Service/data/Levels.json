@@ -2,9 +2,9 @@
     "levels": [
         {
             "id": "fddassada",
-            "header": "Welcome to the first level!",
-            "description": "Your first level",
-            "startText": "Something interesting story.....",
+            "header": "Сцена I",
+            "description": "Не используется",
+            "startText": "Some interesting story.....",
             "startImgUrl": null,
             "finishText": "The end of the first level",
             "finishImgUrl": null,
@@ -29,7 +29,7 @@
             "id": "Skdj;lklkm",
             "header": "Welcome to the second level!",
             "description": "Continuation",
-            "startText": "Continiating of Something interesting story.....",
+            "startText": "Continue of Something interesting story.....",
             "startImgUrl": null,
             "finishText": "The end of the second level",
             "finishImgUrl": null,
@@ -53,8 +53,8 @@
         {
             "id": "sdfzc2lsdzzx",
             "header": "Welcome to the last level!",
-            "description": "thit es the last level",
-            "startText": "Second continiating of Something interesting story.....",
+            "description": "this es the last level",
+            "startText": "Second continue of Something interesting story.....",
             "startImgUrl": null,
             "finishText": "The end of the game! thankYou)",
             "finishImgUrl": null,

@@ -1,8 +1,22 @@
 .hero-info {
     display: block;
-    position: relative;
-    background: rgb(155, 35, 101);
-    width: 50vw;
+    position: fixed;
+    width: 100vw;
     height: 3vh;
-    color: white;
+    bottom: 0;
+    color: darkorange;
+    z-index: -1;
+}
+
+.attack-phrase {
+    position: absolute;
+    right: 0;
+    width: 30%;
+    background-color: black;
+    border: none;
+    border-radius:  5px;
+    color: darkorange;
+    &:focus {
+        outline: none;
+    }
 }
