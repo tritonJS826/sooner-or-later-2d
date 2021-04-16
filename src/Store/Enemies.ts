@@ -12,7 +12,7 @@ export class EnemiesStore {
       enemies: observable,
 
       setEnemies: action,
-      resetEnemies: action,
+      killAllEnemies: action,
       killEnemy: action,
       addEnemyByIndex: action,
       getEnemyIndexById: action,
@@ -77,8 +77,8 @@ export class EnemiesStore {
   }
 
   @action.bound
-  resetEnemies() {
-    this.setEnemies([]);
+  killAllEnemies() {
+    this.enemies.forEach((enemy) => enemy.killMyself());
   }
 
   @action.bound

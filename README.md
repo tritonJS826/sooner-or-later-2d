@@ -1,12 +1,10 @@
 SOONER OR LATER project)
 
 ***Main issues for prototype***:  
-    * victory game condition  
-    * realization logic when hero died
+    * victory game condition
     * onClickOnEnemy (for mobiles instead ctrl)
     * back to menu button (fullscreen mobile)
     * add good styles & images/gifs  
-    * investigate why killMyself not real killing enemy
 
 ---
 ***Additional issues***:  

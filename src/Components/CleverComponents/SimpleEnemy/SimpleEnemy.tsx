@@ -12,7 +12,7 @@ interface ISimpleEnemy {
 const SimpleEnemyView: React.FC<ISimpleEnemy> = observer(({ enemy, hero }) => {
 
   useEffect(() => {
-    enemy.doSomething(hero);
+    enemy.startDoSomething(hero);
   }, []);
 
   return (

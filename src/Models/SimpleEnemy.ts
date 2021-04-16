@@ -10,6 +10,7 @@ export default class SimpleEnemy {
   damage: number;
   coords: [x: number, y: number];
   killMyself: () => void;
+  private enemyTimerId: any;
   constructor({
     id,
     frontSide = "",
@@ -24,24 +25,34 @@ export default class SimpleEnemy {
     this.frontSide = frontSide;
     this.backSide = backSide;
     this.health = health;
-    this.speed = (Math.random() + 0.1) * 0.01;
+    this.speed = (Math.random() + 0.1) * 0.005;
     this.damage = damage;
     this.coords = coords;
-    this.killMyself = killMyself;
+
+    this.killMyself = () => { 
+      // remove from enemy store
+      killMyself();
+      // remove personal timers
+      this.stopDoAnything()
+    };
+
     makeObservable(this, {
       coords: observable,
       health: observable,
       speed: observable,
-      // damage: observable,
-      doSomething: action,
+      damage: observable,
+
+      startDoSomething: action,
       getDamage: action,
       killMyself: action,
     });
   }
 
+
+
   @action
-  public doSomething(hero: Hero) {
-    setTimeout(() => {
+  public startDoSomething(hero: Hero) {
+    this.enemyTimerId = setTimeout(() => {
       requestAnimationFrame(() => {
         const distanceYToHero = Math.abs(this.coords[1] - hero.coords[1]);
 
@@ -50,11 +61,16 @@ export default class SimpleEnemy {
         } else {
           runInAction(() => this.go(hero.coords));
         }
-        this.doSomething(hero);
+        this.startDoSomething(hero);
       });
 
-      // fps = 16 => every 60 seconds update
-    }, 50);
+      // fps = 16 => every 60 msec update
+    }, 60);
+  }
+
+  @action
+  private stopDoAnything() {
+    clearInterval(this.enemyTimerId);
   }
 
   private go([x, y]: [number, number]) {
@@ -70,20 +86,19 @@ export default class SimpleEnemy {
   }
 
   private fight(target: Hero) {
-    target.health -= 1;
+    target.health -= 0.5;
   }
 
   public getDamage(damage: number, phrase: string) {
-    alert('ohhhh');
     if (phrase === this.backSide) {
       this.health -= damage;
     }
     
     if (this.health < 1) {
       this.killMyself();
-      this.speed = 0;
-      this.damage = 0;
-      alert(`${this.frontSide} is dead`)
+      // this.stopDoAnything();
+      // this.speed = 0;
+      // this.damage = 0;
     }
   }
 }

@@ -179,7 +179,7 @@ export class LevelStore {
       
       this.hero.resetHero();
       // next line is wrong. Enemies are not removed from scene, they are continuating to damaging the hero
-      this.enemiesStore.enemies.forEach((enemy) => enemy.killMyself());
+      this.enemiesStore.killAllEnemies();
 
       
       this.resetTimer();
@@ -208,11 +208,11 @@ const levelStore = new LevelStore({
   id: generator.generateId(),
 
   onCompleteLevel: () => {
-    alert("level finished");
+    alert("level finished stub");
   },
 
   onFailLevel: () => {
-    alert("level failed");
+    alert("level failed stub");
   },
 
   enemiesStore,
