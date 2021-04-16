@@ -29,6 +29,8 @@ export class Game {
   }
 
   startLevel() {
+    this.levelStore.hero.regenerate(100);
+    
     this.levelStore.resetLevel({
       ...this.allLevelsData[this?.currentLevelIndex ?? 0],
       onCompleteLevel: this.onCompleteLevel.bind(this),

@@ -25,15 +25,15 @@ export default class SimpleEnemy {
     this.frontSide = frontSide;
     this.backSide = backSide;
     this.health = health;
-    this.speed = (Math.random() + 0.1) * 0.001;
+    this.speed = (Math.random() + 0.1) * 0.0006;
     this.damage = damage;
     this.coords = coords;
 
     this.killMyself = () => { 
       // remove from enemy store
       killMyself();
-      // remove personal timers
-      this.stopDoAnything()
+      // remove personal timer
+      this.stopDoAnything();
     };
 
     makeObservable(this, {
@@ -61,11 +61,11 @@ export default class SimpleEnemy {
         } else {
           runInAction(() => this.go(hero.coords));
         }
-        this.startDoSomething(hero);
       });
-
+      
+      this.startDoSomething(hero);
       // fps = 16 => every 60 msec update
-    }, 60);
+    }, 50);
   }
 
   @action

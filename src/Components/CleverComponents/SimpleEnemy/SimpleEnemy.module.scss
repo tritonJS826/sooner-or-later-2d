@@ -5,6 +5,7 @@
     height: 50px;
     border-radius: 50%;
     background: radial-gradient(darkblue, black);
+    opacity: 0.6;
 }
 
 .simple-enemy__dead {
@@ -18,5 +19,12 @@
 
 .enemy-captured {
     box-shadow: 0 0 30px darkorange;
-
 }
+
+.enemy-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+ }
+

@@ -4,11 +4,11 @@
             "id": "fddassada",
             "header": "Сцена I",
             "description": "Не используется",
-            "startText": "Some interesting story.....",
+            "startText": "-- Таак..., кто тут у нас? Ага... пациент номер 8834КВ... мг, какой диагноз, ...и биполярное... ...ажитированность... понятно. Ладно, понимаю что вы сейчас под препаратами и не можете внятно говорить. Да и меня вы скорее всего не помните. Сейчас ваш разум чист и вы можете четко воспринимать то, что я вам говорю, но это не на долго. Сейчас я введу вас в состояние транса. Закройте глазаю... три..., два..., один....  \n Настройтесь (положите обе руки на клавиатуру так, чтоб указательный палец левой руки лежал на букве 'а', указательный палец правой руки лежал на букве 'о'). Представте поле, вы находитесь на одном из краев, например снизу. А ваши мыли как-бы текут на вас. Вы возможно перестанете воспринимать окружающий мир (не смотрите на клавиатуру, это очень важно!!)  Не воспринимайте все их сразу, сфокусируйтесь на одной из них (нажать ctrl). Попробуйте понять о чем эта мысль, проговорите ее (набирайте указанный текст). Как только вы правильно проговорили ее -- попробуйте избавиться от нее (нажмите enter). Если это не очень навязчивая идея -- скорее всего она пропадет.... \n Хм, судя по приборам у вас сейчас начинается очередной приступ, что ж... посмортим сможете ли вы справиться. \n",
             "startImgUrl": null,
-            "finishText": "The end of the first level",
+            "finishText": "-- Мммммммммммммм, эммммм!!!!",
             "finishImgUrl": null,
-            "failText": "Game over! hero is died!",
+            "failText": "Дааа... всегда с ним одно и то же, забирайте, забирайте...",
             "failImg": null,
             "enemies": [
                 {
@@ -16,12 +16,24 @@
                     "cardsId": [1]
                 },
                 {
-                    "showTime": 3,
-                    "cardsId": []
+                    "showTime": 4,
+                    "cardsId": [2]
+                },
+                {
+                    "showTime": 6,
+                    "cardsId": [1,2]
+                },
+                {
+                    "showTime": 8,
+                    "cardsId": [3]
                 },
                 {
                     "showTime": 10,
-                    "cardsId": []
+                    "cardsId": [1,2,4]
+                },
+                {
+                    "showTime": 12,
+                    "cardsId": [1,2,3,4,4]
                 }
             ]
         },
@@ -29,24 +41,36 @@
             "id": "Skdj;lklkm",
             "header": "Welcome to the second level!",
             "description": "Continuation",
-            "startText": "Continue of Something interesting story.....",
+            "startText": "-- Кажется у вас получилось в этот раз. Понаблюдаем за вами еще немного... Три, два, один \n  Настройтесь (средний палец левой руки на букве 'в', а средний палец правой руки на букве 'л')... ",
             "startImgUrl": null,
-            "finishText": "The end of the second level",
+            "finishText": "-- Мммммммммммммм, эммммм!!!!",
             "finishImgUrl": null,
-            "failText": "Game over! hero is died!",
+            "failText": "Дааа... всегда с ним одно и то же, забирайте, забирайте...",
             "failImg": null,
             "enemies": [
                 {
                     "showTime": 2,
-                    "cardsId": [1, 2]
+                    "cardsId": [6, 7]
                 },
                 {
-                    "showTime": 3,
-                    "cardsId": [3,5]
+                    "showTime": 4,
+                    "cardsId": [6, 7, 8]
                 },
                 {
-                    "showTime": 7,
-                    "cardsId": [4,6]
+                    "showTime": 6,
+                    "cardsId": [7, 8, 9]
+                },
+                {
+                    "showTime": 8,
+                    "cardsId": [6, 7, 8, 9, 5]
+                },
+                {
+                    "showTime": 12,
+                    "cardsId": [9, 10, 4, 5]
+                },
+                {
+                    "showTime": 14,
+                    "cardsId": [6, 7, 8, 9, 5, 4]
                 }
             ]
         },
@@ -54,24 +78,36 @@
             "id": "sdfzc2lsdzzx",
             "header": "Welcome to the last level!",
             "description": "this es the last level",
-            "startText": "Second continue of Something interesting story.....",
+            "startText": "-- Да вы сегодня в ударе! Ну еще немного! Три... два... один...\n Настройтесь (безымянный палец левой руки на букве 'ы', безымянный палец правой руки на букве 'д')",
             "startImgUrl": null,
-            "finishText": "The end of the game! thankYou)",
+            "finishText": "-- !!!!ММММММММММ!!!!!!МЭЭММЭМММММММ!!!!!!",
             "finishImgUrl": null,
-            "failText": "Game over! hero is died!",
+            "failText": "Дааа... всегда с ним одно и то же, забирайте, забирайте...",
             "failImg": null,
             "enemies": [
                 {
                     "showTime": 2,
-                    "cardsId": [1,2,3,4,5,6]
-                },
-                {
-                    "showTime": 3,
-                    "cardsId": []
+                    "cardsId": [11, 12]
                 },
                 {
                     "showTime": 4,
-                    "cardsId": []
+                    "cardsId": [13, 12, 8]
+                },
+                {
+                    "showTime": 6,
+                    "cardsId": [11, 12, 9]
+                },
+                {
+                    "showTime": 8,
+                    "cardsId": [6, 9, 5]
+                },
+                {
+                    "showTime": 12,
+                    "cardsId": [9, 10, 4, 5, 14]
+                },
+                {
+                    "showTime": 16,
+                    "cardsId": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,4,5,9,10,15,16,12]
                 }
             ]
         }

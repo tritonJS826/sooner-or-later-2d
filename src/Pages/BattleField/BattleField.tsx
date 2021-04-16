@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { observer } from 'mobx-react';
 import BattleScene from '../../Components/CleverComponents/BattleScene';
@@ -14,6 +13,7 @@ import LevelIntro from 'Components/CleverComponents/LevelIntro';
 import LevelFail from 'Components/CleverComponents/LevelFail';
 import { useStore } from 'Store/CombineStores';
 import InputButton from 'Components/BaseComponents/InputButton';
+import heroStore from 'Store/Hero';
 
 const BattleField: React.FC = observer(() => {
     const { levelStore } = useStore();
@@ -23,32 +23,44 @@ const BattleField: React.FC = observer(() => {
         battleField.current?.requestFullscreen();
     };
 
+    const onMenu = () => {
+        heroStore.resetHero();
+        levelStore.enemiesStore.killAllEnemies();
+    };
+
     useEffect(() => {
         gameStore.startLevel();
     }, []);
 
-    if (levelStore.levelStage === ELevelStage.introduction) return <LevelIntro />;
-    if (levelStore.levelStage === ELevelStage.levelCompleted) return <LevelFinish />;
+    const inputTextRef = React.createRef<HTMLInputElement>();
 
-    if (levelStore.levelStage === ELevelStage.game) return (
-        <>
-            <div className={styles["battle-field"]} ref={battleField}>
-                <BattleScene />
-                <HeroInfo />
-                <TargetInfo />
-                <div className={styles.buttons}>
-                    <InputButton value="Full screen" onClick={openFullScreen} className={`${styles["button"]} ${styles["not-on-full-screen"]}`} />
-                    <Link to={routes.base} className={`${styles["not-on-full-screen"]} ${styles["button"]}`}>Menu</Link>
-                </div>
+    // const inputTextRef = React.useRef<HTMLInputElement>(null);
+
+    const renderGame = () => {
+        return (<>
+            <BattleScene ref={inputTextRef} />
+            <HeroInfo ref={inputTextRef} />
+            <TargetInfo />
+            <div className={styles.buttons}>
+                <InputButton value="Full screen" onClick={openFullScreen} className={`${styles["button"]} ${styles["not-on-full-screen"]}`} />
+                <Link to={routes.base} className={`${styles["button"]}`}>
+                    <InputButton
+                        value="Menu"
+                        onClick={onMenu}
+                        className={styles["button"]} />
+                </Link>
             </div>
-        </>
+        </>)
+    };
+
+    return (
+        <div className={styles["battle-field"]} ref={battleField}>
+            {levelStore.levelStage === ELevelStage.introduction && <LevelIntro />}
+            {levelStore.levelStage === ELevelStage.levelCompleted && <LevelFinish />}
+            {levelStore.levelStage === ELevelStage.game && renderGame()}
+            {levelStore.levelStage === ELevelStage.heroDied && <LevelFail />}
+        </div>
     );
-
-    if (levelStore.levelStage === ELevelStage.heroDied) return <LevelFail />;
-
-    return (<span>Strange levelStage: {levelStore.levelStage}</span>);
-
-
 });
 
 export default BattleField;

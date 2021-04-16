@@ -6,18 +6,19 @@ import { useStore } from '../../../Store/CombineStores';
 import HeroView from '../Hero';
 import SimpleEnemy from '../../../Models/SimpleEnemy';
 import styles from './BattleScene.module.scss';
+import AnimatedSpan from 'Components/BaseComponents/AnimatedSpan';
 
-const BattleScene: React.FC = observer(() => {
-    const { enemiesStore, heroStore, levelStore } = useStore();
+const BattleScene = observer(React.forwardRef<HTMLInputElement>((props, ref) => {
+    const { enemiesStore, heroStore, levelStore, gameStore } = useStore();
 
     return (
         <div className={styles["battle-scene"]}>
-            {levelStore.timer}
-            {enemiesStore.enemies.map((enemy: SimpleEnemy) => <SimpleEnemyView key={enemy.id} enemy={enemy} hero={heroStore} />)}
+            <AnimatedSpan text={String(levelStore.timer)} /><br/>
+            <AnimatedSpan text={`level: ${gameStore.currentLevelIndex + 1}`} />
+            {enemiesStore.enemies.map((enemy: SimpleEnemy) => <SimpleEnemyView key={enemy.id} ref={ref} enemy={enemy} hero={heroStore} />)}
             <HeroView />
-            {levelStore.levelStage}
         </div>
     );
-});
+}));
 
 export default BattleScene;

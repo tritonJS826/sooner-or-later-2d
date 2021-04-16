@@ -3,10 +3,9 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-}
-
-.battle-field:fullscreen > .not-on-full-screen {
-    display: none;
+    &:fullscreen .not-on-full-screen {
+        display: none;
+    }
 }
 
 .button {
@@ -17,6 +16,10 @@
     text-decoration: none;
     margin: auto;
     cursor: pointer;
+}
+
+.button2 {
+    color: red;
 }
 
 .buttons {

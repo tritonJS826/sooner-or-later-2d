@@ -25,6 +25,7 @@ export class Hero {
       name: observable,
 
       resetHero: action,
+      regenerate: action,
       setAttackPhrase: action,
       setTarget: action,
       shoot: action,
@@ -36,6 +37,11 @@ export class Hero {
     this.health = 100;
     this.attackPhrase = '';
     this.targetId = null;
+  }
+
+  @action.bound
+  regenerate(amount: number) {
+    this.health += amount;
   }
 
   @action.bound

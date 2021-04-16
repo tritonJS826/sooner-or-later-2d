@@ -2,56 +2,144 @@
     "cards": [
         {
             "id": "0",
-            "frontSide": "1 + 3",
-            "backSide": "4",
+            "frontSide": "о",
+            "backSide": "о",
             "health": 100,
             "speed": 10,
             "damage": 100
         },
         {
             "id": "1",
-            "frontSide": "12 + 26",
-            "backSide": "38",
+            "frontSide": "а",
+            "backSide": "а",
             "health": 100,
             "speed": 7,
             "damage": 100
         },
         {
             "id": "2",
-            "frontSide": "74 + 57",
-            "backSide": "131",
+            "frontSide": "оо аа",
+            "backSide": "оо аа",
             "health": 100,
             "speed": 4,
             "damage": 100
         },
         {
             "id": "3",
-            "frontSide": "123 + 432",
-            "backSide": "555",
+            "frontSide": "аа о аа о",
+            "backSide": "аа о аа о",
             "health": 100,
             "speed": 10,
             "damage": 100
         },
         {
             "id": "4",
-            "frontSide": "10032 - 39",
-            "backSide": "9993",
+            "frontSide": "ооо аа оао ааа",
+            "backSide": "ооо аа оао ааа",
             "health": 100,
             "speed": 7,
             "damage": 100
         },
         {
             "id": "5",
-            "frontSide": "928 + 325",
-            "backSide": "1253",
+            "frontSide": "ввв",
+            "backSide": "ввв",
             "health": 100,
             "speed": 4,
             "damage": 100
         },
         {
             "id": "6",
-            "frontSide": "1 + 1",
-            "backSide": "1253",
+            "frontSide": "ллл",
+            "backSide": "ллл",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "7",
+            "frontSide": "вв лл влв ввл",
+            "backSide": "вв лл влв ввл",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "8",
+            "frontSide": "лава",
+            "backSide": "лава",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "9",
+            "frontSide": "вала лава",
+            "backSide": "вала лава",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "10",
+            "frontSide": "лова вола лоло вовола",
+            "backSide": "лова вола лоло вовола",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "11",
+            "frontSide": "ыы",
+            "backSide": "ыы",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "12",
+            "frontSide": "ддд",
+            "backSide": "ддд",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "13",
+            "frontSide": "ды ды ыд ыд",
+            "backSide": "ды ды ыд ыд",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "14",
+            "frontSide": "ао вл ыд ды лв оа",
+            "backSide": "ао вл ыд ды лв оа",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "15",
+            "frontSide": "давол лывад",
+            "backSide": "давол лывад",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "16",
+            "frontSide": "олд авы валод долав",
+            "backSide": "олд авы валод долав",
+            "health": 100,
+            "speed": 4,
+            "damage": 100
+        },
+        {
+            "id": "17",
+            "frontSide": "лыла ваво двылавовад",
+            "backSide": "лыла ваво двылавовад",
             "health": 100,
             "speed": 4,
             "damage": 100

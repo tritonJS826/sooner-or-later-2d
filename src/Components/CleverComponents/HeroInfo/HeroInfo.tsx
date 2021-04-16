@@ -6,22 +6,21 @@ import EventListener from '../../BaseComponents/EventListener/EventListener';
 import InputText from 'Components/BaseComponents/InputText';
 import styles from './HeroInfo.module.scss';
 
-
-const HeroInfo: React.FC = observer(() => {
+const HeroInfo = observer(React.forwardRef<HTMLInputElement>((props, ref: any) => {
     const {
         heroStore,
         enemiesStore,
     } = useStore();
 
-    const inputRef = React.createRef<HTMLInputElement>();
+    // const inputTextRef = React.createRef<HTMLInputElement>();
 
     const onChangeAttackPhrase = (event: React.FormEvent<HTMLInputElement>) => {
         heroStore.setAttackPhrase(event.currentTarget.value);
     };
 
     const onKeyPress = (event: KeyboardEvent) => {
-        inputRef.current?.focus();
-        
+        ref?.current.focus();
+
         // hero shoot in enemy
         if (event.key === 'Enter') {
             heroStore.shoot(enemiesStore.getEnemyById(heroStore.targetId));
@@ -55,25 +54,21 @@ const HeroInfo: React.FC = observer(() => {
             }
         }
     };
-    
+
     return (
         <div className={styles["hero-info"]}>
-            <EventListener callback={onKeyPress}/>
+            <EventListener callback={onKeyPress} />
 
             health = {heroStore.health}
 
-            id = {heroStore.id}
-
-            <InputText 
-                ref={inputRef}
+            <InputText
+                ref={ref}
                 value={heroStore.attackPhrase}
                 onChange={onChangeAttackPhrase}
                 className={styles["attack-phrase"]}
             />
-
-            target = {heroStore.targetId}
         </div>
     );
-});
+}));
 
 export default HeroInfo;
