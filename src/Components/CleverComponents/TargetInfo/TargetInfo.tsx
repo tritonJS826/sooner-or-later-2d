@@ -10,10 +10,14 @@ const HeroInfo: React.FC = (observer(() => {
         enemiesStore,
     } = useStore();
 
+    const getTarget = () => enemiesStore.getEnemyById(heroStore.targetId);
+
+    const isTargetAlive = () => getTarget()?.health ?? 0 > 1;
+
     return (
         <div className={styles["target-info"]}>
             <span className={styles["target-info__line"]}>
-            {enemiesStore.getEnemyById(heroStore.targetId)?.frontSide}
+            {isTargetAlive() && getTarget()?.frontSide}
             </span>
         </div>
     );
