@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 import { useStore } from '../../../Store/CombineStores';
 import styles from './TargetInfo.module.scss';
 
-const HeroInfo: React.FC = (observer(() => {
+const HeroInfo: React.FC = observer(() => {
     const {
         heroStore,
         enemiesStore,
@@ -21,6 +21,6 @@ const HeroInfo: React.FC = (observer(() => {
             </span>
         </div>
     );
-}));
+});
 
 export default HeroInfo;
