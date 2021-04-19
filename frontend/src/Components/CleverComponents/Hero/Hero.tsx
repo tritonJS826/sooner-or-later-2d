@@ -10,7 +10,7 @@ const HeroView: React.FC = observer(() => {
   return (
       <div className={styles["hero"]} key={heroStore.id} 
       style={{
-         left: `${heroStore.coords[0] * 100 - 5}%`,
+         right: `${heroStore.coords[0] * 100}%`,
          top: `${heroStore.coords[1] * 100 - 5}%`
          }}>
       </div>

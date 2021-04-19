@@ -1,0 +1,18 @@
+{
+  "name": "sooner-or-later-api",
+  "version": "1.0.0",
+  "description": "auth, stats, worlds, textures etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"test not dound\"",
+    "start": "nodemon ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

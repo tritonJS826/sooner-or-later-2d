@@ -22,11 +22,16 @@ export class LevelStore {
   failImg: string | null;
   timer: number;
   levelStage: ELevelStage;
-  
+
   onCompleteLevel: () => void;
   onFailLevel: () => void;
 
-  enemiesData;
+  enemiesData:
+    | {
+        showTime: number;
+        cardsId: number[];
+      }[]
+    | undefined;
   enemiesStore: EnemiesStore;
   hero: Hero;
 
@@ -82,7 +87,7 @@ export class LevelStore {
       failImg: observable,
       timer: observable,
       levelStage: observable,
-      
+
       enemiesStore: observable,
       hero: observable,
 
@@ -159,7 +164,7 @@ export class LevelStore {
 
   private tick() {
     this.timer++;
-    
+
     // add enemies if required
     if (this.enemiesData?.length) {
       const requiredToCreate = this.enemiesData.find(
@@ -175,13 +180,12 @@ export class LevelStore {
     }
 
     if (this.isHeroDied()) {
-      this.stopTimer(); 
-      
+      this.stopTimer();
+
       this.hero.resetHero();
       // next line is wrong. Enemies are not removed from scene, they are continuating to damaging the hero
       this.enemiesStore.killAllEnemies();
 
-      
       this.resetTimer();
       this.levelStage = ELevelStage.heroDied;
     }
@@ -202,7 +206,6 @@ export class LevelStore {
     clearInterval(this.timerId);
   }
 }
-
 
 const levelStore = new LevelStore({
   id: generator.generateId(),

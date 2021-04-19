@@ -1,14 +1,18 @@
-SOONER OR LATER project)
+SOONER OR LATER project
 
 ***Main issues for prototype***:
+* recalculate position of hero and enemies
 * victory game condition
 * create sidebar for buttons
 * add help text
 * add about text
-
+* fix: remove appearing scrollbar when enemy fight hero
+* dropdown menu for questions
+* create good round statistic (levelFail & levelFinish) (enemies killed?, allEnemies, uniqEnemies with answers and questions)
 
 ---
 ***Additional issues***:  
+* hints if hero died at slide
 * add options store(difficulty, music)
 * add sound level in options
 * add difficulty to options
@@ -25,6 +29,7 @@ SOONER OR LATER project)
 
 ---
 ***After first prototype***
+* add dead enemy (enemy.tsx)
 * hero can fight in melee range
 * a lot of worlds!!!
 * save/load game   

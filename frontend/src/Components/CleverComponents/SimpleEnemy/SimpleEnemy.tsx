@@ -27,8 +27,9 @@ const SimpleEnemyView = observer(React.forwardRef<HTMLInputElement, any>(({ enem
         <div
           className={`${styles["simple-enemy"]} ${hero.targetId === enemy.id ? styles['enemy-captured'] : ''}`}
           style={{
-            left: `${enemy.coords[0] * 100 - 5}%`,
-            top: `${enemy.coords[1] * 100 - 5}%`,
+            // 1 и 8 это поправочные коэффициенты, нужно будет потом правильно центрировать
+            right: `${enemy.coords[0] * 100 - 1}%`,
+            top: `${enemy.coords[1] * 100 - 8}%`,
           }}>
             <InputButton className={styles["enemy-button"]} onClick={onEnemy}/>
         </div>

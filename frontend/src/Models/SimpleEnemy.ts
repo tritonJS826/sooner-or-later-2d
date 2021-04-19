@@ -25,7 +25,7 @@ export default class SimpleEnemy {
     this.frontSide = frontSide;
     this.backSide = backSide;
     this.health = health;
-    this.speed = (Math.random() + 0.1) * 0.0006;
+    this.speed = (Math.random() + 0.1) * 0.01;
     this.damage = damage;
     this.coords = coords;
 
@@ -83,6 +83,7 @@ export default class SimpleEnemy {
     const newY = this.coords[1] + deltaY;
 
     this.coords = [newX, newY];
+    console.log(this.coords)
   }
 
   private fight(target: Hero) {
