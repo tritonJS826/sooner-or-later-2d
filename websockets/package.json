@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"test not found\"",
-    "start": "nodemon ./index."
+    "start": "nodemon ./index.js"
   },
   "author": "trit",
   "license": "ISC",

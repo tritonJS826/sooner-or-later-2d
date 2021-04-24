@@ -11,7 +11,6 @@ export const store = {
   levelStore,
   gameStore,
 };
-
 interface IStore {
   heroStore: Hero;
   enemiesStore: EnemiesStore;

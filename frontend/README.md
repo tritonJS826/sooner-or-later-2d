@@ -9,6 +9,7 @@ SOONER OR LATER project
 * fix: remove appearing scrollbar when enemy fight hero
 * dropdown menu for questions
 * create good round statistic (levelFail & levelFinish) (enemies killed?, allEnemies, uniqEnemies with answers and questions)
+* fix docker compose
 
 ---
 ***Additional issues***:  

@@ -32,6 +32,7 @@ export class LevelStore {
         cardsId: number[];
       }[]
     | undefined;
+
   enemiesStore: EnemiesStore;
   hero: Hero;
 

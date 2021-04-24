@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    command: npm run start
+    ports:
+      - "5000:5000"
+  websockets:
+    build: 
+      context: ./websockets
+      dockerfile: Dockerfile
+    command: npm run start
+    ports:
+      - "5001:5001"
+      - "5002:5002"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    command: npm run start
+    ports: 
+      - "3000:3000"

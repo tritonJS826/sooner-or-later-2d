@@ -30,10 +30,10 @@ export default class SimpleEnemy {
     this.coords = coords;
 
     this.killMyself = () => { 
-      // remove from enemy store
-      killMyself();
       // remove personal timer
       this.stopDoAnything();
+      // remove from enemy store
+      killMyself();
     };
 
     makeObservable(this, {

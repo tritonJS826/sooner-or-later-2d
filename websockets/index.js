@@ -2,13 +2,13 @@ const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
 
-const port = 5000;
+const port = 5001;
 const server = http.createServer(express);
 const wss = new WebSocket.Server({ server })
 
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(data) {
-    wss.clients.forEach(function each(client) {
+wss.on('connection', ws => {
+  ws.on('message', data => {
+    wss.clients.forEach(client => {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(data);
       }
@@ -16,7 +16,7 @@ wss.on('connection', function connection(ws) {
   })
 })
 
-//экспериментальная страничка с чатом
+//эндпоинт с экспериментальной страничкой с чатом
 const test = express();
 
 test.get('/', (req, res) => {
