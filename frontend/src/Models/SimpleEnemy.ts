@@ -1,5 +1,5 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
-import { Hero } from "../Store/Hero";
+import { Hero } from "./Hero";
 
 export default class SimpleEnemy {
   id: string;
@@ -83,7 +83,6 @@ export default class SimpleEnemy {
     const newY = this.coords[1] + deltaY;
 
     this.coords = [newX, newY];
-    console.log(this.coords)
   }
 
   private fight(target: Hero) {

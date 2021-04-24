@@ -1,10 +1,9 @@
 import { action, observable, makeObservable } from "mobx";
-import SimpleEnemy from "../Models/SimpleEnemy";
-import generator from "../Service/IdGenerator";
+import SimpleEnemy from "./SimpleEnemy";
 
 export class Hero {
   id: string;
-  health = 100;
+  health: number;
   attackPhrase = '';
   targetId: null | string;
   coords: [number, number];
@@ -15,7 +14,7 @@ export class Hero {
     this.health = health;
     this.targetId = null;
     this.attackPhrase = '';
-    this.coords = [0.5, 1];
+    this.coords = [Math.random(), 1];
     this.name = 'triton'; 
     makeObservable(this, {
       health: observable,
@@ -34,7 +33,7 @@ export class Hero {
 
   @action.bound
   resetHero() {
-    this.health = 100;
+    this.health = 150;
     this.attackPhrase = '';
     this.targetId = null;
   }
@@ -66,7 +65,3 @@ interface IHeroSeed {
   attackPhrase?: string;
   coords?: [number, number];
 }
-
-export const heroStore = new Hero({ id: generator.generateId() });
-
-export default heroStore;

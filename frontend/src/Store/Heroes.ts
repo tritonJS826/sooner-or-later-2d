@@ -1,30 +1,26 @@
 import { action, makeObservable, observable } from "mobx";
-import { Hero } from "../Store/Hero";
+import { Hero } from "../Models/Hero";
 import generator from "../Service/IdGenerator";
 
 export class Heroes {
   @observable heroes: Hero[];
 
-  constructor() {
-    this.heroes = [];
+  constructor(heroes: Hero[]) {
+    this.heroes = heroes;
     makeObservable(this, {
       heroes: observable,
-      setHeroes: action,
-      //   killAllEnemies: action,
+      // setHeroes: action,
       killHero: action,
-      //   addEnemyByIndex: action,
-      //   getEnemyIndexById: action,
-      //   getEnemyById: action,
     });
   }
 
-  @action.bound
-  setHeroes(protoHeroesData: any) {
-    const hero1 = new Hero({ id: generator.generateId() });
-    const hero2 = new Hero({ id: generator.generateId() });
+  // @action.bound
+  // setHeroes(protoHeroesData: any) {
+  //   const hero1 = new Hero({ id: generator.generateId() });
+  //   const hero2 = new Hero({ id: generator.generateId() });
 
-    this.heroes = [hero1, hero2];
-  }
+  //   this.heroes = [hero1, hero2];
+  // }
 
   @action.bound
   killHero(heroId: string) {
@@ -34,7 +30,12 @@ export class Heroes {
   @action.bound
   killAllHeroes() {
     this.heroes = [];
-    alert('kill all heroes');
+    alert("kill all heroes");
+  }
+
+  @action.bound
+  resetAllHeroes() {
+    this.heroes.forEach((hero) => (hero.resetHero()));
   }
 
   @action.bound
@@ -44,6 +45,9 @@ export class Heroes {
   }
 }
 
-const enemiesStore = new Heroes();
+const hero1 = new Hero({ id: generator.generateId(), health: 0 });
+const hero2 = new Hero({ id: generator.generateId(), health: 0 });
+
+const enemiesStore = new Heroes([hero1, hero2]);
 
 export default enemiesStore;

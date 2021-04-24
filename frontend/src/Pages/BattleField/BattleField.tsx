@@ -13,10 +13,9 @@ import LevelIntro from 'Components/CleverComponents/LevelIntro';
 import LevelFail from 'Components/CleverComponents/LevelFail';
 import { useStore } from 'Store/CombineStores';
 import InputButton from 'Components/BaseComponents/InputButton';
-import heroStore from 'Store/Hero';
 
 const BattleField: React.FC = observer(() => {
-    const { levelStore } = useStore();
+    const { levelStore, heroesStore } = useStore();
     const battleField = useRef<HTMLDivElement>(null);
 
     const openFullScreen = () => {
@@ -24,7 +23,7 @@ const BattleField: React.FC = observer(() => {
     };
 
     const onMenu = () => {
-        heroStore.resetHero();
+        heroesStore.resetAllHeroes();
         levelStore.enemiesStore.killAllEnemies();
     };
 

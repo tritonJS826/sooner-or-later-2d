@@ -1,23 +1,25 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import SimpleEnemy from '../../../Models/SimpleEnemy';
-import { Hero } from '../../../Store/Hero';
 import styles from './SimpleEnemy.module.scss';
 import InputButton from 'Components/BaseComponents/InputButton';
+import { useStore } from 'Store/CombineStores';
 
 interface ISimpleEnemy {
   enemy: SimpleEnemy;
-  hero: Hero;
 }
 
-const SimpleEnemyView = observer(React.forwardRef<HTMLInputElement, any>(({ enemy, hero }, ref: any) => {
+const SimpleEnemyView = observer(React.forwardRef<HTMLInputElement, ISimpleEnemy>(({ enemy }, ref: any) => {
+  const { heroesStore } = useStore();
+
+  const yourHero = heroesStore.heroes[0];
 
   useEffect(() => {
-    enemy.startDoSomething(hero);
+    enemy.startDoSomething(yourHero);
   }, []);
 
   const onEnemy = () => {
-    hero.setTarget(enemy.id);
+    yourHero.setTarget(enemy.id);
     ref?.current.focus();
   };
   
@@ -25,7 +27,7 @@ const SimpleEnemyView = observer(React.forwardRef<HTMLInputElement, any>(({ enem
     <>
       {enemy.health > 0 && (
         <div
-          className={`${styles["simple-enemy"]} ${hero.targetId === enemy.id ? styles['enemy-captured'] : ''}`}
+          className={`${styles["simple-enemy"]} ${yourHero.targetId === enemy.id ? styles['enemy-captured'] : ''}`}
           style={{
             // 1 и 8 это поправочные коэффициенты, нужно будет потом правильно центрировать
             right: `${enemy.coords[0] * 100 - 1}%`,

@@ -1,7 +1,8 @@
 SOONER OR LATER project
 
 ***Main issues for prototype***:
-* recalculate position of hero and enemies
+* add targetId property to enemy model
+* add handler onOneOfHeroesDied (recapturing target) (enemies recapturing)
 * victory game condition
 * create sidebar for buttons
 * add help text

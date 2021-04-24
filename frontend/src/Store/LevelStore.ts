@@ -1,7 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 import generator from "../Service/IdGenerator";
 import enemiesStore, { EnemiesStore } from "./Enemies";
-import hero, { Hero } from "./Hero";
+import heroes, { Heroes } from "./Heroes";
 
 export enum ELevelStage {
   introduction = "introduction",
@@ -34,7 +34,7 @@ export class LevelStore {
     | undefined;
 
   enemiesStore: EnemiesStore;
-  hero: Hero;
+  heroes: Heroes;
 
   timerId: any;
 
@@ -53,7 +53,7 @@ export class LevelStore {
     onCompleteLevel,
     onFailLevel,
     enemiesStore,
-    hero,
+    heroes,
   }: ILevelSeed) {
     this.id = id;
     this.header = header ?? null;
@@ -72,7 +72,7 @@ export class LevelStore {
     this.enemiesData = enemies;
 
     this.enemiesStore = enemiesStore;
-    this.hero = hero;
+    this.heroes = heroes;
 
     this.timerId = null;
 
@@ -90,7 +90,7 @@ export class LevelStore {
       levelStage: observable,
 
       enemiesStore: observable,
-      hero: observable,
+      heroes: observable,
 
       nextLevelStage: action,
       resetLevel: action,
@@ -148,8 +148,8 @@ export class LevelStore {
     // this.startTimer();
   }
 
-  private isHeroDied() {
-    return this.hero.health < 1;
+  private isAllHeroesDied() {
+    return this.heroes.heroes.every(hero => hero.health < 1);
   }
 
   private isLevelEnded() {
@@ -180,10 +180,12 @@ export class LevelStore {
       this.nextLevelStage();
     }
 
-    if (this.isHeroDied()) {
+    if (this.isAllHeroesDied()) {
       this.stopTimer();
 
-      this.hero.resetHero();
+      this.heroes.resetAllHeroes();
+
+      // probably next  comment is outdated
       // next line is wrong. Enemies are not removed from scene, they are continuating to damaging the hero
       this.enemiesStore.killAllEnemies();
 
@@ -221,7 +223,7 @@ const levelStore = new LevelStore({
 
   enemiesStore,
 
-  hero,
+  heroes,
 });
 
 export default levelStore;
@@ -240,7 +242,7 @@ interface ILevelSeed {
   onCompleteLevel: () => void;
   onFailLevel: () => void;
   enemiesStore: EnemiesStore;
-  hero: Hero;
+  heroes: Heroes;
   enemies?: {
     showTime: number;
     cardsId: number[];

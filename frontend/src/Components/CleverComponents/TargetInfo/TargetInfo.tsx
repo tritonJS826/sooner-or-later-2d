@@ -6,11 +6,14 @@ import styles from './TargetInfo.module.scss';
 
 const HeroInfo: React.FC = observer(() => {
     const {
-        heroStore,
+        heroesStore,
         enemiesStore,
     } = useStore();
 
-    const getTarget = () => enemiesStore.getEnemyById(heroStore.targetId);
+    // тут конечно нужно исправить, чтоб у каждого свой герой был
+    const yourHero = heroesStore.heroes[0]
+
+    const getTarget = () => enemiesStore.getEnemyById(yourHero.targetId);
 
     const isTargetAlive = () => getTarget()?.health ?? 0 > 1;
 

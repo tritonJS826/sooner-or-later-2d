@@ -1,18 +1,18 @@
 import { MobXProviderContext } from 'mobx-react';
 import { useContext } from 'react';
-import heroStore, { Hero } from './Hero';
+import heroesStore, { Heroes } from './Heroes';
 import enemiesStore, { EnemiesStore } from './Enemies';
 import levelStore, { LevelStore } from './LevelStore';
 import gameStore, { Game } from './GameStore';
 
-export const store = {
-  heroStore,
+export const store: IStore = {
+  heroesStore,
   enemiesStore,
   levelStore,
   gameStore,
 };
 interface IStore {
-  heroStore: Hero;
+  heroesStore: Heroes;
   enemiesStore: EnemiesStore;
   levelStore: LevelStore;
   gameStore: Game;
