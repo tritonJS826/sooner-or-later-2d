@@ -11,10 +11,11 @@ const MainMenu: React.FC = observer(() => {
     return (
         <div className={styles["main-menu"]}>
             <AnimatedSpan text="{ MENU }" className={styles["header"]} />
-            <Link to={routes.battleField}><AnimatedSpan text="GAME" className={styles["link"]}/></Link>
-            <Link to={routes.help}><AnimatedSpan text="HELP" className={styles["link"]}/></Link>
-            <Link to={routes.options}><AnimatedSpan text="OPTIONS" className={styles["link"]}/></Link>
-            <Link to={routes.about}><AnimatedSpan text="ABOUT" className={styles["link"]}/></Link>
+            <Link to={routes.battleField}><AnimatedSpan text="GAME" className={styles["link"]} /></Link>
+            <Link to={routes.help}><AnimatedSpan text="HELP" className={styles["link"]} /></Link>
+            <Link to={routes.options}><AnimatedSpan text="OPTIONS" className={styles["link"]} /></Link>
+            <Link to={routes.about}><AnimatedSpan text="ABOUT" className={styles["link"]} /></Link>
+            <Link to={routes.testStore}><AnimatedSpan text="TESTSTORE" className={styles["link"]} /></Link>
         </div>
     );
 });

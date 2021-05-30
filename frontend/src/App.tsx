@@ -9,6 +9,7 @@ import Help from 'Pages/Help';
 import About from 'Pages/About';
 import Options from 'Pages/Options';
 import styles from 'App.module.scss';
+import ViewTestStore from 'Pages/TestStore/ViewTestStore';
 
 export const history = createBrowserHistory();
 export const routes = {
@@ -17,6 +18,7 @@ export const routes = {
   about: '/about',
   help: '/help',
   options: '/options',
+  testStore: '/testStore'
 };
 
 const App = () => (
@@ -33,6 +35,8 @@ const App = () => (
         <Route path="/options"><Options /></Route>
 
         <Route path="/about"><About /></Route>
+
+        <Route path="/testStore"><ViewTestStore /></Route>
 
       </Router>
     </div>
