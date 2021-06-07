@@ -3,7 +3,7 @@ interface IOption {
     IDontKnow: string;
 }
 
-export class Enemies {
+export class Option {
     IDontKnow: string;
 
     constructor({ IDontKnow }: IOption) {
