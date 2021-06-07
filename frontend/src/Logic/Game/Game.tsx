@@ -1,5 +1,5 @@
 import react from "react";
-import "./Game.css"
+import "./Game.scss"
 
 /*
  * страница игры

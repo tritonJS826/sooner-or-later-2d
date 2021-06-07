@@ -1,5 +1,5 @@
 import react from "react";
-import "./Auth.css"
+import "./Auth.scss"
 
 /*
  * страница отображения авторов

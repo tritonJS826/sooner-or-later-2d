@@ -2,7 +2,7 @@ import react from "react";
 import "./Text.css"
 
 /*
- * Компонент, который предоставляет текст
+ * Component for text
  */
 
 

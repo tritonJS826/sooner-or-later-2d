@@ -2,7 +2,7 @@ import react from "react";
 import "./Link.css"
 
 /*
- * Компонент, который предоставляет ссылки
+ * Component for links
  */
 
 

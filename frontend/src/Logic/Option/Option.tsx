@@ -1,5 +1,5 @@
 import react from "react";
-import "./Option.css"
+import "./Option.scss"
 
 /*
  * страница отображения опций

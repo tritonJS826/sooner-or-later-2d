@@ -2,7 +2,7 @@ import react from "react";
 import "./EventListener.css"
 
 /*
- * Компонент, который предоставляет обработчик события
+ * Component event listener
  */
 
 

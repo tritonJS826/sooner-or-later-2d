@@ -2,7 +2,7 @@ import react from "react";
 import "./InputText.css"
 
 /*
- * Компонент, который предоставляет поле ввода
+ * Component with inpit for text
  */
 
 

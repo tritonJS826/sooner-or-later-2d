@@ -1,5 +1,5 @@
 import react from "react";
-import "./Statistic.css"
+import "./Statistic.scss"
 
 /*
  * страница отображения статистики
