@@ -1,9 +1,12 @@
 import React from 'react';
-import '../../Game.module.scss';
 
-/**
- * Multiplayer
+// interface IMultiPlayer {
+
+// }
+/*
+ * MultiPlayer page
  */
-const Multiplayer: React.FC = () => <div>Multiplayer</div>;
-
-export default Multiplayer;
+const MultiPlayer: React.FC = () => (
+  <div>MultiPlayer</div>
+);
+export default MultiPlayer;

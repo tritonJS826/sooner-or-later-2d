@@ -1,5 +1,8 @@
 import React from 'react';
-import '../Game.module.scss';
+
+// interface ISinglePlayer {
+
+// }
 
 /**
  * Single player
