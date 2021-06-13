@@ -7,6 +7,7 @@ import './Menu.css';
 // interface IMenu {
 
 // }
+
 /*
  * Menu
  */
@@ -20,8 +21,8 @@ const Menu: React.FC = () => (
       <ElementsMenu path={infoPages.option.path} title={infoPages.option.title} />
       <ElementsMenu path={infoPages.about.path} title={infoPages.about.title} />
       <ElementsMenu path={infoPages.auth.path} title={infoPages.auth.title} />
-    </ul>
-  </div>
+    </ul >
+  </div >
 );
 
 export default Menu;

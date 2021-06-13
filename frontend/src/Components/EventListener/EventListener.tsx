@@ -1,9 +1,24 @@
-import React from 'react';
-// import styles from './EventListener.module.scss';
+import React, { useEffect } from 'react';
 
-/*
- * Declarative event listener component
- */
-const EventListener: React.FC = () => <></>;
+interface IEventListenerProps {
+    callback: (e: KeyboardEvent) => void;
+}
 
-export default EventListener;
+const EventListener: React.FC<IEventListenerProps> = ({ children, callback }) => {
+
+    useEffect(() => {
+        document.body.addEventListener('keydown', callback);
+
+        return () => {
+            document.body.removeEventListener('keydown', callback);
+        };
+    });
+
+    return (
+        <>
+            {children}
+        </>
+    )
+};
+
+export default EventListener

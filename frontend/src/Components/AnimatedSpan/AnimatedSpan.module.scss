@@ -1,0 +1,66 @@
+.span {
+    color: rgb(120, 95, 153);
+    white-space: nowrap;
+    font-size: 30px;
+}
+
+
+.anim0 {
+    animation: glitch 5s linear infinite;
+    display: inline-block;
+    position: relative;
+  }
+  
+  @keyframes glitch {
+    2%,
+    64% {
+      transform: translate(2px, 0) skew(0deg);
+    }
+    4%,
+    60% {
+      transform: translate(-2px, 0) skew(0deg);
+    }
+    62% {
+      transform: translate(0, 0) skew(5deg);
+    }
+  }
+  
+  .anim1 {
+    animation: bop 5s steps(1) infinite alternate;
+    display: inline-block;
+    position: relative;
+  }
+  
+  @keyframes bop {
+    0% {
+      transform: scale(0.9);
+    }
+    50%,
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .anim2 {
+    animation: rotate 20s ease-out infinite normal;
+    display: inline-block;
+    position: relative;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(10deg);
+    }
+  }
+  
+  .anim3 {
+    display: inline-block;
+    position: relative;
+  }
+  
