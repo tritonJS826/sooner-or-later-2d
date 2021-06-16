@@ -1,3 +1,8 @@
+data/
+
+api/node_modules
+api/dist
+
 websockets/node_modules/
 websockets/dist/
 

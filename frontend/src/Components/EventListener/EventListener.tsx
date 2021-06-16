@@ -1,24 +1,26 @@
 import React, { useEffect } from 'react';
 
 interface IEventListenerProps {
-    callback: (e: KeyboardEvent) => void;
+    callback: () => void;
+    children: any;
 }
 
-const EventListener: React.FC<IEventListenerProps> = ({ children, callback }) => {
+const EventListener: React.FC<IEventListenerProps> = (
+  { children, callback }: IEventListenerProps,
+) => {
+  useEffect(() => {
+    document.body.addEventListener('keydown', callback);
 
-    useEffect(() => {
-        document.body.addEventListener('keydown', callback );
+    return () => {
+      document.body.removeEventListener('keydown', callback);
+    };
+  });
 
-        return () => {
-            document.body.removeEventListener('keydown',  callback );
-        };
-    });
-
-    return (
-        <>
-        { children }
-        </>
-    )
+  return (
+    <>
+      { children }
+    </>
+  );
 };
 
-export default EventListener
+export default EventListener;

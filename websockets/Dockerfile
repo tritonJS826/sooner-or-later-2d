@@ -8,6 +8,7 @@ COPY . .
 
 RUN npm install
 
-EXPOSE 5000
+EXPOSE 5001 5002
 
-CMD ["node", "./dist/app.js"]
+CMD ["yarn", "start"]
+

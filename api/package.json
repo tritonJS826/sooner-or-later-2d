@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tritonJS826/sooner-or-later-2d#readme",
   "dependencies": {
+    "@types/swagger-ui-express": "^4.1.2",
     "argon2": "^0.27.0",
     "cors": "^2.8.5",
     "debug": "^4.2.0",
@@ -29,7 +30,9 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "~5.*.*",
     "shortid": "^2.2.16",
-    "winston": "^3.3.3"
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@types/argon2": "^0.15.0",

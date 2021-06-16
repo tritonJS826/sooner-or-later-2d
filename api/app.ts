@@ -10,6 +10,11 @@ import helmet from 'helmet';
 import CommonRoutesConfig from './common/common.routes.config';
 import UsersRoutes from './users/users.routes.config';
 
+import swaggerUi from 'swagger-ui-express';
+// import swaggerDocument from './swagger.yaml';
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
 const dotenvResult = dotenv.config();
 if (dotenvResult.error) {
   throw dotenvResult.error;
@@ -17,9 +22,11 @@ if (dotenvResult.error) {
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port = 3000;
+const port = 5000;
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
 app.use(cors());
