@@ -2,8 +2,6 @@ module.exports = {
     env: {
         browser: true,
     },
-    ecmaVersion: 12,
-    sourceType: 'module',
     plugins: [
       'react',
       '@typescript-eslint',
@@ -39,5 +37,7 @@ module.exports = {
         ecmaFeatures: {
             jsx: true,
         },
+	sourceType: 'module',
+	ecmaVersion: 12,
   },
 };
