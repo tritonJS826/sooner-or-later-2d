@@ -1,6 +1,3 @@
-"Sooner or later" description
-=============================
-
 Sooner or later is a framework for creating interactive tests that can be run in a lot of user mode. There are two different types of users: world creators and players.
 
 World Creator user-story:

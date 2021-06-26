@@ -28,6 +28,6 @@ Clear all docker entities:
 ---
 
 
-ABOUT.md -
+[ABOUT.md](./docs/ABOUT.md) - short project description
 
-USER
+[USER_STORIES.md](./docs/USER_STORIES.md) - user stories (for high level understanding the process)

@@ -1,6 +1,3 @@
-Sooner or later
-===============
-
 Overview
 --------
 
@@ -34,7 +31,7 @@ Git
 * You should not make many commits in one PR if there is no need for it.
 * One task - preferably one commit (if the task is large, then there may be a couple). One commit - one task.
 * Branch naming:  *[feat/fix/docs/refactor]/[issue number]/description-with-few-worlds*
-* Commits naming: "#23 issue title [comment]"
+* Commits naming: "#24 issue title [comment]" of if issue is absent: "[Docs/Front/Back/WSS]: description"
 
 
 Policy
