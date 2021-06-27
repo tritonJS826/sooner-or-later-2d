@@ -6,11 +6,8 @@ interface IGameStatistic {
 /*
  * Game statistic page
  */
-const GameStatistic: React.FC<IGameStatistic> = (props: IGameStatistic) => {
-    return (
-        <div>Game statistic</div>
-    )
-}
-
+const GameStatistic: React.FC<IGameStatistic> = (props: IGameStatistic) => (
+  <div>Game statistic</div>
+);
 
 export default GameStatistic;

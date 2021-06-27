@@ -6,11 +6,8 @@ interface IHeroInfo {
 /*
  * Hero info page
  */
-const HeroInfo: React.FC<IHeroInfo> = (props: IHeroInfo) => {
-    return (
-        <div>Hero info</div>
-    )
-}
-
+const HeroInfo: React.FC<IHeroInfo> = (props: IHeroInfo) => (
+  <div>Hero info</div>
+);
 
 export default HeroInfo;

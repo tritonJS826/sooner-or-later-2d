@@ -6,11 +6,8 @@ interface ISearchHost {
 /*
  * Search host page
  */
-const SearchHost: React.FC<ISearchHost> = (props: ISearchHost) => {
-    return (
-        <div>Search host</div>
-    )
-}
-
+const SearchHost: React.FC<ISearchHost> = (props: ISearchHost) => (
+  <div>Search host</div>
+);
 
 export default SearchHost;

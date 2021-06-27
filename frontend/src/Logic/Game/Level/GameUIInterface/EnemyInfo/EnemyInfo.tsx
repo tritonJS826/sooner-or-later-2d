@@ -6,11 +6,8 @@ interface IEnemyInfo {
 /*
  * Enemy info page
  */
-const EnemyInfo: React.FC<IEnemyInfo> = (props: IEnemyInfo) => {
-    return (
-        <div>Enemy info</div>
-    )
-}
-
+const EnemyInfo: React.FC<IEnemyInfo> = (props: IEnemyInfo) => (
+  <div>Enemy info</div>
+);
 
 export default EnemyInfo;

@@ -1,6 +1,6 @@
 import PageMeta from 'Kit/PageMeta';
-import Menu from 'Logic/Menu/Menu';
-// import Auth from './Logic/Auth/Auth';
+// import Menu from 'Logic/Menu/Menu';
+import Auth from './Logic/Auth/Auth';
 import Options from './Logic/Options/Options';
 import About from './Logic/About/About';
 import Statistic from './Logic/Statistic/Statistic';
@@ -8,7 +8,7 @@ import Statistic from './Logic/Statistic/Statistic';
 const AppRoutes = {
   homePage: new PageMeta<void>({
     path: '/menu',
-    render: () => <Menu />,
+    render: () => <Auth />,
   }),
 
   options: new PageMeta<void>({
@@ -24,6 +24,11 @@ const AppRoutes = {
   statistic: new PageMeta<void>({
     path: '/statistic',
     render: () => <Statistic />,
+  }),
+
+  auth: new PageMeta<void>({
+    path: '/auth',
+    render: () => <Auth />,
   }),
 };
 
