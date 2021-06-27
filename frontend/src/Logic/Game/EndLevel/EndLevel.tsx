@@ -6,11 +6,8 @@ interface IEndLevel {
 /*
  * End level page
  */
-const EndLevel: React.FC<IEndLevel> = (props: IEndLevel) => {
-    return (
-        <div>End level</div>
-    )
-}
-
+const EndLevel: React.FC<IEndLevel> = (props: IEndLevel) => (
+  <div>End level</div>
+);
 
 export default EndLevel;

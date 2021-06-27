@@ -1,0 +1,65 @@
+.cls-2 {
+    fill: #e6cfb7;
+}
+
+svg {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    opacity: 0.0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.trim {
+    background: transparent;
+    position: absolute;
+    height: 82%;
+    width: 100%;
+    top: 5%;
+    border-top: 2px solid #c96800;
+    border-bottom: 2px solid #c96800;
+    left: 0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 0.0;
+}
+
+.menu li {
+    overflow: hidden;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    font-size: 50px;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    line-height: 60px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    padding-left: 0px;
+    padding-right: 0px;
+    display: inline-block;
+    position: relative;
+}
+
+.menu li:hover {
+    background: #e0931f;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 50px;
+    color: #482800;
+}
+
+.menu li:hover .trim {
+    left: 0px;
+    opacity: 1.0;
+}
+
+.menu li:hover svg {
+    opacity: 1.0;
+}

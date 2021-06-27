@@ -6,11 +6,8 @@ interface IEnemy {
 /*
  * Enemy page
  */
-const Enemy: React.FC<IEnemy> = (props: IEnemy) => {
-    return (
-        <div>Enemy</div>
-    )
-}
-
+const Enemy: React.FC<IEnemy> = (props: IEnemy) => (
+  <div>Enemy</div>
+);
 
 export default Enemy;

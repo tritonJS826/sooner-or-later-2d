@@ -6,11 +6,8 @@ interface ICreateHost {
 /*
  * Create host page
  */
-const CreateHost: React.FC<ICreateHost> = (props: ICreateHost) => {
-    return (
-        <div>Create host</div>
-    )
-}
-
+const CreateHost: React.FC<ICreateHost> = (props: ICreateHost) => (
+  <div>Create host</div>
+);
 
 export default CreateHost;

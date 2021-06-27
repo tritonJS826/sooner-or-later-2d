@@ -6,11 +6,8 @@ interface IStartLevel {
 /*
  * Start level page
  */
-const StartLevel: React.FC<IStartLevel> = (props: IStartLevel) => {
-    return (
-        <div>Start level</div>
-    )
-}
-
+const StartLevel: React.FC<IStartLevel> = (props: IStartLevel) => (
+  <div>Start level</div>
+);
 
 export default StartLevel;
