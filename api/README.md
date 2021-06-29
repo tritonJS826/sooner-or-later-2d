@@ -6,9 +6,9 @@ To run the cloned codebase directly, you need to have Node.js and Docker install
 2. Run `docker compose up -d` to get a MongoDB instance running.
 3. Run `npm start` to start server
 
-##### Shutdown
+##### Shut down
 
-Run `docker compose down` to shutdown MongoDB
+Run `docker compose down` to shut down MongoDB
 
 ### Current endpoints:
 

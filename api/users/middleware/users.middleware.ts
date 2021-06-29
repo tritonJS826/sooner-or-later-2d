@@ -1,5 +1,5 @@
 import express from 'express';
-import userService from '../services/users.service';
+import { usersService } from '../services/users.service';
 
 class UsersMiddleware {
   async validateSameEmailDoesntExist(
@@ -7,7 +7,7 @@ class UsersMiddleware {
     res: express.Response,
     next: express.NextFunction
   ) {
-    const user = await userService.getUserByEmail(req.body.email);
+    const user = await usersService.getUserByEmail(req.body.email);
     if (user) {
       res.status(400).send({ errors: ['User email already exists'] });
     } else {
@@ -44,7 +44,7 @@ class UsersMiddleware {
     res: express.Response,
     next: express.NextFunction
   ) {
-    const user = await userService.readById(req.params.userId);
+    const user = await usersService.readById(req.params.userId);
     if (user) {
       res.locals.user = user;
       next();
@@ -65,4 +65,4 @@ class UsersMiddleware {
   }
 }
 
-export default new UsersMiddleware();
+export const usersMiddleware = new UsersMiddleware();

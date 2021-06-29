@@ -1,6 +1,6 @@
 import shortid from 'shortid';
 import debug from 'debug';
-import MongooseService from '../../common/services/mongoose.service';
+import { mongooseService} from '../../common/services/mongoose.service';
 import { CreateUserDto } from '../dto/create.user.dto';
 import { PatchUserDto } from '../dto/patch.user.dto';
 import { PutUserDto } from '../dto/put.user.dto';
@@ -8,7 +8,7 @@ import { PutUserDto } from '../dto/put.user.dto';
 const log: debug.IDebugger = debug('app:users-dao');
 
 class UsersDao {
-  Schema = MongooseService.getMongoose().Schema;
+  Schema = mongooseService.getMongoose().Schema;
 
   userSchema = new this.Schema(
     {
@@ -21,7 +21,7 @@ class UsersDao {
     { id: false }
   );
 
-  User = MongooseService.getMongoose().model('Users', this.userSchema);
+  User = mongooseService.getMongoose().model('Users', this.userSchema);
 
   constructor() {
     log('Created new instance of UsersDao');
@@ -71,4 +71,4 @@ class UsersDao {
   }
 }
 
-export default new UsersDao();
+export const usersDao = new UsersDao();

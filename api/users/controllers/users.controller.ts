@@ -1,7 +1,7 @@
 import express from 'express';
 import debug from 'debug';
 import argon2 from 'argon2';
-import usersService from '../services/users.service';
+import { usersService } from '../services/users.service';
 
 const log: debug.IDebugger = debug('app:users-controller');
 
@@ -42,4 +42,4 @@ class UsersController {
   }
 }
 
-export default new UsersController();
+export const usersController = new UsersController();

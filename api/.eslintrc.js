@@ -23,6 +23,8 @@ module.exports = {
   ],
   rules: {
     'import/no-unresolved': 0,
+    'import/no-default-export': 2,
+    'import/prefer-default-export': 0,
     'class-methods-use-this': 0,
     'no-underscore-dangle': 0,
     'no-unused-vars': 'off',

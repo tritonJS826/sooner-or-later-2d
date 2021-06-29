@@ -16,4 +16,4 @@ class BodyValidationMiddleware {
   }
 }
 
-export default new BodyValidationMiddleware();
+export const bodyValidationMiddleware =  new BodyValidationMiddleware();

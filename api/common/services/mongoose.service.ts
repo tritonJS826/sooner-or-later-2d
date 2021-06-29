@@ -40,4 +40,4 @@ class MongooseService {
       });
   };
 }
-export default new MongooseService();
+export const mongooseService = new MongooseService();
