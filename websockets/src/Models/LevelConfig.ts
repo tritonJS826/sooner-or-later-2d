@@ -1,4 +1,4 @@
-import { GameStatus } from "Model/GameStatus";
+import { GameStatus } from "Models/GameStatus";
 
 export default class Level {
   /**

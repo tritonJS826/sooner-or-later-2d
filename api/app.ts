@@ -7,12 +7,13 @@ import * as expressWinston from 'express-winston';
 import cors from 'cors';
 import debug from 'debug';
 import helmet from 'helmet';
+import swaggerUi from 'swagger-ui-express';
 import CommonRoutesConfig from './common/common.routes.config';
 import UsersRoutes from './users/users.routes.config';
 
-import swaggerUi from 'swagger-ui-express';
 // import swaggerDocument from './swagger.yaml';
 const YAML = require('yamljs');
+
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 const dotenvResult = dotenv.config();
