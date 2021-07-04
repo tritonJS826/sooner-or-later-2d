@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface ILevelStatistic {
+interface LevelStatisticProps {
 
 }
 /*
  * Level statistic page
  */
-const LevelStatistic: React.FC<ILevelStatistic> = (props: ILevelStatistic) => (
+const LevelStatistic: React.FC<LevelStatisticProps> = (props: LevelStatisticProps) => (
   <div>Level statistic</div>
 );
 

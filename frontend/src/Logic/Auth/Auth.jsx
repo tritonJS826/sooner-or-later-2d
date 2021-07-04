@@ -1,13 +1,26 @@
 /* eslint-disable */
-
 import React from 'react';
-import { Login, Register } from './components/index';
-import "./Auth.module.scss";
+import './Auth.scss';
+import './components/style.scss';
+import Login from './components/login';
+import Register from './components/register';
 
-/**
- * Auth page
- */
-export default class Auth extends React.Component {
+const RightSide = (props) => {
+  return (
+    <div
+      aria-hidden="true"
+      className="right-side"
+      ref={props.containerRef}
+      onClick={props.onClick}
+    >
+      <div className="inner-container">
+        <div className="text">{props.current}</div>
+      </div>
+    </div>
+  );
+};
+
+class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +29,6 @@ export default class Auth extends React.Component {
   }
 
   componentDidMount() {
-    // Add .right by default
     this.rightSide.classList.add('right');
   }
 
@@ -37,36 +49,27 @@ export default class Auth extends React.Component {
     const { isLogginActive } = this.state;
     const current = isLogginActive ? 'Register' : 'Login';
     const currentActive = isLogginActive ? 'login' : 'register';
-
     return (
-      <div className="login">
-        <div className="container" ref={(ref) => (this.container = ref)}>
-          {isLogginActive && (
-            <Login containerRef={(ref) => (this.current = ref)} />
-          )}
-          {!isLogginActive && (
-            <Register containerRef={(ref) => (this.current = ref)} />
-          )}
+      <div className="App">
+        <div className="login">
+          <div className="container" ref={(ref) => { this.container = ref; }}>
+            {isLogginActive && (
+              <Login containerRef={(ref) => { this.current = ref; }} />
+            )}
+            {!isLogginActive && (
+              <Register containerRef={(ref) => { this.current = ref; }} />
+            )}
+          </div>
+          <RightSide
+            current={current}
+            currentActive={currentActive}
+            containerRef={(ref) => { this.rightSide = ref; }}
+            onClick={() => this.changeState()}
+          />
         </div>
-        <RightSide
-          current={current}
-          currentActive={currentActive}
-          containerRef={(ref) => (this.rightSide = ref)}
-          onClick={this.changeState.bind(this)}
-        />
       </div>
     );
   }
 }
 
-const RightSide = (props) => (
-  <div
-    className="right-side"
-    ref={props.containerRef}
-    onClick={props.onClick}
-  >
-    <div className="inner-container">
-      <div className="text">{props.current}</div>
-    </div>
-  </div>
-);
+export default Auth;
