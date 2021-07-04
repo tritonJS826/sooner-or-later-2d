@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IEnemyInfo {
+interface EnemyInfoProps {
 
 }
 /*
  * Enemy info page
  */
-const EnemyInfo: React.FC<IEnemyInfo> = (props: IEnemyInfo) => (
+const EnemyInfo: React.FC<EnemyInfoProps> = (props: EnemyInfoProps) => (
   <div>Enemy info</div>
 );
 

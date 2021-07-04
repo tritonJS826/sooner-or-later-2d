@@ -1,11 +1,11 @@
 import React from 'react';
 import textAppearance from './textAppearance';
 
-interface IAnimatedSpan extends React.HTMLAttributes<HTMLSpanElement>{
+interface AnimatedSpanProps extends React.HTMLAttributes<HTMLSpanElement> {
   text: string | null;
 }
 
-const AnimatedSpan: React.FC<IAnimatedSpan> = ({ text, ...props }) => (
+const AnimatedSpan: React.FC<AnimatedSpanProps> = ({ text, ...props }) => (
   <span {...props}>
     {textAppearance(text ?? '')}
   </span>

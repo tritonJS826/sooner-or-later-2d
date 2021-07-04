@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IFailLevel {
+interface FailLevelProps {
 
 }
 /*
  * Fail level page
  */
-const FailLevel: React.FC<IFailLevel> = (props: IFailLevel) => (
+const FailLevel: React.FC<FailLevelProps> = (props: FailLevelProps) => (
   <div>Fail level</div>
 );
 

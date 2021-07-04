@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface ICreateHost {
+interface CreateHostProps {
 
 }
 /*
  * Create host page
  */
-const CreateHost: React.FC<ICreateHost> = (props: ICreateHost) => (
+const CreateHost: React.FC<CreateHostProps> = (props: CreateHostProps) => (
   <div>Create host</div>
 );
 

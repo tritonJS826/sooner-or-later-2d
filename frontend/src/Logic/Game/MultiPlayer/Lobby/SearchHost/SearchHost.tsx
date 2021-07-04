@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface ISearchHost {
+interface SearchHostProps {
 
 }
 /*
  * Search host page
  */
-const SearchHost: React.FC<ISearchHost> = (props: ISearchHost) => (
+const SearchHost: React.FC<SearchHostProps> = (props: SearchHostProps) => (
   <div>Search host</div>
 );
 

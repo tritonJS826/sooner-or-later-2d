@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IGameStatistic {
+interface GameStatisticProps {
 
 }
 /*
  * Game statistic page
  */
-const GameStatistic: React.FC<IGameStatistic> = (props: IGameStatistic) => (
+const GameStatistic: React.FC<GameStatisticProps> = (props: GameStatisticProps) => (
   <div>Game statistic</div>
 );
 

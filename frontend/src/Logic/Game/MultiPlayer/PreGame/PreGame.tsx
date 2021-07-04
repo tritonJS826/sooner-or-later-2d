@@ -1,6 +1,6 @@
 import React from 'react';
 
-// interface IMultiPlayer {
+// interface MultiPlayerProps {
 
 // }
 /*

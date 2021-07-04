@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IEndLevel {
+interface EndLevelProps {
 
 }
 /*
  * End level page
  */
-const EndLevel: React.FC<IEndLevel> = (props: IEndLevel) => (
+const EndLevel: React.FC<EndLevelProps> = (props: EndLevelProps) => (
   <div>End level</div>
 );
 

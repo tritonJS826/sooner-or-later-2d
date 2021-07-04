@@ -1,6 +1,6 @@
 import React from 'react';
 
-// interface ISinglePlayer {
+// interface SinglePlayerProps {
 
 // }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IStartLevel {
+interface StartLevelProps {
 
 }
 /*
  * Start level page
  */
-const StartLevel: React.FC<IStartLevel> = (props: IStartLevel) => (
+const StartLevel: React.FC<StartLevelProps> = (props: StartLevelProps) => (
   <div>Start level</div>
 );
 

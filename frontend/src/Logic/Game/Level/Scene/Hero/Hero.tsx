@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IHero {
+interface HeroProps {
 
 }
 /*
  * Hero page
  */
-const Hero: React.FC<IHero> = (props: IHero) => (
+const Hero: React.FC<HeroProps> = (props: HeroProps) => (
   <div>Hero</div>
 );
 
