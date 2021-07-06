@@ -1,15 +1,13 @@
-.cls-2 {
+.arrow {
     fill: #e6cfb7;
+    margin-top: auto;
 }
 
-svg {
+.svg {
     position: absolute;
     right: 10px;
-    top: 13px;
+    top: 11px;
     opacity: 0.0;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -o-transition: 0.5s;
     transition: 0.5s;
 }
 
@@ -19,8 +17,8 @@ svg {
     height: 82%;
     width: 100%;
     top: 5%;
-    border-top: 2px solid #c96800;
-    border-bottom: 2px solid #c96800;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     left: 0;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -29,7 +27,7 @@ svg {
     opacity: 0.0;
 }
 
-.menu li {
+.li {
     overflow: hidden;
     text-transform: uppercase;
     padding-bottom: 4px;
@@ -45,21 +43,21 @@ svg {
     padding-right: 0px;
     display: inline-block;
     position: relative;
-}
-
-.menu li:hover {
-    background: #e0931f;
-    cursor: pointer;
-    padding-left: 20px;
-    padding-right: 50px;
-    color: #482800;
-}
-
-.menu li:hover .trim {
-    left: 0px;
-    opacity: 1.0;
-}
-
-.menu li:hover svg {
-    opacity: 1.0;
+    opacity: 0.6;
+    &:hover {
+        background: rgb(54, 54, 54);
+        cursor: pointer;
+        padding-left: 20px;
+        padding-right: 50px;
+        color: white;
+        border-radius: 10px;
+        opacity: 0.9;
+    }
+    &:hover .trim {
+        left: 0px;
+        opacity: 1;
+    }
+    &:hover .svg {
+        opacity: 1;
+    }
 }

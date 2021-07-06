@@ -11,8 +11,6 @@ module.exports = {
     'max-len': [2, 120],
     'react/jsx-props-no-spreading': 'off',
     'import/extensions': 'off',
-    // 'react/jsx-indent': ['warn', 2],
-    // indent: ['warn', 2],
     'import/no-unresolved': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'no-use-before-define': 'off',

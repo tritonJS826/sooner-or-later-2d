@@ -5,7 +5,7 @@ interface AnimatedSpanProps extends React.HTMLAttributes<HTMLSpanElement> {
   text: string | null;
 }
 
-const AnimatedSpan: React.FC<AnimatedSpanProps> = ({ text, ...props }) => (
+const AnimatedSpan: React.FC<AnimatedSpanProps> = ({ text, ...props }: AnimatedSpanProps) => (
   <span {...props}>
     {textAppearance(text ?? '')}
   </span>
