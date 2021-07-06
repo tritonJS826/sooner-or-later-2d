@@ -4,6 +4,6 @@ import './About.module.scss';
 /*
  * Page about
  */
-const About: React.FC = () => <div>About the game</div>;
+const AboutPage: React.FC = () => <div>About the game</div>;
 
-export default About;
+export default AboutPage;

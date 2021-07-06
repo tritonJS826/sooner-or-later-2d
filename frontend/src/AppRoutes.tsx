@@ -1,34 +1,34 @@
 import PageMeta from 'Kit/PageMeta';
-import Menu from 'Logic/Menu/Menu';
-import Auth from './Logic/Auth/Auth';
-import Options from './Logic/Options/Options';
-import About from './Logic/About/About';
-import Statistic from './Logic/Statistic/Statistic';
+// import Menu from 'Logic/Menu/MenuPage';
+import AuthPage from './Logic/AuthPage/AuthPage';
+import OptionsPage from './Logic/OptionsPage/OptionsPage';
+import AboutPage from './Logic/About/About';
+import StatisticPage from './Logic/StatisticPage/StatisticPage';
 
 const AppRoutes = {
   homePage: new PageMeta<void>({
     path: '/menu',
-    render: () => <Menu />,
+    render: () => <AuthPage />,
   }),
 
   options: new PageMeta<void>({
     path: '/options',
-    render: () => <Options />,
+    render: () => <OptionsPage />,
   }),
 
   about: new PageMeta<void>({
     path: '/about',
-    render: () => <About />,
+    render: () => <AboutPage />,
   }),
 
   statistic: new PageMeta<void>({
     path: '/statistic',
-    render: () => <Statistic />,
+    render: () => <StatisticPage />,
   }),
 
   auth: new PageMeta<void>({
     path: '/auth',
-    render: () => <Auth />,
+    render: () => <AuthPage />,
   }),
 };
 
