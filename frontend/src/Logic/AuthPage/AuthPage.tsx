@@ -3,6 +3,7 @@ import ElementsMenu from 'Components/ElementsMenu/ElementsMenu';
 import styles from 'Logic/AuthPage/AuthPage.module.scss';
 import Image from 'Components/Image/Image';
 import BloodMoon from 'Resources/bloodMoon.jpg';
+import AppRoutes from 'AppRoutes';
 
 const AuthPage: React.FC = () => {
   const [login, setLogin] = useState('');
@@ -44,7 +45,7 @@ const AuthPage: React.FC = () => {
 
         <hr style={{ opacity: 0.3 }} />
 
-        <ElementsMenu path="/" text="BACK TO MENU" />
+        <ElementsMenu path={AppRoutes.homePage.toUrl()} text="BACK TO MENU" />
       </form>
     </div>
   );

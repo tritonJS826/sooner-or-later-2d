@@ -18,9 +18,9 @@ const ElementsMenu: React.FC<ElementsMenuProps> = (props: ElementsMenuProps) => 
       <span className={styles.trim} />
       {props.text}
       <svg
-        // xmlns="http://www.w3.org/2000/svg"
-        // xmlnsXlink="http://www.w3.org/1999/xlink"
-        // preserveAspectRatio="xMidYMid"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        preserveAspectRatio="xMidYMid"
         width="21"
         height="36"
         viewBox="0 0 21 36"
