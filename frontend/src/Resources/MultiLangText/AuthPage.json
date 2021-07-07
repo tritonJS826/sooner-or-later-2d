@@ -1,0 +1,16 @@
+{
+    "authPage": {
+        "signIn": {
+            "en": "Sign in",
+            "ru": "Войти"
+        },
+        "signUp": {
+            "en": "Sign up",
+            "ru": "Зарегистрироваться"
+        },
+        "backToMenu": {
+            "en": "Back to Menu",
+            "ru": "Назад в меню"
+        }
+    }
+}

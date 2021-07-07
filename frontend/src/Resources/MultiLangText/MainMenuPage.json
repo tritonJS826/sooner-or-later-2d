@@ -1,0 +1,24 @@
+{
+    "mainMenuPage": {
+        "authorization": {
+            "en": "Authorization",
+            "ru": "Авторизация"
+        },
+        "singlePlayer": {
+            "en": "Single player",
+            "ru": "Одиночная игра"
+        },
+        "multiplayer": {
+            "en": "Single player",
+            "ru": "Многопользовательская игра"
+        },
+        "options": {
+            "en": "Options",
+            "ru": "Опции"
+        },
+        "about": {
+            "en": "About",
+            "ru": "Информация"
+        }
+    }
+}

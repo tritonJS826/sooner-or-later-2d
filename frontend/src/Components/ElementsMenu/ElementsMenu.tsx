@@ -5,7 +5,7 @@ import styles from './ElementsMenu.module.scss';
 
 interface ElementsMenuProps {
   text: string;
-  path: string;
+  to: string;
   onClick?: () => any;
 }
 
@@ -13,8 +13,9 @@ interface ElementsMenuProps {
  * Custom link in menu
  */
 const ElementsMenu: React.FC<ElementsMenuProps> = (props: ElementsMenuProps) => (
-  <Link to={props.path} style={{ display: 'block' }} onClick={props.onClick}>
+  <Link to={props.to} style={{ display: 'block' }} onClick={props.onClick}>
     <li className={styles.li}>
+      <div className={styles.svgWrap}>
       <span className={styles.trim} />
       {props.text}
       <svg
@@ -35,6 +36,7 @@ const ElementsMenu: React.FC<ElementsMenuProps> = (props: ElementsMenuProps) => 
           fillRule="evenodd"
         />
       </svg>
+      </div>
     </li>
   </Link>
 );

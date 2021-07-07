@@ -4,6 +4,8 @@ import styles from 'Logic/AuthPage/AuthPage.module.scss';
 import Image from 'Components/Image/Image';
 import BloodMoon from 'Resources/bloodMoon.jpg';
 import AppRoutes from 'AppRoutes';
+import multiText from 'Resources/MultiLangText/AuthPage.json';
+import { multiLang } from 'App';
 
 const AuthPage: React.FC = () => {
   const [login, setLogin] = useState('');
@@ -37,15 +39,15 @@ const AuthPage: React.FC = () => {
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
 
-        <ElementsMenu path="/" text="SIGN IN" />
+        <ElementsMenu to="/" text={multiLang.text(multiText.authPage.signIn)} />
 
         <hr style={{ opacity: 0.3 }} />
 
-        <ElementsMenu path="/" text="SIGN UP" />
+        <ElementsMenu to="/" text={multiLang.text(multiText.authPage.signUp)} />
 
         <hr style={{ opacity: 0.3 }} />
 
-        <ElementsMenu path={AppRoutes.homePage.toUrl()} text="BACK TO MENU" />
+        <ElementsMenu to={AppRoutes.homePage.toUrl()} text={multiLang.text(multiText.authPage.backToMenu)} />
       </form>
     </div>
   );

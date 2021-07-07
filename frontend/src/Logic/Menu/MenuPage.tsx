@@ -4,6 +4,8 @@ import styles from 'Logic/Menu/Menu.module.scss';
 import AppRoutes from 'AppRoutes';
 import BloodMoon from 'Resources/bloodMoon.jpg';
 import Image from 'Components/Image/Image';
+import multiText from 'Resources/MultiLangText/MainMenuPage.json';
+import { multiLang } from 'App';
 
 /*
  * Menu
@@ -19,11 +21,26 @@ const Menu: React.FC = () => (
       }}
     />
     <ul className={styles.navigation}>
-      <ElementsMenu path={AppRoutes.auth.toUrl()} text="Authorization" />
-      {/* <ElementsMenu path={AppRoutes.singlePlayer.toUrl()} text="SinglePlayer" /> */}
-      {/* <ElementsMenu path={AppRoutes.multiPlayer.toUrl()} text="Multiplayer" /> */}
-      <ElementsMenu path={AppRoutes.options.toUrl()} text="Option" />
-      <ElementsMenu path={AppRoutes.about.toUrl()} text="About" />
+      <ElementsMenu
+        to={AppRoutes.auth.toUrl()}
+        text={multiLang.text(multiText.mainMenuPage.authorization)}
+      />
+      <ElementsMenu
+        to={AppRoutes.gameConfiguration.toUrl()}
+        text={multiLang.text(multiText.mainMenuPage.singlePlayer)}
+      />
+      <ElementsMenu
+        to={AppRoutes.multiplayer.toUrl()}
+        text={multiLang.text(multiText.mainMenuPage.multiplayer)}
+      />
+      <ElementsMenu
+        to={AppRoutes.options.toUrl()}
+        text={multiLang.text(multiText.mainMenuPage.options)}
+      />
+      <ElementsMenu
+        to={AppRoutes.about.toUrl()}
+        text={multiLang.text(multiText.mainMenuPage.about)}
+      />
     </ul>
   </div>
 );

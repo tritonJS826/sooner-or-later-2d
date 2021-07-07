@@ -1,8 +1,5 @@
 import React from 'react';
 
-// interface MultiPlayerProps {
-
-// }
 /*
  * MultiPlayer page
  */
