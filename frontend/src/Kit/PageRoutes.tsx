@@ -17,6 +17,8 @@ export const PageRouter: React.FC<PageRouterProps> = (props: PageRouterProps) =>
   const renderRoute = (route: PageMeta<any>) => (
     <Route
       key={route.path}
+      exact
+      path={route.path}
       render={(p) => route.render(p)}
     />
   );
