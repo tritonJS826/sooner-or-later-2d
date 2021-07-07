@@ -3,10 +3,14 @@
     margin-top: auto;
 }
 
+.svgWrap {
+    display: flex;
+    align-items: center;
+}
+
 .svg {
-    position: absolute;
-    right: 10px;
-    top: 11px;
+    position: relative;
+    right: -40px;
     opacity: 0.0;
     transition: 0.5s;
 }
@@ -31,7 +35,7 @@
     overflow: hidden;
     text-transform: uppercase;
     padding-bottom: 4px;
-    font-size: 50px;
+    font-size: 35px;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
     line-height: 60px;
