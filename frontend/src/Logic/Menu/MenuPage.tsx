@@ -6,6 +6,7 @@ import BloodMoon from 'Resources/bloodMoon.jpg';
 import Image from 'Components/Image/Image';
 import multiText from 'Resources/MultiLangText/MainMenuPage.json';
 import { multiLang } from 'App';
+import { observer } from 'mobx-react';
 
 /*
  * Menu
@@ -45,4 +46,4 @@ const Menu: React.FC = () => (
   </div>
 );
 
-export default Menu;
+export default observer(Menu);

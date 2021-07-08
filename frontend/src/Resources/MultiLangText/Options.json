@@ -1,0 +1,16 @@
+{
+    "options": {
+        "chooseLanguage": {
+            "en": "Choose language:",
+            "ru": "Выберите язык:"
+        },
+        "soundValue": {
+            "en": "Sound",
+            "ru": "Громкость"
+        },
+        "backToMenu": {
+            "en": "Back to Menu",
+            "ru": "Назад в меню"
+        }
+    }
+}
