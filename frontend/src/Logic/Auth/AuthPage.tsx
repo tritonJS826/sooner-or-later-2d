@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import ElementsMenu from 'Components/ElementsMenu/ElementsMenu';
-import styles from 'Logic/AuthPage/AuthPage.module.scss';
+import styles from 'Logic/Auth/AuthPage.module.scss';
 import Image from 'Components/Image/Image';
 import BloodMoon from 'Resources/bloodMoon.jpg';
 import AppRoutes from 'AppRoutes';
 import multiText from 'Resources/MultiLangText/AuthPage.json';
 import { multiLang } from 'App';
+import { observer } from 'mobx-react';
 
 const AuthPage: React.FC = () => {
   const [login, setLogin] = useState('');
@@ -53,4 +54,4 @@ const AuthPage: React.FC = () => {
   );
 };
 
-export default AuthPage;
+export default observer(AuthPage);
