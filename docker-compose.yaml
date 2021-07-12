@@ -8,6 +8,9 @@ services:
     restart: unless-stopped
     ports:
       - "5000:5000"
+    networks:
+      - app-network
+
   websockets:
     build: 
       context: ./websockets
@@ -16,6 +19,7 @@ services:
     ports:
       - "5001:5001"
       - "5002:5002"
+ 
   frontend:
     build:
       context: ./frontend
@@ -28,4 +32,10 @@ services:
     volumes:
       - ./data:/data/db
     ports:
-      - '27017:27017'
+      - "27017:27017"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
