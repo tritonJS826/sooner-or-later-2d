@@ -2,14 +2,18 @@
     "multiplayerPage": {
         "createHost": {
             "en": "Create host",
-            "ru": "Создать хостинг"
+            "ru": "Создать игру"
         },
         "back": {
             "en": "Back",
             "ru": "Назад"
         },
-        "navigation": {
-            "ID": {
+        "join": {
+            "en": "Join",
+            "ru": "Присоединиться"
+        },
+        "filter": {
+            "id": {
                 "en": "ID",
                 "ru": "ID"
             },
@@ -19,15 +23,15 @@
             },
             "hostName": {
                 "en": "Host name",
-                "ru": "Хостинг"
+                "ru": "Хост"
             },
             "difficulty": {
                 "en": "Difficulty",
                 "ru": "Сложность"
-            },
-            },
+            }
+        },
         "table": {
-            "ID": {
+            "id": {
                 "en": "ID",
                 "ru": "ID"
             },
@@ -37,21 +41,16 @@
             },
             "hostName": {
                 "en": "Host name",
-                "ru": "Имя хостинга"
+                "ru": "Хост"
             },
             "difficulty": {
                 "en": "Difficulty",
                 "ru": "Сложность"
             },
             "action": {
-                "en":"Action",
+                "en": "Action",
                 "ru": "Действие"
-            },
-        }
-        "Join":{
-            "en": "Join",
-            "ru": "Присоединиться"
-        }
+            }
         }
     }
 }

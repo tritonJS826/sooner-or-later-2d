@@ -1,0 +1,25 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 10%;
+}
+
+.action-block {
+  margin: 20px 0;
+  display: flex;
+  width: 80vw;
+}
+
+.filter {
+  display: flex;
+  color: white;
+  width: 80vw;
+}
+
+.table {
+  margin: auto;
+  display: flex;
+  max-width: 80%;
+}

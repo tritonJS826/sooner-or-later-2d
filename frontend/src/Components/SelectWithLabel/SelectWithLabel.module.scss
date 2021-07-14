@@ -1,0 +1,17 @@
+.select {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-select {
+    background: #000000;
+    border: 2px solid rgb(172, 137, 126);
+    outline: rgb(172, 137, 126);
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border-radius: 5px;
+}

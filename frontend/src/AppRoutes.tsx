@@ -5,7 +5,7 @@ import OptionsPage from 'Logic/Options/OptionsPage';
 import AboutPage from 'Logic/About/About';
 import StatisticPage from 'Logic/Statistic/StatisticPage';
 import GameConfigurationPage from 'Logic/Game/Player/GameConfigurationPage';
-import MultiPlayerPage from 'Logic/Game/Player/MultiPlayerPage';
+import MultiPlayerPage from 'Logic/Game/Player/MultiPlayerPage/MultiPlayerPage';
 import PreGamePage from 'Logic/Game/Player/PreGamePage';
 
 const AppRoutes = {
