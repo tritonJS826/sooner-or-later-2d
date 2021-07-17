@@ -4,9 +4,9 @@ import AuthPage from 'Logic/Auth/AuthPage';
 import OptionsPage from 'Logic/Options/OptionsPage';
 import AboutPage from 'Logic/About/About';
 import StatisticPage from 'Logic/Statistic/StatisticPage';
-import GameConfigurationPage from 'Logic/Game/Player/GameConfigurationPage';
+import PreGamePage from 'Logic/Game/Player/PreGamePage/PreGamePage';
 import MultiPlayerPage from 'Logic/Game/Player/MultiPlayerPage/MultiPlayerPage';
-import PreGamePage from 'Logic/Game/Player/PreGamePage';
+import GameConfigurationPage from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationPage';
 
 const AppRoutes = {
   homePage: new PageMeta<void>({

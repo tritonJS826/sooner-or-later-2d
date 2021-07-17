@@ -13,13 +13,6 @@
   width: 80vw;
 }
 
-.filter {
-  display: flex;
-  flex-wrap: wrap;
-  color: white;
-  width: 80vw;
-}
-
 .table {
   margin-bottom: auto;
   display: flex;
@@ -29,7 +22,7 @@
   color: white;
   overflow-x: auto;
   & .table-row {
-    display:flex;
+    display: flex;
     & .cell {
       min-width: 140px;
       width: 140px;

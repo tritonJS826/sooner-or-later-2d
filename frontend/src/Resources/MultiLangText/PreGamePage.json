@@ -1,0 +1,60 @@
+{
+    "gameConfiguration": {
+        "ready": {
+            "en": "Ready",
+            "ru": "Готов"
+        },
+        "back": {
+            "en": "Back",
+            "ru": "Назад"
+        },
+        "description": {
+            "en": "Description",
+            "ru": "Описание"
+        },
+        "players": {
+            "en": "Players",
+            "ru": "Игроки"
+        },
+        "descriptionTable": {
+            "hostName": {
+                "en": "Host name",
+                "ru": "Имя хоста"
+            },
+            "world": {
+                "en": "World",
+                "ru": "Мир"
+            },
+            "level": {
+                "en": "Level",
+                "ru": "Уровень"
+            },
+            "difficulty": {
+                "en": "Difficulty",
+                "ru": "Сложность"
+            },
+            "playersAmount": {
+                "en": "Players amount",
+                "ru": "Количество игроков"
+            }
+        },
+        "table": {
+            "status": {
+                "en": "Status",
+                "ru": "Статус"
+            },
+            "ready": {
+                "en": "ready",
+                "ru": "готов"
+            },
+            "notReady": {
+                "en": "not ready",
+                "ru": "не готов("
+            },
+            "playerName": {
+                "en": "Player's name",
+                "ru": "Имя игрока"
+            }
+        }
+    }
+}
