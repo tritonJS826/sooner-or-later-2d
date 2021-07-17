@@ -48,7 +48,7 @@ class PreGameStore {
 
   @action.bound
   async loadData() {
-    // get from wsserver
+    // try async request on wsserver
     this.hostDescription = hostDescriptionStub;
     this.players = playersStub;
   }

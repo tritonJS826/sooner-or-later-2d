@@ -1,0 +1,32 @@
+{
+    "gameConfiguration": {
+        "roomName": {
+            "en": "Room name:",
+            "ru": "Название:"
+        },
+        "maxPlayersAmount": {
+            "en": "Max players:",
+            "ru": "Число игроков:"
+        },
+        "world": {
+            "en": "World:",
+            "ru": "Мир:"
+        },
+        "level": {
+            "en": "Level:",
+            "ru": "Уровень:"
+        },
+        "difficulty": {
+            "en": "Difficulty:",
+            "ru": "Сложность:"
+        },
+        "apply": {
+            "en": "Apply",
+            "ru": "Принять"
+        },
+        "back": {
+            "en": "Back",
+            "ru": "Назад"
+        }
+    }
+}

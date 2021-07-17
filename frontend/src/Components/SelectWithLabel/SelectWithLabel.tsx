@@ -1,14 +1,21 @@
 import idGenerator from 'Utils/IdGenerator';
 import styles from 'Components/SelectWithLabel/SelectWithLabel.module.scss';
 
-interface Option {
+export interface SelectOption {
     key: string;
+    /**
+     * We see the data in ui
+     */
     data: string;
+    
+    /**
+     * Hidden data's id
+     */
     value: string;
 }
 
 interface SelectWithPageProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-    options: Option[];
+    options: SelectOption[];
     label: string;
 }
 
