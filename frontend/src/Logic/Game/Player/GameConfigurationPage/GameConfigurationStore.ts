@@ -2,13 +2,13 @@ import { SelectOption } from 'Components/SelectWithLabel/SelectWithLabel';
 import {
   action, computed, makeObservable, observable,
 } from 'mobx';
-import { Difficulty } from 'Model/Difficulty';
-import generateId from 'Utils/IdGenerator';
+// import { Difficulty } from 'Model/Difficulty';
 
 interface World {
   id: string;
   levelsAmount: number;
   name: string;
+  maxDifficulty: number;
 }
 
 interface Settings {
@@ -16,7 +16,7 @@ interface Settings {
   maxPlayers: number;
   worldId: string;
   level: number;
-  difficulty: Difficulty;
+  difficulty: number;
 }
 
 class GameConfigurationStore {
@@ -25,8 +25,8 @@ class GameConfigurationStore {
     roomName: '',
     maxPlayers: 2,
     worldId: '',
-    level: 1,
-    difficulty: Difficulty.EASY,
+    level: 0,
+    difficulty: 0,
   };
 
   @observable
@@ -67,26 +67,26 @@ class GameConfigurationStore {
 
   @computed
   get optionsWorldDifficulty(): SelectOption[] {
-    return [
-      {
-        key: Difficulty.EASY,
-        data: Difficulty.EASY,
-        value: Difficulty.EASY,
-      },
-      {
-        key: Difficulty.HARD,
-        data: Difficulty.HARD,
-        value: Difficulty.HARD,
-      },
-    ];
+    const currentWorld = this.worlds.find(
+      (world) => world.id === this.settings.worldId,
+    );
+
+    const difficulties = currentWorld?.maxDifficulty ?? 0;
+
+    return new Array(difficulties).fill(null).map((difficulty, index) => ({
+      key: String(index),
+      data: String(index),
+      value: String(index),
+    }));
   }
 
   @action.bound
-  loadData() {
+  async loadData() {
     // connect to wsserver
-    // get data abot worlds and levels and difficulties
+    // get data about worlds and levels and difficulties
 
     this.worlds = worldsStub;
+    this.setSettings({ ...this.settings, worldId: this.worlds[0].id });
   }
 
   @action.bound
@@ -99,13 +99,15 @@ export default GameConfigurationStore;
 
 const worldsStub = [
   {
-    id: 'id1',
-    levelsAmount: 4,
-    name: 'testWorld1',
+    id: '1',
+    levelsAmount: 42,
+    name: 'touchTyping',
+    maxDifficulty: 5,
   },
   {
-    id: 'id2',
+    id: '2',
     levelsAmount: 6,
-    name: 'testWorld2',
+    name: 'algebra',
+    maxDifficulty: 10,
   },
 ];

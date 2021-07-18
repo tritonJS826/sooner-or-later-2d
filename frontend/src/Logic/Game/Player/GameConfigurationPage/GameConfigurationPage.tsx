@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer, useLocalStore } from 'mobx-react';
 import styles from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationPage.module.scss';
 import GameConfigurationStore from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationStore';
@@ -44,7 +44,7 @@ const GameConfigurationPage: React.FC = () => {
   };
 
   const changeDifficulty = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, difficulty: e.currentTarget.value as Difficulty });
+    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, difficulty: Number(e.currentTarget.value) });
   };
 
   const onBack = () => {
