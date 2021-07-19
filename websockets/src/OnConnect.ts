@@ -1,29 +1,40 @@
+import { HostsService } from './HostsService';
 import { IncomingMessage } from 'http';
 import wsServer from './index';
 
-const onConnect = (wsClient: any) => {
-  console.log('New user');
+const hostSore = new HostsService();
+let gamersWatch = 0;
 
-  // message on first connection
-  wsClient.send(JSON.stringify('Connected'));
+interface HostsServiceResponse {
+  gamersWatch: number;
+}
+
+const onConnect = (wsClient: any) => {
+  gamersWatch++;
+  console.log('New user:', gamersWatch);
+
+  // action on each connection
+  wsServer.clients.forEach((client) => {
+    client.send(JSON.stringify({gamersWatch} as HostsServiceResponse));
+  });
 
   // handle messages
-  wsClient.on('message', (message: IncomingMessage) => {
-    console.log({ message });
+  // wsClient.on('message', (message: IncomingMessage) => {
+  //   console.log({ message });
 
-    wsServer.clients.forEach((client: any) => {
-      client.send(message);
-    });
-  });
+  //   wsServer.clients.forEach((client) => {
+  //     client.send(message);
+  //   });
+  // });
 
   // handle close connection
   wsClient.on('close', () => {
-    const message = JSON.stringify({ info: 'User disconnected' });
+    gamersWatch--;
 
-    console.log(message);
+    console.log('Users left:', gamersWatch);
 
-    wsServer.clients.forEach((client: any) => {
-      client.send(message);
+    wsServer.clients.forEach((client) => {
+      client.send(JSON.stringify({gamersWatch} as HostsServiceResponse));
     });
   });
 };

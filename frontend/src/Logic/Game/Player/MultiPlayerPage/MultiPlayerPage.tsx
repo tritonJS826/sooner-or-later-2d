@@ -22,7 +22,9 @@ const MultiPlayer: React.FC = () => {
   const multiplayerStore = useLocalStore(() => new MultiplayerStore());
 
   useEffect(() => {
-    multiplayerStore.loadData();
+    const ws = new WebSocket('ws://localhost:5002');
+    multiplayerStore.loadData(ws);
+    return multiplayerStore.closeConnections;
   }, []);
 
   const testOptions = [{
@@ -136,7 +138,7 @@ const MultiPlayer: React.FC = () => {
             <div className={styles.cell}>{rowData.hostName}</div>
             <div className={styles.cell}>{rowData.difficulty}</div>
             <div className={styles.cell}>
-              <Link to={AppRoutes.preGame.toUrl()}>
+              <Link to={AppRoutes.preGame.toUrl({ hostId: 'test', port: 'test' })}>
                 {multiLang.text(multiText.multiplayerPage.join)}
               </Link>
             </div>
@@ -144,6 +146,8 @@ const MultiPlayer: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Players watch(dev-test): {multiplayerStore.playersAvailable} */}
     </div>
   );
 };

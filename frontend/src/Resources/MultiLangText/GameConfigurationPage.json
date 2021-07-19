@@ -1,6 +1,6 @@
 {
     "gameConfiguration": {
-        "roomName": {
+        "hostName": {
             "en": "Room name:",
             "ru": "Название:"
         },

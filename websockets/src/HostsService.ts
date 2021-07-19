@@ -1,8 +1,8 @@
-import {Host, HostParameters} from 'Models/Host';
+import {Host, HostParameters} from './Models/Host';
 
 
 
-export class HostsStore {
+export class HostsService {
     /**
      * The key is a hosts port from 5500 to 6000
      */
@@ -27,14 +27,14 @@ export class HostsStore {
         return this.hosts[port];
     }
     
-    createHost(hostParameters: HostParameters): Host {
+    createHost(hostParameters: HostParameters): {host:Host, port: number} {
         const newHost = new Host(hostParameters);
         const freePort = this.getFreePort();
         if (!freePort) {
             throw new Error('all ports is using');
         }
         this.hosts[freePort] = newHost;
-        return newHost;
+        return {host: newHost, port: freePort};
     }
     
     updateHostById(hostParameters: Host): Host {

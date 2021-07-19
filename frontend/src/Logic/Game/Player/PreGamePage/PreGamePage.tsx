@@ -11,11 +11,17 @@ import PlayerStatus from 'Model/PlayerStatus';
 import Image from 'Components/Image/Image';
 import BloodMoon from 'Resources/bloodMoon.jpg';
 
+interface PreGameProps {
+  hostId: string | undefined;
+  port: string | undefined;
+}
+
 /**
- * GameConfiguration page
+ * PreGame page
  */
-const GameConfiguration: React.FC = () => {
+const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   const history = useHistory();
+  console.log('PreGameProps', props)
   const preGameStore = useLocalStore(() => new PreGameStore());
   useEffect(() => {
     preGameStore.loadData();
@@ -94,4 +100,4 @@ const GameConfiguration: React.FC = () => {
   );
 };
 
-export default observer(GameConfiguration);
+export default observer(PreGame);

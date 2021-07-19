@@ -9,8 +9,8 @@ import { multiLang } from 'App';
 import multiText from 'Resources/MultiLangText/GameConfigurationPage.json';
 import { useHistory } from 'react-router';
 import AppRoutes from 'AppRoutes';
-import { Difficulty } from 'Model/Difficulty';
-
+import Image from 'Components/Image/Image';
+import BloodMoon from 'Resources/bloodMoon.jpg';
 /*
  * GameConfigurationPage page
  */
@@ -22,13 +22,15 @@ const GameConfigurationPage: React.FC = () => {
     gameConfigurationStore.loadData();
   }, []);
 
-  const changeRoomName = (e: React.FormEvent<HTMLInputElement>) => {
-    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, roomName: e.currentTarget.value });
+  const changeHostName = (e: React.FormEvent<HTMLInputElement>) => {
+    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, hostName: e.currentTarget.value });
   };
 
-  const createGame = () => {
-    history.push(AppRoutes.preGame.toUrl());
-    gameConfigurationStore.createGame();
+  const createGame = async () => {
+    const gameSettings = await gameConfigurationStore.createGame();
+    const hostId = gameSettings.host.hostName;
+    const port = String(gameSettings.port);
+    history.push(AppRoutes.preGame.toUrl({ hostId, port }));
   };
 
   const changeWorld = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -53,10 +55,20 @@ const GameConfigurationPage: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Image
+        src={BloodMoon}
+        style={{
+          zIndex: -50,
+          position: 'fixed',
+          height: '100%',
+          alignSelf: 'center',
+        }}
+      />
+
       <InputText
-        label={multiLang.text(multiText.gameConfiguration.roomName)}
-        value={gameConfigurationStore.settings.roomName}
-        onChange={changeRoomName}
+        label={multiLang.text(multiText.gameConfiguration.hostName)}
+        value={gameConfigurationStore.settings.hostName}
+        onChange={changeHostName}
         style={{ marginRight: 20, marginTop: 10, width: 200 }}
       />
 

@@ -44,9 +44,10 @@ const AppRoutes = {
     render: () => <GameConfigurationPage />,
   }),
 
-  preGame: new PageMeta<void>({
-    path: '/pre-game',
-    render: () => <PreGamePage />,
+  preGame: new PageMeta<{ hostId: string, port: string }>({
+    renderParameters: (object) => ({ hostId: object.hostId, port: object.port }),
+    path: '/pre-game/hostId=:hostId&port=:port',
+    render: (props) => <PreGamePage hostId={props.match.params.hostId} port={props.match.params.port} />,
   }),
 };
 

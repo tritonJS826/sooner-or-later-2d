@@ -12,7 +12,7 @@ interface World {
 }
 
 interface Settings {
-  roomName: string;
+  hostName: string;
   maxPlayers: number;
   worldId: string;
   level: number;
@@ -22,7 +22,7 @@ interface Settings {
 class GameConfigurationStore {
   @observable
   settings: Settings = {
-    roomName: '',
+    hostName: '',
     maxPlayers: 2,
     worldId: '',
     level: 0,
@@ -90,8 +90,20 @@ class GameConfigurationStore {
   }
 
   @action.bound
-  createGame() {
-    // async to wsserver
+  async createGame(): Promise<CreateHostResponse> {
+    // host service works on ws:localhost:5002
+    const responseRaw = await fetch('http://localhost:5499/create-host', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.settings),
+    });
+
+    const response: CreateHostResponse = await responseRaw.json();
+    console.log(JSON.stringify(this.settings));
+    return response;
   }
 }
 
@@ -111,3 +123,14 @@ const worldsStub = [
     maxDifficulty: 10,
   },
 ];
+
+export interface CreateHostResponse {
+  host: {
+    hostName: string;
+    maxPlayers: number;
+    worldId: string;
+    level: number;
+    difficulty: number;
+  };
+  port: number;
+}
