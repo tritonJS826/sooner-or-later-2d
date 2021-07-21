@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from 'mobx';
-import { Difficulty } from 'Model/Difficulty';
+import Difficulty from 'Model/Difficulty';
 import PlayerStatus from 'Model/PlayerStatus';
 
 interface Player {

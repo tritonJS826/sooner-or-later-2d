@@ -19,6 +19,7 @@ services:
     ports:
       - "5001:5001"
       - "5002:5002"
+      - "5500-6000"
  
   frontend:
     build:

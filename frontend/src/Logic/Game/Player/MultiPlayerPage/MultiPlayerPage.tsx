@@ -11,7 +11,7 @@ import { useHistory } from 'react-router';
 import AppRoutes from 'AppRoutes';
 import Image from 'Components/Image/Image';
 import BloodMoon from 'Resources/bloodMoon.jpg';
-import { Difficulty } from 'Model/Difficulty';
+import Difficulty from 'Model/Difficulty';
 import { Link } from 'react-router-dom';
 
 /*

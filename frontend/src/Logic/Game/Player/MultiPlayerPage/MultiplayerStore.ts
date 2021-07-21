@@ -1,7 +1,7 @@
 import {
   makeObservable, action, observable, computed,
 } from 'mobx';
-import { Difficulty } from 'Model/Difficulty';
+import Difficulty from 'Model/Difficulty';
 
 interface HostTableData {
   id: string;
