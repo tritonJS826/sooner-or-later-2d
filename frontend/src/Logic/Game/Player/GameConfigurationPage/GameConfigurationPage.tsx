@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer, useLocalStore } from 'mobx-react';
 import styles from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationPage.module.scss';
 import GameConfigurationStore from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationStore';
@@ -11,10 +11,18 @@ import { useHistory } from 'react-router';
 import AppRoutes from 'AppRoutes';
 import Image from 'Components/Image/Image';
 import BloodMoon from 'Resources/bloodMoon.jpg';
+
+interface GameConfigurationPageProps {
+  /**
+   * 'true' | 'false' | undefined
+   */
+  multiplayer?: string;
+}
+
 /*
  * GameConfigurationPage page
  */
-const GameConfigurationPage: React.FC = () => {
+const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: GameConfigurationPageProps) => {
   const gameConfigurationStore = useLocalStore(() => new GameConfigurationStore());
   const history = useHistory();
 
@@ -27,7 +35,7 @@ const GameConfigurationPage: React.FC = () => {
   };
 
   const createGame = async () => {
-    const gameSettings = await gameConfigurationStore.createGame();
+    const gameSettings = await gameConfigurationStore.createGame({multiplayer: !!JSON.parse(`${props.multiplayer}`)});
     const hostId = gameSettings.host.hostName;
     const port = String(gameSettings.port);
     history.push(AppRoutes.preGame.toUrl({ hostId, port }));
@@ -49,8 +57,12 @@ const GameConfigurationPage: React.FC = () => {
     gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, difficulty: Number(e.currentTarget.value) });
   };
 
-  const onBack = () => {
-    history.push(AppRoutes.multiplayer.toUrl());
+  const back = () => {
+    if (JSON.parse(`${props.multiplayer}`)) {
+      history.push(AppRoutes.multiplayer.toUrl());
+    } else {
+      history.push(AppRoutes.homePage.toUrl());
+    }
   };
 
   return (
@@ -65,12 +77,23 @@ const GameConfigurationPage: React.FC = () => {
         }}
       />
 
-      <InputText
-        label={multiLang.text(multiText.gameConfiguration.hostName)}
-        value={gameConfigurationStore.settings.hostName}
-        onChange={changeHostName}
-        style={{ marginRight: 20, marginTop: 10, width: 200 }}
-      />
+      {JSON.parse(`${props.multiplayer}`) && (
+        <>
+          <InputText
+            label={multiLang.text(multiText.gameConfiguration.hostName)}
+            value={gameConfigurationStore.settings.hostName}
+            onChange={changeHostName}
+            style={{ marginRight: 20, marginTop: 10, width: 200 }}
+          />
+
+          <InputText
+            label={multiLang.text(multiText.gameConfiguration.maxPlayersAmount)}
+            value={gameConfigurationStore.settings.maxPlayers}
+            onChange={changeMaxPlayers}
+            style={{ marginRight: 20, marginTop: 10, width: 200 }}
+          />
+        </>
+      )}
 
       <div className={styles.selectBlock}>
 
@@ -79,13 +102,6 @@ const GameConfigurationPage: React.FC = () => {
           options={gameConfigurationStore.optionsWorld}
           style={{ marginRight: 20, marginTop: 10, width: 200 }}
           onChange={changeWorld}
-        />
-
-        <InputText
-          label={multiLang.text(multiText.gameConfiguration.maxPlayersAmount)}
-          value={gameConfigurationStore.settings.maxPlayers}
-          onChange={changeMaxPlayers}
-          style={{ marginRight: 20, marginTop: 10, width: 200 }}
         />
 
         <SelectWithLabel
@@ -113,7 +129,7 @@ const GameConfigurationPage: React.FC = () => {
 
         <InputButton
           value={multiLang.text(multiText.gameConfiguration.back)}
-          onClick={onBack}
+          onClick={back}
           style={{ marginRight: 20, marginTop: 10, width: 200 }}
         />
       </div>

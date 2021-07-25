@@ -4,7 +4,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    command: npm run start
+    command: yarn run start
     restart: unless-stopped
     ports:
       - "5000:5000"
@@ -15,7 +15,7 @@ services:
     build: 
       context: ./websockets
       dockerfile: Dockerfile
-    command: npm run start
+    command: yarn run start
     ports:
       - "5001:5001"
       - "5002:5002"
@@ -25,7 +25,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    command: npm run start
+    command: yarn run start
     ports: 
       - "3000:3000"
   mongo:

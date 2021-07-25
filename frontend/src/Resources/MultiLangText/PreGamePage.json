@@ -4,9 +4,9 @@
             "en": "Ready",
             "ru": "Готов"
         },
-        "back": {
-            "en": "Back",
-            "ru": "Назад"
+        "toMainMenu": {
+            "en": "To main menu",
+            "ru": "Назад в меню"
         },
         "description": {
             "en": "Description",

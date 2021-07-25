@@ -84,7 +84,7 @@ const MultiPlayer: React.FC = () => {
       <div className={styles['action-block']}>
         <InputButton
           value={multiLang.text(multiText.multiplayerPage.createHost)}
-          onClick={() => history.push(AppRoutes.gameConfiguration.toUrl())}
+          onClick={() => history.push(AppRoutes.gameConfiguration.toUrl({ multiplayer: 'true' }))}
         />
         <InputButton
           value={multiLang.text(multiText.multiplayerPage.back)}
@@ -147,7 +147,9 @@ const MultiPlayer: React.FC = () => {
         ))}
       </div>
 
-      {/* Players watch(dev-test): {multiplayerStore.playersAvailable} */}
+      Players watch(dev-test):
+      {' '}
+      {multiplayerStore.playersAvailable}
     </div>
   );
 };

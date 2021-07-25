@@ -36,12 +36,13 @@ const AppRoutes = {
 
   multiplayer: new PageMeta<void>({
     path: '/multiplayer',
-    render: () => <MultiPlayerPage />,
+    render: () => <MultiPlayerPage/>,
   }),
 
-  gameConfiguration: new PageMeta<void>({
-    path: '/game-configuration',
-    render: () => <GameConfigurationPage />,
+  gameConfiguration: new PageMeta<{multiplayer: string}>({
+    renderParameters: (object) => ({ multiplayer: object.multiplayer }),
+    path: '/game-configuration/multiplayer=:multiplayer',
+    render: (props) => <GameConfigurationPage multiplayer={props.match.params.multiplayer} />,
   }),
 
   preGame: new PageMeta<{ hostId: string, port: string }>({

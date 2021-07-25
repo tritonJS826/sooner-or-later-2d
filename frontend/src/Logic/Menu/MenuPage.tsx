@@ -27,7 +27,7 @@ const Menu: React.FC = () => (
         text={multiLang.text(multiText.mainMenuPage.authorization)}
       />
       <ElementsMenu
-        to={AppRoutes.gameConfiguration.toUrl()}
+        to={AppRoutes.gameConfiguration.toUrl({ multiplayer: 'false' })}
         text={multiLang.text(multiText.mainMenuPage.singlePlayer)}
       />
       <ElementsMenu

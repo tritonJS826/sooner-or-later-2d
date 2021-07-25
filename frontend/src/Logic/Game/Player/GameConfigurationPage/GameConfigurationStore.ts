@@ -22,7 +22,7 @@ interface Settings {
 class GameConfigurationStore {
   @observable
   settings: Settings = {
-    hostName: '',
+    hostName: 'singlePlayer',
     maxPlayers: 2,
     worldId: '',
     level: 0,
@@ -90,20 +90,32 @@ class GameConfigurationStore {
   }
 
   @action.bound
-  async createGame(): Promise<CreateHostResponse> {
-    // host service works on ws:localhost:5002
-    const responseRaw = await fetch('http://localhost:5499/create-host', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(this.settings),
-    });
+  async createGame({ multiplayer }: {multiplayer: boolean}): Promise<CreateHostResponse> {
+    if (multiplayer) {
+      // host service works on ws:localhost:5002
+      const responseRaw = await fetch('http://localhost:5499/create-host', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(this.settings),
+      });
 
-    const response: CreateHostResponse = await responseRaw.json();
-    console.log(JSON.stringify(this.settings));
-    return response;
+      const response: CreateHostResponse = await responseRaw.json();
+      console.log(JSON.stringify(this.settings));
+      return response;
+    }
+    return {
+      host: {
+        hostName: 'test',
+        maxPlayers: 1,
+        worldId: this.settings.worldId,
+        level: this.settings.level,
+        difficulty: this.settings.difficulty,
+      },
+      port: 0,
+    };
   }
 }
 

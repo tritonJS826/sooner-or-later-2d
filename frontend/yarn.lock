@@ -1834,9 +1834,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "16.4.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.0.tgz#2c219eaa3b8d1e4d04f4dd6e40bc68c7467d5272"
-  integrity sha512-HrJuE7Mlqcjj+00JqMWpZ3tY8w7EUd+S0U3L1+PQSWiXZbOgyQDvi+ogoUxaHApPJq5diKxYBQwA3iIlNcPqOg==
+  version "16.4.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.1.tgz#9fad171a5b701613ee8a6f4ece3c88b1034b1b03"
+  integrity sha512-UW7cbLqf/Wu5XH2RKKY1cHwUNLicIDRLMraYKz+HHAerJ0ZffUEk+fMnd8qU2JaS6cAy0r8tsaf7yqHASf/Y0Q==
 
 "@types/node@^12.20.14":
   version "12.20.16"
@@ -3278,9 +3278,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001219:
-  version "1.0.30001246"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001246.tgz#fe17d9919f87124d6bb416ef7b325356d69dc76c"
-  integrity sha512-Tc+ff0Co/nFNbLOrziBXmMVtpt9S2c2Y+Z9Nk9Khj09J+0zR9ejvIW5qkZAErCbOrVODCx/MN+GpB5FNBs5GFA==
+  version "1.0.30001247"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001247.tgz#105be7a8fb30cdd303275e769a9dfb87d4b3577a"
+  integrity sha512-4rS7co+7+AoOSPRPOPUt5/GdaqZc0EsUpWk66ofE3HJTAajUK2Ss2VwoNzVN69ghg8lYYlh0an0Iy4LIHHo9UQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -4450,9 +4450,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.723:
-  version "1.3.782"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.782.tgz#522740fe6b4b5255ca754c68d9c406a17b0998e2"
-  integrity sha512-6AI2se1NqWA1SBf/tlD6tQD/6ZOt+yAhqmrTlh4XZw4/g0Mt3p6JhTQPZxRPxPZiOg0o7ss1EBP/CpYejfnoIA==
+  version "1.3.786"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.786.tgz#1fc572abc77e2f474725f8a61acf7e25ced9fbe2"
+  integrity sha512-AmvbLBj3hepRk8v/DHrFF8gINxOFfDbrn6Ts3PcK46/FBdQb5OMmpamSpZQXSkfi77FfBzYtQtAk+00LCLYMVw==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -4692,9 +4692,9 @@ eslint-module-utils@^2.6.1:
     pkg-dir "^2.0.0"
 
 eslint-plugin-flowtype@^5.2.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.8.0.tgz#35b55e4ce559b90efbe913ed33630e391e301481"
-  integrity sha512-feK1xnUTsMSNTOw9jFw7aVgZl7Ep+ghpta/YEoaV6jbXU6Yso30B7BIj9ObHLzZ5TFJL7D98az080wfykLCrcw==
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-5.8.1.tgz#6f2c313a6e9ec271a51315ccd09c2432b4d1930e"
+  integrity sha512-ADe4cYAn1UYVs1P1F9wKDNP2lbm3JtwbFykxJpO129utErjAhRZYQJCIKmhy6Rpx7Q9p8pc3gLVIFXtatXJriQ==
   dependencies:
     lodash "^4.17.15"
     string-natural-compare "^3.0.1"
@@ -4721,9 +4721,9 @@ eslint-plugin-import@^2.22.1, eslint-plugin-import@^2.23.4:
     tsconfig-paths "^3.9.0"
 
 eslint-plugin-jest@^24.1.0:
-  version "24.3.7"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.3.7.tgz#a4deaa9e88182b92533a9c25cc4f3c369d7f33eb"
-  integrity sha512-pXED2NA4q2M/5mxlN6GyuUXAFJndT0uosOkQCHaUED9pqgBPd89ZzpcZEU6c5HtZNahC00M36FkwLdDHMDqaHw==
+  version "24.4.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.4.0.tgz#fa4b614dbd46a98b652d830377971f097bda9262"
+  integrity sha512-8qnt/hgtZ94E9dA6viqfViKBfkJwFHXgJmTWlMGDgunw1XJEGqm3eiPjDsTanM3/u/3Az82nyQM9GX7PM/QGmg==
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
@@ -9772,9 +9772,9 @@ regenerator-runtime@^0.11.0:
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
-  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
+  version "0.13.9"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
+  integrity sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==
 
 regenerator-transform@^0.14.2:
   version "0.14.5"
@@ -10986,9 +10986,9 @@ tapable@^1.0.0, tapable@^1.1.3:
   integrity sha512-4WK/bYZmj8xLr+HUCODHGF1ZFzsYffasLUgEiMBY4fgtltdO6B4WJtlSbPaDTLpYTcGVwM2qLnFTICEcNxs3kA==
 
 tar@^6.0.2:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.0.tgz#d1724e9bcc04b977b18d5c573b333a2207229a83"
-  integrity sha512-DUCttfhsnLCjwoDoFcI+B2iJgYa93vBnDUATYEeRx6sntCTdN01VnqsIuTlALXla/LWooNg0yEGeB+Y8WdFxGA==
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.1.tgz#4d7da4b132b334bb8c175ed1de466fe9157ea0eb"
+  integrity sha512-GG0R7yt/CQkvG4fueXDi52Zskqxe2AyRJ+Wm54yqarnBgcX3qRIWh10qLVAAN+mlPFGTfP5UxvD3Fbi11UOTUQ==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"

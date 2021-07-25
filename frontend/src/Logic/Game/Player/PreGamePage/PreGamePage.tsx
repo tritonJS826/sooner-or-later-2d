@@ -45,8 +45,8 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
           onClick={preGameStore.setPlayerReady}
         />
         <InputButton
-          value={multiLang.text(multiText.preGamePage.back)}
-          onClick={() => history.push(AppRoutes.multiplayer.toUrl())}
+          value={multiLang.text(multiText.preGamePage.toMainMenu)}
+          onClick={() => history.push(AppRoutes.homePage.toUrl())}
         />
       </div>
 

@@ -3,16 +3,15 @@ Sooner or later
 
 Run all services in docker (temporary it is dev mode):
 
-*sudo docker-compose up*
-
-(sudo docker-compose up --build)
+*sudo docker-compose up --build --force-recreate*
 
 After that next services will be running:
 
 * rest api: localhost:5000
+* mongoDB: localhost:27017
 * websockets server: localhost:5002
+* hosts portst: localhost:5500-6000
 * frontend server: localhost:3000
-* mongoDB: localhost:localhost:2
 
 Stop all services:
 ------------------

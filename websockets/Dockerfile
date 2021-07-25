@@ -6,9 +6,11 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install
+RUN yarn install
 
-EXPOSE 5001 5002
+RUN yarn run build
 
-CMD ["yarn", "start"]
+EXPOSE 5001 5002 5500-5600
+
+CMD ["node", "./dist/app.js"]
 

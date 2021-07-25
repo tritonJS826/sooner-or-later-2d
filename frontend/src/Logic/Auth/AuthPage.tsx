@@ -40,13 +40,9 @@ const AuthPage: React.FC = () => {
           onChange={(e) => setPassword(e.currentTarget.value)}
         />
 
-        <ElementsMenu to="/" text={multiLang.text(multiText.authPage.signIn)} />
+        <ElementsMenu to="/" text={multiLang.text(multiText.authPage.signIn)} onClick={() => alert('not implemented')} />
 
-        <hr style={{ opacity: 0.3 }} />
-
-        <ElementsMenu to="/" text={multiLang.text(multiText.authPage.signUp)} />
-
-        <hr style={{ opacity: 0.3 }} />
+        <ElementsMenu to="/" text={multiLang.text(multiText.authPage.signUp)} onClick={() => alert('not implemented')} />
 
         <ElementsMenu to={AppRoutes.homePage.toUrl()} text={multiLang.text(multiText.authPage.backToMenu)} />
       </form>

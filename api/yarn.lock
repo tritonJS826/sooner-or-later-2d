@@ -154,9 +154,11 @@
   integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
 
 "@types/debug@^4.1.5":
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.6.tgz#0b7018723084918a865eff99249c490505df2163"
-  integrity sha512-7fDOJFA/x8B+sO1901BmHlf5dE1cxBU8mRXj8QOEDnn16hhGJv/IHxJtZhvsabZsIMn0eLIyeOKAeqSNJJYTpA==
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
+  integrity sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==
+  dependencies:
+    "@types/ms" "*"
 
 "@types/express-serve-static-core@^4.17.18":
   version "4.17.24"
@@ -207,10 +209,15 @@
     "@types/bson" "*"
     "@types/node" "*"
 
+"@types/ms@*":
+  version "0.7.31"
+  resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
+  integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
+
 "@types/node@*":
-  version "16.4.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.0.tgz#2c219eaa3b8d1e4d04f4dd6e40bc68c7467d5272"
-  integrity sha512-HrJuE7Mlqcjj+00JqMWpZ3tY8w7EUd+S0U3L1+PQSWiXZbOgyQDvi+ogoUxaHApPJq5diKxYBQwA3iIlNcPqOg==
+  version "16.4.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.1.tgz#9fad171a5b701613ee8a6f4ece3c88b1034b1b03"
+  integrity sha512-UW7cbLqf/Wu5XH2RKKY1cHwUNLicIDRLMraYKz+HHAerJ0ZffUEk+fMnd8qU2JaS6cAy0r8tsaf7yqHASf/Y0Q==
 
 "@types/node@14.x || 15.x":
   version "15.14.2"
@@ -1233,9 +1240,9 @@ etag@~1.8.1:
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
 express-validator@^6.9.2:
-  version "6.12.0"
-  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.12.0.tgz#a9cd49b3fe4c470abb615ae2e7dd111053c25f66"
-  integrity sha512-lcQAdVeAO+pBbHD33nIsDsd+QPakLX08tJ82iEsXj6ezyWCfYjE9RY/g9SVq5z4G0NaIkH8039Oe4r0G92DRyA==
+  version "6.12.1"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-6.12.1.tgz#2ff698ff6f9af436cb08913b5b26849e43f34031"
+  integrity sha512-olpTAv0ZB5IhNuDQ2rodKAuJsewgFgLIsczJMAWD6T0Yvxsa+j/Hk61jl8e26lAq+oJr6hUqPRjdlOBKhFlWeQ==
   dependencies:
     lodash "^4.17.21"
     validator "^13.5.2"
@@ -2346,9 +2353,11 @@ opencollective-postinstall@^2.0.3:
   integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
 
 optional-require@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/optional-require/-/optional-require-1.0.3.tgz#275b8e9df1dc6a17ad155369c2422a440f89cb07"
-  integrity sha512-RV2Zp2MY2aeYK5G+B/Sps8lW5NHAzE5QClbFP15j+PWmP+T9PxlJXBOOLoSAdgwFvS4t0aMR4vpedMkbHfh0nA==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/optional-require/-/optional-require-1.1.0.tgz#01dfbafbbc2e8d79e33558f5af3917f22cc35c2c"
+  integrity sha512-5/7ee3eTFg1P+F9usTubuNCLfWRK6DjV0EFHLlbp7MmV5UlWqpWIVSnH6xo4u+fc5WHXaJuvJi6iuYnfDyj6oQ==
+  dependencies:
+    require-at "^1.0.6"
 
 optionator@^0.9.1:
   version "0.9.1"
@@ -2608,6 +2617,11 @@ regexpp@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
+
+require-at@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/require-at/-/require-at-1.0.6.tgz#9eb7e3c5e00727f5a4744070a7f560d4de4f6e6a"
+  integrity sha512-7i1auJbMUrXEAZCOQ0VNJgmcT2VOKPRl2YGJwgpHpC9CE91Mv4/4UYIUm4chGJaI381ZDq1JUicFii64Hapd8g==
 
 require-directory@^2.1.1:
   version "2.1.1"
@@ -3019,9 +3033,9 @@ table@^6.0.9:
     strip-ansi "^6.0.0"
 
 tar@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.0.tgz#d1724e9bcc04b977b18d5c573b333a2207229a83"
-  integrity sha512-DUCttfhsnLCjwoDoFcI+B2iJgYa93vBnDUATYEeRx6sntCTdN01VnqsIuTlALXla/LWooNg0yEGeB+Y8WdFxGA==
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.1.tgz#4d7da4b132b334bb8c175ed1de466fe9157ea0eb"
+  integrity sha512-GG0R7yt/CQkvG4fueXDi52Zskqxe2AyRJ+Wm54yqarnBgcX3qRIWh10qLVAAN+mlPFGTfP5UxvD3Fbi11UOTUQ==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
