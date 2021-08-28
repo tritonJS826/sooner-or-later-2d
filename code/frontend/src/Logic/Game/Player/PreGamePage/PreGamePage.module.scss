@@ -1,0 +1,33 @@
+.wrapper {
+  padding-top: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 10%;
+}
+
+.action-block {
+  margin: 20px 0;
+  display: flex;
+  min-width: 80vw;  
+}
+
+.table {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow-x: auto;
+  & .table-row {
+    display: flex;
+    & .cell {
+      width: 140px;
+      overflow-x: auto;
+      text-align: center;
+      margin-bottom: 5px;
+      border-right: 1px solid rgb(172, 137, 126);
+      border-left: 1px solid rgb(172, 137, 126);
+    }
+  }
+}

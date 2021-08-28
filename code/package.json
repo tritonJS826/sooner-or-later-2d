@@ -1,0 +1,10 @@
+{
+  "name": "sol",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "api",
+    "frontend",
+    "websockets"
+  ]
+}
