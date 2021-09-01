@@ -1,6 +1,6 @@
 enum PlayerStatus {
-  "READY" = "ready",
-  "NOT_READY" = "not ready",
+  'READY' = 'ready',
+  'NOT_READY' = 'not ready',
 }
 
 export default PlayerStatus;

@@ -1,12 +1,10 @@
-import PageBorder from 'Logic/PageBorder/PageBorder';
+import NotFoundPage from 'Logic/Error/NotFoundPage';
 
 /*
  * Page about
  */
 const AboutPage: React.FC = () => (
-  <PageBorder>
-    About the game
-  </PageBorder>
+  <NotFoundPage />
 );
 
 export default AboutPage;
