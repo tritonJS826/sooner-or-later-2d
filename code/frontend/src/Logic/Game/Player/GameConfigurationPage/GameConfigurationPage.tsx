@@ -11,6 +11,7 @@ import multiText from 'Resources/MultiLangText/GameConfigurationPage.json';
 import { useHistory } from 'react-router';
 import AppRoutes from 'AppRoutes';
 import PageBorder from 'Logic/PageBorder/PageBorder';
+import Space from 'Components/Space/Space';
 
 interface GameConfigurationPageProps {
   /**
@@ -66,66 +67,81 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
   };
 
   return (
-    <PageBorder>
+    <PageBorder
+      backButton={{
+        text: multiLang.text(multiText.gameConfiguration.back),
+        onClick: back,
+      }}
+    >
       <div className={globalStyles['sol-navigation']}>
-        {JSON.parse(`${props.multiplayer}`) && (
-          <div className={styles.selectBlock}>
-            <InputText
-              label={multiLang.text(multiText.gameConfiguration.hostName)}
-              value={gameConfigurationStore.settings.hostName}
-              onChange={changeHostName}
-              style={{ width: 200 }}
-            />
+        <div className={globalStyles['sol-row']} style={{ marginBottom: 'auto' }}>
 
-            <InputText
-              label={multiLang.text(multiText.gameConfiguration.maxPlayersAmount)}
-              value={gameConfigurationStore.settings.maxPlayers}
-              onChange={changeMaxPlayers}
-              style={{ width: 200 }}
-            />
+          <div className={globalStyles['sol-column']}>
+            {JSON.parse(`${props.multiplayer}`) && (
+            <div className={styles.selectBlock}>
+              <InputText
+                label={multiLang.text(multiText.gameConfiguration.hostName)}
+                value={gameConfigurationStore.settings.hostName}
+                onChange={changeHostName}
+                style={{ width: 200 }}
+              />
 
-            <div style={{ width: 200 }} />
+              <Space vertical />
+
+              <InputText
+                label={multiLang.text(multiText.gameConfiguration.maxPlayersAmount)}
+                value={gameConfigurationStore.settings.maxPlayers}
+                onChange={changeMaxPlayers}
+                style={{ width: 200 }}
+              />
+
+              <Space vertical />
+            </div>
+            )}
+
+            <div className={styles.selectBlock}>
+              <SelectWithLabel
+                label={multiLang.text(multiText.gameConfiguration.world)}
+                options={gameConfigurationStore.optionsWorld}
+                style={{ width: 200 }}
+                onChange={changeWorld}
+              />
+
+              <Space vertical />
+
+              <SelectWithLabel
+                label={multiLang.text(multiText.gameConfiguration.level)}
+                options={gameConfigurationStore.optionsLevel}
+                defaultValue={gameConfigurationStore.settings.level}
+                style={{ width: 200 }}
+                onChange={changeLevel}
+              />
+
+              <Space vertical />
+
+              <SelectWithLabel
+                label={multiLang.text(multiText.gameConfiguration.difficulty)}
+                options={gameConfigurationStore.optionsWorldDifficulty}
+                style={{ width: 200 }}
+                onChange={changeDifficulty}
+              />
+            </div>
+
           </div>
-        )}
 
-        <div className={styles.selectBlock}>
-          <SelectWithLabel
-            label={multiLang.text(multiText.gameConfiguration.world)}
-            options={gameConfigurationStore.optionsWorld}
-            style={{ width: 200 }}
-            onChange={changeWorld}
-          />
+          <Space horizontal />
 
-          <SelectWithLabel
-            label={multiLang.text(multiText.gameConfiguration.level)}
-            options={gameConfigurationStore.optionsLevel}
-            defaultValue={gameConfigurationStore.settings.level}
-            style={{ width: 200 }}
-            onChange={changeLevel}
-          />
+          <div className={globalStyles['sol-column']} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ width: 'auto', maxWidth: 300, margin: 'auto' }}>
+              {gameConfigurationStore.currentWorldDescription}
+            </div>
 
-          <SelectWithLabel
-            label={multiLang.text(multiText.gameConfiguration.difficulty)}
-            options={gameConfigurationStore.optionsWorldDifficulty}
-            style={{ width: 200 }}
-            onChange={changeDifficulty}
-          />
-        </div>
-
-        <div className={styles.buttonsBlock}>
-          <InputButton
-            value={multiLang.text(multiText.gameConfiguration.apply)}
-            onClick={createGame}
-            style={{ width: 200 }}
-          />
-
-          <InputButton
-            value={multiLang.text(multiText.gameConfiguration.back)}
-            onClick={back}
-            style={{ width: 200 }}
-          />
-
-          <div style={{width: 200}}></div>
+            <InputButton
+              value={multiLang.text(multiText.gameConfiguration.apply)}
+              onClick={createGame}
+              style={{ width: 200 }}
+            />
+          </div>
         </div>
       </div>
     </PageBorder>

@@ -7,7 +7,7 @@ export interface SelectOption {
      * We see the data in ui
      */
     data: string;
-    
+
     /**
      * Hidden data's id
      */
@@ -24,7 +24,7 @@ const SelectWithLabel: React.FC<SelectWithPageProps> = (props: SelectWithPagePro
 
   return (
     <div className={styles.select}>
-      <label htmlFor={selectId}>{props.label}</label>
+      <label htmlFor={selectId} className={styles.label}>{props.label}</label>
       <select id={selectId} className={styles['custom-select']} style={{ width: 200 }} {...props}>
         {props.options.map((option) => (
           <option

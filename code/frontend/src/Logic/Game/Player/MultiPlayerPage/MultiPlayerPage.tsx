@@ -13,6 +13,7 @@ import AppRoutes from 'AppRoutes';
 import Difficulty from 'Model/Difficulty';
 import { Link } from 'react-router-dom';
 import PageBorder from 'Logic/PageBorder/PageBorder';
+import Space from 'Components/Space/Space';
 
 /*
  * MultiPlayer page
@@ -70,50 +71,55 @@ const MultiPlayer: React.FC = () => {
   };
 
   return (
-    <PageBorder>
+    <PageBorder
+      backButton={{
+        text: multiLang.text(multiText.multiplayerPage.back),
+        onClick: () => history.push(AppRoutes.homePage.toUrl()),
+      }}
+    >
       <div className={globalStyles['sol-navigation']}>
-        <div className={styles['action-block']}>
-          <InputButton
-            value={multiLang.text(multiText.multiplayerPage.createHost)}
-            onClick={() => history.push(AppRoutes.gameConfiguration.toUrl({ multiplayer: 'true' }))}
-          />
-          <InputButton
-            value={multiLang.text(multiText.multiplayerPage.back)}
-            onClick={() => history.push(AppRoutes.homePage.toUrl())}
-          />
+        <div className={globalStyles['sol-row']}>
+          <div className={styles.filter}>
+            <InputText
+              value={multiplayerStore.filter.id}
+              label={multiLang.text(multiText.multiplayerPage.filter.id)}
+              style={{ width: 200 }}
+              onChange={onChangeId}
+            />
+
+            <Space horizontal />
+
+            <InputText
+              value={multiplayerStore.filter.world}
+              label={multiLang.text(multiText.multiplayerPage.filter.world)}
+              style={{ width: 200 }}
+              onChange={onChangeWorld}
+            />
+
+            <Space horizontal />
+
+            <InputText
+              value={multiplayerStore.filter.hostName}
+              label={multiLang.text(multiText.multiplayerPage.filter.hostName)}
+              style={{ width: 200 }}
+              onChange={onChangeHostName}
+            />
+
+            <Space horizontal />
+
+            <SelectWithLabel
+              style={{ width: 200 }}
+              label={multiLang.text(multiText.multiplayerPage.filter.difficulty)}
+              options={testOptions}
+              onChange={onChangeDifficulty}
+            />
+          </div>
+
         </div>
 
-        <div className={styles.filter}>
-          <InputText
-            value={multiplayerStore.filter.id}
-            label={multiLang.text(multiText.multiplayerPage.filter.id)}
-            style={{ marginRight: 20, marginTop: 10, width: 200 }}
-            onChange={onChangeId}
-          />
+        <Space vertical />
 
-          <InputText
-            value={multiplayerStore.filter.world}
-            label={multiLang.text(multiText.multiplayerPage.filter.world)}
-            style={{ marginRight: 20, marginTop: 10, width: 200 }}
-            onChange={onChangeWorld}
-          />
-
-          <InputText
-            value={multiplayerStore.filter.hostName}
-            label={multiLang.text(multiText.multiplayerPage.filter.hostName)}
-            style={{ marginRight: 20, marginTop: 10, width: 200 }}
-            onChange={onChangeHostName}
-          />
-
-          <SelectWithLabel
-            style={{ marginRight: 20, marginTop: 10, width: 200 }}
-            label={multiLang.text(multiText.multiplayerPage.filter.difficulty)}
-            options={testOptions}
-            onChange={onChangeDifficulty}
-          />
-        </div>
-
-        <div className={styles.table}>
+        <div className={styles.table}  style={{ marginBottom: 'auto' }}>
           <div className={styles['table-row']}>
             <div className={styles.cell}>{multiLang.text(multiText.multiplayerPage.filter.id)}</div>
             <div className={styles.cell}>{multiLang.text(multiText.multiplayerPage.filter.world)}</div>
@@ -129,13 +135,22 @@ const MultiPlayer: React.FC = () => {
               <div className={styles.cell}>{rowData.hostName}</div>
               <div className={styles.cell}>{rowData.difficulty}</div>
               <div className={styles.cell}>
-                <Link to={AppRoutes.preGame.toUrl({ hostId: 'test', port: 'test' })}>
+                <Link className={styles.link} to={AppRoutes.preGame.toUrl({ hostId: 'test', port: 'test' })}>
                   {multiLang.text(multiText.multiplayerPage.join)}
                 </Link>
               </div>
 
             </div>
           ))}
+
+          <Space vertical />
+
+          <div className={styles['action-block']}>
+            <InputButton
+              value={multiLang.text(multiText.multiplayerPage.createHost)}
+              onClick={() => history.push(AppRoutes.gameConfiguration.toUrl({ multiplayer: 'true' }))}
+            />
+          </div>
         </div>
 
         Players watch(dev-test):

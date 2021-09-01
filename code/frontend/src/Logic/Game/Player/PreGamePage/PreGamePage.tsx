@@ -10,6 +10,7 @@ import { observer, useLocalObservable } from 'mobx-react';
 import PreGameStore from 'Logic/Game/Player/PreGamePage/PreGameStore';
 import PlayerStatus from 'Model/PlayerStatus';
 import PageBorder from 'Logic/PageBorder/PageBorder';
+import Space from 'Components/Space/Space';
 
 interface PreGameProps {
   hostId: string | undefined;
@@ -28,37 +29,13 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   }, []);
 
   return (
-    <PageBorder>
+    <PageBorder
+      backButton={{
+        text: multiLang.text(multiText.preGamePage.toMainMenu),
+        onClick: () => history.push(AppRoutes.homePage.toUrl()),
+      }}
+    >
       <div className={globalStyles['sol-navigation']}>
-        <div className={styles['action-block']}>
-          <InputButton
-            value={multiLang.text(multiText.preGamePage.ready)}
-            onClick={preGameStore.setPlayerReady}
-          />
-          <InputButton
-            value={multiLang.text(multiText.preGamePage.toMainMenu)}
-            onClick={() => history.push(AppRoutes.homePage.toUrl())}
-          />
-        </div>
-
-        <h3>{multiLang.text(multiText.preGamePage.players)}</h3>
-        <div className={styles.table}>
-          <div className={styles['table-row']}>
-            <div className={styles.cell}>{multiLang.text(multiText.preGamePage.table.playerName)}</div>
-            <div className={styles.cell}>{multiLang.text(multiText.preGamePage.table.status)}</div>
-          </div>
-
-          {preGameStore.players.map((player) => (
-            <div className={styles['table-row']} key={player.id}>
-              <div className={styles.cell}>{player.name}</div>
-              <div className={styles.cell}>
-                {player.status === PlayerStatus.READY
-                  ? multiLang.text(multiText.preGamePage.table.ready)
-                  : multiLang.text(multiText.preGamePage.table.notReady)}
-              </div>
-            </div>
-          ))}
-        </div>
 
         <h3>{multiLang.text(multiText.preGamePage.description)}</h3>
         <div className={styles.table}>
@@ -86,6 +63,33 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
             <div className={styles.cell}>{multiLang.text(multiText.preGamePage.descriptionTable.playersAmount)}</div>
             <div className={styles.cell}>{preGameStore.hostDescription.playersAmount}</div>
           </div>
+
+          <Space vertical />
+          <div className={styles['action-block']}>
+            <InputButton
+              value={multiLang.text(multiText.preGamePage.ready)}
+              onClick={preGameStore.setPlayerReady}
+            />
+          </div>
+        </div>
+
+        <h3>{multiLang.text(multiText.preGamePage.players)}</h3>
+        <div className={styles.table} style={{ marginBottom: 'auto' }}>
+          <div className={styles['table-row']}>
+            <div className={styles.cell}>{multiLang.text(multiText.preGamePage.table.playerName)}</div>
+            <div className={styles.cell}>{multiLang.text(multiText.preGamePage.table.status)}</div>
+          </div>
+
+          {preGameStore.players.map((player) => (
+            <div className={styles['table-row']} key={player.id}>
+              <div className={styles.cell}>{player.name}</div>
+              <div className={styles.cell}>
+                {player.status === PlayerStatus.READY
+                  ? multiLang.text(multiText.preGamePage.table.ready)
+                  : multiLang.text(multiText.preGamePage.table.notReady)}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </PageBorder>

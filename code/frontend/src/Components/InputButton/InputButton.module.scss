@@ -1,18 +1,18 @@
-.input-text{
-    display:inline-block;
-    padding:5px 15px;
-    border:2px solid #FFFFFF;
-    margin:0 10px 0 0;
-    border-radius:1px;
-    background: none;
-    color:#FFFFFF;
-    text-align:center;
-    height: fit-content;
-    transition: all 0.2s;
-    margin: 4px;
-    &:hover{
-       color:#000000;
-       background-color:#FFFFFF;
-       cursor: pointer;
-     }
-    }
+.input-text {
+  display: inline-block;
+  padding: 15px 15px;
+  border: 2px solid #ffffff;
+  margin: 0 10px 0 0;
+  border-radius: 10px;
+  background: none;
+  color: #ffffff;
+  text-align: center;
+  height: fit-content;
+  transition: all 0.2s;
+  margin: 4px;
+  &:hover {
+    color: #000000;
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+}

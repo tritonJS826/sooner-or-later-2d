@@ -8,26 +8,27 @@
 }
 
 .action-block {
-  margin: 20px 0;
   display: flex;
-  min-width: 80vw;  
+  justify-content: flex-end;
+  width: 100%;  
 }
 
 .table {
-  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   overflow-x: auto;
+  opacity: 0.9;
   & .table-row {
-    display: flex;
+  display: flex;
+  border-bottom: 2px solid white; 
     & .cell {
+      display: flex;
+      align-items: center;
+      justify-content: start;
       width: 140px;
       overflow-x: auto;
-      text-align: center;
-      margin-bottom: 5px;
-      border-right: 1px solid rgb(172, 137, 126);
-      border-left: 1px solid rgb(172, 137, 126);
+      margin: 5px;
     }
   }
 }

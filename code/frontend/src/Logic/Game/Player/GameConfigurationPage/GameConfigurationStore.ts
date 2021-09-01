@@ -9,6 +9,7 @@ interface World {
   levelsAmount: number;
   name: string;
   maxDifficulty: number;
+  description: string;
 }
 
 interface Settings {
@@ -39,6 +40,11 @@ class GameConfigurationStore {
   @action.bound
   setSettings(settings: Settings) {
     this.settings = settings;
+  }
+
+  @computed
+  get currentWorldDescription(): string {
+    return this.worlds.find((world) => world.id === this.settings.worldId)!?.description;
   }
 
   @computed
@@ -121,18 +127,26 @@ class GameConfigurationStore {
 
 export default GameConfigurationStore;
 
-const worldsStub = [
+const worldsStub: World[] = [
   {
     id: '1',
     levelsAmount: 42,
     name: 'touchTyping',
     maxDifficulty: 5,
+    description: `la lalala lalal lalal lalal lallllal lalal al lallallal lal lal lal lallal lal lala lal lallalal la lal la l
+    
+    
+    la lalala lalal lalal lalal lallllal lalal al lallallal lal lal lal lallal lal lala lal lallalal la lal la l
+    la lalala lalal lalal lalal lallllal lalal al lallallal lal lal lal lallal lal lala lal lallalal la lal la l`,
   },
   {
     id: '2',
     levelsAmount: 6,
     name: 'algebra',
     maxDifficulty: 10,
+    description: `be bebebe bebel bebel bebel belllbel bebel al belbelbel bel bel bel belbel bel bebe bel belbebel be bel be l
+    be bebebe bebel bebel bebel belllbel bebel al belbelbel bel bel bel belbel bel bebe bel belbebel be bel be l
+    be bebebe bebel bebel bebel belllbel bebel al belbelbel bel bel bel belbel bel bebe bel belbebel be bel be l`,
   },
 ];
 

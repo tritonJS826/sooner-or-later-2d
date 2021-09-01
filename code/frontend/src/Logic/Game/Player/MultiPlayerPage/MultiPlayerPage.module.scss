@@ -1,35 +1,37 @@
 .action-block {
-  margin: 20px 0;
   display: flex;
-  width: 80vw;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .filter {
   display: flex;
   flex-wrap: wrap;
   color: white;
-  width: 80vw;
 }
 
 .table {
-  margin-bottom: auto;
   display: flex;
   flex-direction: column;
-  min-width: 80vw;
-  max-width: 80vw;
-  color: white;
+  justify-content: start;
   overflow-x: auto;
+  opacity: 0.9;
   & .table-row {
-    display:flex;
+  display: flex;
+  border-bottom: 2px solid white; 
     & .cell {
-      min-width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: start;
       width: 140px;
-      max-width: 140px;
       overflow-x: auto;
-      text-align: center;
-      margin-bottom: 5px;
-      border-right: 1px solid rgb(172, 137, 126);
-      border-left: 1px solid rgb(172, 137, 126);
+      margin: 5px;
     }
   }
+}
+
+.link {
+  color: rgb(172, 137, 126);
+  padding: 5px;
+  text-decoration: none;
 }
