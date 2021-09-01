@@ -1,7 +1,24 @@
 .wrapper {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  & .appear-from-dark {
+    z-index: -50;
+    position: fixed;
+    height: 100%;
+    animation: appear-from-dark-anim 1s forwards;
   }
+}
+
+@keyframes appear-from-dark-anim {
+  from {
+    background-position-x: 0;
+    opacity: 0;
+  }
+  to {
+    background-position-x: -26394px;
+    opacity: 1;
+  }
+}
