@@ -1,5 +1,5 @@
 import Image from 'Components/Image/Image';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import BloodMoon from 'Resources/bloodBack.jpg';
 import BloodMoon0 from 'Resources/bloodBack0.jpg';
 import BloodMoon1 from 'Resources/bloodBack1+.jpg';
@@ -28,33 +28,33 @@ interface PageBorderProps {
     }
 }
 
-const PageBorder: React.FC<PropsWithChildren<PageBorderProps>> = (props: PropsWithChildren<PageBorderProps>) => {
-  const images = [
-    BloodMoon,
-    BloodMoon0,
-    BloodMoon1,
-    BloodMoon2,
-    BloodMoon3,
-    BloodMoon12,
-    BloodMoon5,
-    BloodMoon6,
-    BloodMoon7,
-    BloodMoon8,
-    BloodMoon9,
-    BloodMoon10,
-    BloodMoon11,
-    BloodMoon13,
-    BloodMoon14,
-    BloodMoon15,
-  ];
+const images = [
+  BloodMoon,
+  BloodMoon0,
+  BloodMoon1,
+  BloodMoon2,
+  BloodMoon3,
+  BloodMoon12,
+  BloodMoon5,
+  BloodMoon6,
+  BloodMoon7,
+  BloodMoon8,
+  BloodMoon9,
+  BloodMoon10,
+  BloodMoon11,
+  BloodMoon13,
+  BloodMoon14,
+  BloodMoon15,
+];
 
+const PageBorder: React.FC<PropsWithChildren<PageBorderProps>> = (props: PropsWithChildren<PageBorderProps>) => {
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
 
     return images[randomIndex];
   };
 
-  const getImageStyles = () => {
+  const getImageRandomStyle = () => {
     const variants = [
       { right: 0 },
       { left: 0 },
@@ -71,12 +71,19 @@ const PageBorder: React.FC<PropsWithChildren<PageBorderProps>> = (props: PropsWi
     return variants[randomIndex];
   };
 
+  const [imageStyle, setImageStyle] = useState(getImageRandomStyle());
+  const [image, setImage] = useState(getRandomImage());
+  useEffect(() => {
+    setImage(getRandomImage());
+    setImageStyle(getImageRandomStyle());
+  }, []);
+
   return (
     <>
       <Image
-        src={getRandomImage()}
+        src={image}
         className={styles['appear-from-dark']}
-        style={getImageStyles()}
+        style={imageStyle}
       />
       <div className={styles.wrapper}>
         <header className={globalStyles['sol-header']}>
