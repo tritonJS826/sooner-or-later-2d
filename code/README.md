@@ -7,8 +7,8 @@ Run all services in docker (temporary it is dev mode):
 
 After that next services will be running:
 
-* rest api: localhost:5000
-* mongoDB: localhost:27017
+* rest staticDataServer: localhost:5000
+* mongoDB: localhost:27017 (absent)
 * websockets server: localhost:5002
 * hosts portst: localhost:5500-6000
 * frontend server: localhost:3000

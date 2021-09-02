@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { observer, useLocalStore } from 'mobx-react';
+import React, { useEffect, useState } from 'react';
+import { observer, useLocalObservable } from 'mobx-react';
 import styles from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationPage.module.scss';
 import globalStyles from 'index.module.scss';
 import GameConfigurationStore from 'Logic/Game/Player/GameConfigurationPage/GameConfigurationStore';
@@ -12,6 +12,22 @@ import { useHistory } from 'react-router';
 import AppRoutes from 'AppRoutes';
 import PageBorder from 'Logic/PageBorder/PageBorder';
 import Space from 'Components/Space/Space';
+import { gql, useQuery } from '@apollo/client';
+
+const GET_WORLDS = gql`
+  query GetWorlds {
+    worlds {
+      id
+      name
+      description
+      levels {
+        id
+        title
+        description
+      }
+    }
+  }
+`;
 
 interface GameConfigurationPageProps {
   /**
@@ -24,12 +40,18 @@ interface GameConfigurationPageProps {
  * GameConfigurationPage page
  */
 const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: GameConfigurationPageProps) => {
-  const gameConfigurationStore = useLocalStore(() => new GameConfigurationStore());
+  const { loading, error, data } = useQuery(GET_WORLDS);
+  const [init, setInit] = useState(false);
+
+  const gameConfigurationStore = useLocalObservable(() => new GameConfigurationStore());
   const history = useHistory();
 
   useEffect(() => {
-    gameConfigurationStore.loadData();
-  }, []);
+    if (!loading) {
+      gameConfigurationStore.loadData(data.worlds);
+      setInit(true);
+    }
+  }, [loading]);
 
   const changeHostName = (e: React.FormEvent<HTMLInputElement>) => {
     gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, hostName: e.currentTarget.value });
@@ -43,19 +65,18 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
   };
 
   const changeWorld = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, worldId: e.currentTarget.value });
+    gameConfigurationStore.setSettings({
+
+      currentWorldId: e.currentTarget.value,
+    });
   };
 
   const changeMaxPlayers = (e: React.FormEvent<HTMLInputElement>) => {
-    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, maxPlayers: Number(e.currentTarget.value) });
+    gameConfigurationStore.setSettings({ maxPlayers: Number(e.currentTarget.value) });
   };
 
   const changeLevel = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, level: Number(e.currentTarget.value) });
-  };
-
-  const changeDifficulty = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    gameConfigurationStore.setSettings({ ...gameConfigurationStore.settings, difficulty: Number(e.currentTarget.value) });
+    gameConfigurationStore.setSettings({ currentLevelId: e.currentTarget.value });
   };
 
   const back = () => {
@@ -65,6 +86,8 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
       history.push(AppRoutes.homePage.toUrl());
     }
   };
+
+  if (loading || !init) return <>Loading...</>;
 
   return (
     <PageBorder
@@ -112,18 +135,9 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
               <SelectWithLabel
                 label={multiLang.text(multiText.gameConfiguration.level)}
                 options={gameConfigurationStore.optionsLevel}
-                defaultValue={gameConfigurationStore.settings.level}
+                defaultValue={gameConfigurationStore.settings.currentLevelId}
                 style={{ width: 200 }}
                 onChange={changeLevel}
-              />
-
-              <Space vertical />
-
-              <SelectWithLabel
-                label={multiLang.text(multiText.gameConfiguration.difficulty)}
-                options={gameConfigurationStore.optionsWorldDifficulty}
-                style={{ width: 200 }}
-                onChange={changeDifficulty}
               />
             </div>
 
@@ -132,9 +146,18 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
           <Space horizontal />
 
           <div className={globalStyles['sol-column']} style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ width: 'auto', maxWidth: 300, margin: 'auto' }}>
-              {gameConfigurationStore.currentWorldDescription}
+
+            <div style={{ width: 'auto', maxWidth: 300 }}>
+              {gameConfigurationStore.currentWorld.description}
             </div>
+
+            <Space vertical />
+
+            <div style={{ width: 'auto', maxWidth: 300 }}>
+              {gameConfigurationStore.currentLevel?.description}
+            </div>
+
+            <Space vertical />
 
             <InputButton
               value={multiLang.text(multiText.gameConfiguration.apply)}

@@ -2,22 +2,25 @@ import { SelectOption } from 'Components/SelectWithLabel/SelectWithLabel';
 import {
   action, computed, makeObservable, observable,
 } from 'mobx';
-// import { Difficulty } from 'Model/Difficulty';
 
 interface World {
   id: string;
-  levelsAmount: number;
+  levels: Level[];
   name: string;
-  maxDifficulty: number;
   description: string;
+}
+
+interface Level {
+  id: string
+  title: string
+  description: string
 }
 
 interface Settings {
   hostName: string;
   maxPlayers: number;
-  worldId: string;
-  level: number;
-  difficulty: number;
+  currentWorldId: string;
+  currentLevelId: string;
 }
 
 class GameConfigurationStore {
@@ -25,9 +28,8 @@ class GameConfigurationStore {
   settings: Settings = {
     hostName: 'singlePlayer',
     maxPlayers: 2,
-    worldId: '',
-    level: 0,
-    difficulty: 0,
+    currentWorldId: '0',
+    currentLevelId: '0',
   };
 
   @observable
@@ -38,13 +40,11 @@ class GameConfigurationStore {
   }
 
   @action.bound
-  setSettings(settings: Settings) {
-    this.settings = settings;
-  }
-
-  @computed
-  get currentWorldDescription(): string {
-    return this.worlds.find((world) => world.id === this.settings.worldId)!?.description;
+  setSettings(settings: Partial<Settings>) {
+    this.settings = {
+      ...this.settings,
+      ...settings,
+    };
   }
 
   @computed
@@ -57,42 +57,35 @@ class GameConfigurationStore {
   }
 
   @computed
-  get optionsLevel(): SelectOption[] {
-    const currentWorld = this.worlds.find(
-      (world) => world.id === this.settings.worldId,
-    );
-
-    const levelsAmount = currentWorld?.levelsAmount ?? 0;
-
-    return new Array(levelsAmount).fill(null).map((level, index) => ({
-      key: String(index),
-      data: String(index),
-      value: String(index),
-    }));
+  get currentWorld() {
+    return this.worlds.find((world) => world.id === this.settings.currentWorldId)!;
   }
 
   @computed
-  get optionsWorldDifficulty(): SelectOption[] {
+  get currentLevel() {
+    return this.currentWorld?.levels
+      .find((level) => level.id === this.settings.currentLevelId);
+  }
+
+  @computed
+  get optionsLevel(): SelectOption[] {
     const currentWorld = this.worlds.find(
-      (world) => world.id === this.settings.worldId,
+      (world) => world.id === this.settings.currentWorldId,
     );
 
-    const difficulties = currentWorld?.maxDifficulty ?? 0;
+    const levels = currentWorld?.levels ?? [];
 
-    return new Array(difficulties).fill(null).map((difficulty, index) => ({
-      key: String(index),
-      data: String(index),
-      value: String(index),
+    return levels.map((level) => ({
+      key: level.id,
+      data: level.title,
+      value: level.id,
     }));
   }
 
   @action.bound
-  async loadData() {
-    // connect to wsserver
-    // get data about worlds and levels and difficulties
-
-    this.worlds = worldsStub;
-    this.setSettings({ ...this.settings, worldId: this.worlds[0].id });
+  loadData(worlds: World[]) {
+    this.worlds = worlds;
+    this.setSettings({ ...this.settings, currentWorldId: worlds[0].id, currentLevelId: worlds[0].levels[0].id });
   }
 
   @action.bound
@@ -109,16 +102,14 @@ class GameConfigurationStore {
       });
 
       const response: CreateHostResponse = await responseRaw.json();
-      console.log(JSON.stringify(this.settings));
       return response;
     }
     return {
       host: {
         hostName: 'test',
         maxPlayers: 1,
-        worldId: this.settings.worldId,
-        level: this.settings.level,
-        difficulty: this.settings.difficulty,
+        worldId: this.settings.currentWorldId,
+        levelId: this.settings.currentLevelId,
       },
       port: 0,
     };
@@ -127,36 +118,12 @@ class GameConfigurationStore {
 
 export default GameConfigurationStore;
 
-const worldsStub: World[] = [
-  {
-    id: '1',
-    levelsAmount: 42,
-    name: 'touchTyping',
-    maxDifficulty: 5,
-    description: `la lalala lalal lalal lalal lallllal lalal al lallallal lal lal lal lallal lal lala lal lallalal la lal la l
-    
-    
-    la lalala lalal lalal lalal lallllal lalal al lallallal lal lal lal lallal lal lala lal lallalal la lal la l
-    la lalala lalal lalal lalal lallllal lalal al lallallal lal lal lal lallal lal lala lal lallalal la lal la l`,
-  },
-  {
-    id: '2',
-    levelsAmount: 6,
-    name: 'algebra',
-    maxDifficulty: 10,
-    description: `be bebebe bebel bebel bebel belllbel bebel al belbelbel bel bel bel belbel bel bebe bel belbebel be bel be l
-    be bebebe bebel bebel bebel belllbel bebel al belbelbel bel bel bel belbel bel bebe bel belbebel be bel be l
-    be bebebe bebel bebel bebel belllbel bebel al belbelbel bel bel bel belbel bel bebe bel belbebel be bel be l`,
-  },
-];
-
 export interface CreateHostResponse {
   host: {
     hostName: string;
     maxPlayers: number;
     worldId: string;
-    level: number;
-    difficulty: number;
+    levelId: string;
   };
   port: number;
 }
