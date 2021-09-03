@@ -1,15 +1,15 @@
 version: "3.3"
 services:
-  # api:
-  #   build:
-  #     context: ./api
-  #     dockerfile: Dockerfile
-  #   command: yarn run start
-  #   restart: unless-stopped
-  #   ports:
-  #     - "5000:5000"
-  #   networks:
-  #     - app-network
+  staticdataserver:
+    build:
+      context: ./staticDataServer
+      dockerfile: Dockerfile
+    command: yarn run start
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
 
   websockets:
     build:
