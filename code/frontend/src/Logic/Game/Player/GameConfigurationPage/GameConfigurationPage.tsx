@@ -40,7 +40,7 @@ interface GameConfigurationPageProps {
  * GameConfigurationPage page
  */
 const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: GameConfigurationPageProps) => {
-  const { loading, error, data } = useQuery(GET_WORLDS);
+  const { loading, data } = useQuery(GET_WORLDS);
   const [init, setInit] = useState(false);
 
   const gameConfigurationStore = useLocalObservable(() => new GameConfigurationStore());
@@ -58,17 +58,17 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
   };
 
   const createGame = async () => {
-    const gameSettings = await gameConfigurationStore.createGame({ multiplayer: !!JSON.parse(`${props.multiplayer}`) });
-    const hostId = gameSettings.host.hostName;
-    const port = String(gameSettings.port);
+    // const gameSettings = await gameConfigurationStore.createGame({ multiplayer: !!JSON.parse(`${props.multiplayer}`) });
+    // const hostId = gameSettings.host.hostName;
+    // const port = String(gameSettings.port);
+    // stub
+    const hostId = 'test';
+    const port = 'test';
     history.push(AppRoutes.preGame.toUrl({ hostId, port }));
   };
 
   const changeWorld = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    gameConfigurationStore.setSettings({
-
-      currentWorldId: e.currentTarget.value,
-    });
+    gameConfigurationStore.setCurrentWorldId(e.currentTarget.value);
   };
 
   const changeMaxPlayers = (e: React.FormEvent<HTMLInputElement>) => {
@@ -76,7 +76,7 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
   };
 
   const changeLevel = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    gameConfigurationStore.setSettings({ currentLevelId: e.currentTarget.value });
+    gameConfigurationStore.setCurrentLevelId(e.currentTarget.value);
   };
 
   const back = () => {

@@ -48,6 +48,19 @@ class GameConfigurationStore {
   }
 
   @computed
+  get currentWorld() {
+    const currentWorld = this.worlds.find((world) => world.id === this.settings.currentWorldId)!;
+
+    this.setCurrentLevelId(currentWorld.levels[0].id);
+    return currentWorld;
+  }
+
+  @action.bound
+  setCurrentWorldId(id: string) {
+    this.settings.currentWorldId = id;
+  }
+
+  @computed
   get optionsWorld(): SelectOption[] {
     return this.worlds.map((world) => ({
       key: world.id,
@@ -57,23 +70,19 @@ class GameConfigurationStore {
   }
 
   @computed
-  get currentWorld() {
-    return this.worlds.find((world) => world.id === this.settings.currentWorldId)!;
-  }
-
-  @computed
   get currentLevel() {
     return this.currentWorld?.levels
       .find((level) => level.id === this.settings.currentLevelId);
   }
 
+  @action.bound
+  setCurrentLevelId(id: string) {
+    this.settings.currentLevelId = id;
+  }
+
   @computed
   get optionsLevel(): SelectOption[] {
-    const currentWorld = this.worlds.find(
-      (world) => world.id === this.settings.currentWorldId,
-    );
-
-    const levels = currentWorld?.levels ?? [];
+    const levels = this.currentWorld?.levels ?? [];
 
     return levels.map((level) => ({
       key: level.id,
@@ -88,32 +97,35 @@ class GameConfigurationStore {
     this.setSettings({ ...this.settings, currentWorldId: worlds[0].id, currentLevelId: worlds[0].levels[0].id });
   }
 
-  @action.bound
-  async createGame({ multiplayer }: {multiplayer: boolean}): Promise<CreateHostResponse> {
-    if (multiplayer) {
-      // host service works on ws:localhost:5002
-      const responseRaw = await fetch('http://localhost:5499/create-host', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(this.settings),
-      });
-
-      const response: CreateHostResponse = await responseRaw.json();
-      return response;
-    }
-    return {
-      host: {
-        hostName: 'test',
-        maxPlayers: 1,
-        worldId: this.settings.currentWorldId,
-        levelId: this.settings.currentLevelId,
-      },
-      port: 0,
-    };
+  // GWSS request instead of WSS (deprecated)
+  // @action.bound
+  async createGame(): Promise<void> {
+    console.log(this.settings);
   }
+  // async createGame({ multiplayer }: {multiplayer: boolean}): Promise<CreateHostResponse> {
+  //   if (multiplayer) {
+  //     // host service works on ws:localhost:5002
+  //     const responseRaw = await fetch('http://localhost:5499/create-host', {
+  //       method: 'POST',
+  //       mode: 'cors',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(this.settings),
+  //     });
+
+  //     const response: CreateHostResponse = await responseRaw.json();
+  //     return response;
+  //   }
+  //   return {
+  //     host: {
+  //       hostName: 'test',
+  //       maxPlayers: 1,
+  //       worldId: this.settings.currentWorldId,
+  //       levelId: this.settings.currentLevelId,
+  //     },
+  //     port: 0,
+  //   };
 }
 
 export default GameConfigurationStore;

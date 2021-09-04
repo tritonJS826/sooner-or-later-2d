@@ -6,4 +6,4 @@ players can share messages via this service
 yarn run build 
 
 ### dev mode  
-yarn run serve
+yarn run start 

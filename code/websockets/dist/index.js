@@ -10,7 +10,6 @@ const HostsService_1 = require("./HostsService");
 const cors_1 = __importDefault(require("cors"));
 const app = express_1.default();
 app.use(cors_1.default());
-// app.use(bodyParser()); deprecated
 const hostService = new HostsService_1.HostsService();
 const expressPort = 5499;
 app.listen(expressPort, () => {

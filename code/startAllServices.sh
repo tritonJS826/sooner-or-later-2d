@@ -6,8 +6,8 @@ SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # script must be placed in the root of yarn workspaces
 yarn
 
-kitty --title="static data server" yarn --cwd $SCRIPTPATH/staticDataServer build && yarn --cwd $SCRIPTPATH/api run start & 
+bash -ic "kitty --title='static data server' yarn --cwd $SCRIPTPATH/staticDataServer/ run start" & 
 
-kitty --title="frontend" yarn --cwd $SCRIPTPATH/frontend build && yarn --cwd $SCRIPTPATH/frontend/ start & 
+bash -ic "kitty --title='frontend' yarn --cwd $SCRIPTPATH/frontend/ run start" & 
 
-kitty --title="websockets" yarn --cwd $SCRIPTPATH/websockets/ start &
+bash -ic "kitty --title='websockets' yarn --cwd $SCRIPTPATH/websockets/ run start" &

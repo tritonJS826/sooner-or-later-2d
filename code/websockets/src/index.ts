@@ -3,12 +3,9 @@ import onConnect from "./OnConnect";
 import express from "express";
 import { HostsService } from "./HostsService";
 import cors from "cors";
-import connect from "connect";
-import bodyParser from "body-parser";
 
 const app = express();
 app.use(cors());
-// app.use(bodyParser()); deprecated
 
 const hostService = new HostsService();
 
