@@ -7,7 +7,6 @@ Overview
 * Development of a tool in the form of a game for collaborative interactive learning. The game initially contains content for training, which is laid by the developers. The content is not limited only to the one that was originally in the system. It is a framework that allows to choose the content you want to explore on your own.Anything that can be displayed in a "question-answer" format can be used as content. The effectiveness in the game depends on the skills from real life.
 
 * Main study method: spaced repetition.
-* Potential consumers: tbd
 ---
 
 Potential consumers
@@ -51,6 +50,15 @@ Out of scope
 * We do not plan to make money on this project yet (but we are ready to consider specific options)
 * We do not compete with anyone for the market (but we can analyze it and learn from experience)
 
+
+---
+We found
+------------
+- ***Artists*** and ***Designers*** for creation base design for example for game scene, hero, enemy;
+- ***Screenwriters*** for writing breathtaking game scenarios on various topics; 
+- ***Frontend and backend software engineers*** for development of our services for example Frontend server, Game webSocket server and performing other development tasks;
+- ***Testing engineers, auto or manual*** for creation auto tests for the application, for bug hunting and bug tracking;
+- ***Content-managers*** for participating in content creation activities such as work with scenario, cards with questions and answers preparation, materials and content for level intro/passed/failed state preparation and other.
 ---
 Contacts:
 --------
