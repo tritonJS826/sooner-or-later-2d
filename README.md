@@ -54,11 +54,11 @@ Out of scope
 ---
 We found
 ------------
-- ***Artists*** and ***Designers*** for creation base design for example for game scene, hero, enemy;
-- ***Screenwriters*** for writing breathtaking game scenarios on various topics; 
-- ***Frontend and backend software engineers*** for development of our services for example Frontend server, Game webSocket server and performing other development tasks;
-- ***Testing engineers, auto or manual*** for creation auto tests for the application, for bug hunting and bug tracking;
-- ***Content-managers*** for participating in content creation activities such as work with scenario, cards with questions and answers preparation, materials and content for level intro/passed/failed state preparation and other.
+- *Artists* and *Designers* for creation base design for example for game scene, hero, enemy;
+- *Screenwriters* for writing breathtaking game scenarios on various topics; 
+- *Frontend and backend software engineers* for development of our services for example Frontend server, Game webSocket server and performing other development tasks;
+- *Testing engineers, auto or manual* for creation auto tests for the application, for bug hunting and bug tracking;
+- *Content-managers* for participating in content creation activities such as work with scenario, cards with questions and answers preparation, materials and content for level intro/passed/failed state preparation and other.
 ---
 Contacts:
 --------
