@@ -1,7 +1,15 @@
 FROM node:16
-WORKDIR /frontend
-COPY package.json /frontend/
-COPY . /frontend/
-RUN yarn 
+
+RUN  mkdir -p /usr/src/app
+
+WORKDIR /usr/ssrc/app
+
+COPY . .
+
+RUN yarn
+
+RUN yarn run build
+ 
 EXPOSE 3000
-CMD ["yarn","run","start"]
+
+CMD ["node","./dist/index.js"]

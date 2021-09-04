@@ -7,11 +7,10 @@ Run all services in docker (temporary it is dev mode):
 
 After that next services will be running:
 
-* rest staticDataServer: localhost:5000
-* mongoDB: localhost:27017 (absent)
-* websockets server: localhost:5002
-* hosts portst: localhost:5500-6000 (absent)
-* frontend server: localhost:3000
+* SDS(staticDataServer): localhost:5000
+* LWSS(lobby webSockets server): localhost:5002
+* GWSS(hosts portst): localhost:5500-6000 (absent)
+* FS(frontend server): localhost:3000
 
 Stop all services:
 ------------------
@@ -26,7 +25,4 @@ Clear all docker entities:
 
 ---
 
-
-[ABOUT.md](./docs/ABOUT.md) - short project description
-
-[USER_STORIES.md](./docs/USER_STORIES.md) - user stories (for high level understanding the process)
+[USER_STORIES.md](../docs/USER_STORIES.md) - user stories (for high level understanding the game process)

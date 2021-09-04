@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -21,6 +20,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
+    "baseUrl": "src",
+    "outDir": "dist",
     "rootDir": "./src"
   },
   "include": [

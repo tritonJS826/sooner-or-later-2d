@@ -15,7 +15,7 @@ There is a person who wants (for example) to teach someone to add numbers. Then 
 
 ---
 
-Player user story:
+Player user-story:
 ------------------
 
 There is a person who wants (for example) to learn how to add numbers. Then he:
