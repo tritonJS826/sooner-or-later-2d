@@ -5,6 +5,6 @@
   "workspaces": [
     "staticDataServer",
     "frontend",
-    "websockets"
+    "lobbyWSS"
   ]
 }

@@ -18,7 +18,7 @@ interface Filter {
 
 class MultiplayerStore {
   /**
-   * Available websocket
+   * LWSS websocket
    */
   ws?: WebSocket;
 
@@ -49,8 +49,8 @@ class MultiplayerStore {
   }
 
   @action.bound
-  async loadData(ws: WebSocket): Promise<void> {
-    this.ws = ws;
+  async connectToLWSS(): Promise<void> {
+    this.ws = new WebSocket('ws://localhost:5002'); // LWSS
     this.ws.onopen = () => {
       console.log('Connected');
     };

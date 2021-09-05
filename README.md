@@ -59,6 +59,7 @@ We found
 - *Frontend and backend software engineers* for development of our services for example Frontend server, Game webSocket server and performing other development tasks;
 - *Testing engineers, auto or manual* for creation auto tests for the application, for bug hunting and bug tracking;
 - *Content-managers* for participating in content creation activities such as work with scenario, cards with questions and answers preparation, materials and content for level intro/passed/failed state preparation and other.
+- *Everyone* who want to help us) just write to us
 ---
 Contacts:
 --------

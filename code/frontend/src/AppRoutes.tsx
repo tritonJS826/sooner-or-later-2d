@@ -34,16 +34,31 @@ const AppRoutes = {
     render: () => <MultiPlayerPage />,
   }),
 
-  gameConfiguration: new PageMeta<{multiplayer: string}>({
+  gameConfiguration: new PageMeta<{ multiplayer: string }>({
     renderParameters: (object) => ({ multiplayer: object.multiplayer }),
     path: '/game-configuration/multiplayer=:multiplayer',
     render: (props) => <GameConfigurationPage multiplayer={props.match.params.multiplayer} />,
   }),
 
-  preGame: new PageMeta<{ hostId: string, port: string }>({
-    renderParameters: (object) => ({ hostId: object.hostId, port: object.port }),
+  preGame: new PageMeta<{ hostId: string, port: string, multiplayer?: string, worldId?: string, levelId?: string }>({
+    renderParameters: (object) => ({
+      hostId: object.hostId,
+      port: object.port,
+      multiplayer: object.multiplayer,
+      worldId: object.worldId,
+      levelId: object.levelId,
+
+    }),
     path: '/pre-game/hostId=:hostId&port=:port',
-    render: (props) => <PreGamePage hostId={props.match.params.hostId} port={props.match.params.port} />,
+    render: (props) => (
+      <PreGamePage
+        hostId={props.match.params.hostId}
+        port={props.match.params.port}
+        multiplayer={props.match.params.multiplayer}
+        worldId={props.match.params.worldId}
+        levelId={props.match.params.levelId}
+      />
+    ),
   }),
 
   game: new PageMeta<void>({

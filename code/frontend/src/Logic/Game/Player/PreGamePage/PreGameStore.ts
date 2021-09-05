@@ -1,6 +1,7 @@
 import { action, makeObservable, observable } from 'mobx';
 import Difficulty from 'Model/Difficulty';
 import PlayerStatus from 'Model/PlayerStatus';
+
 interface Player {
   id: string;
   name: string;
@@ -13,11 +14,15 @@ interface HostDescription {
   world: string;
   level: string;
   difficulty: Difficulty;
-  playersAmount: number;
   maxPlayers: number;
 }
 
 class PreGameStore {
+  /**
+   * LWSS websocket
+   */
+   ws?: WebSocket;
+
   @observable
   isPlayerReady = false;
 
@@ -31,7 +36,6 @@ class PreGameStore {
     world: '',
     level: '',
     difficulty: Difficulty.ALL,
-    playersAmount: 1,
     maxPlayers: 1,
   };
 
@@ -46,24 +50,38 @@ class PreGameStore {
   }
 
   @action.bound
-  async loadData() {
-    // try async request on wsserver
-    this.hostDescription = hostDescriptionStub;
-    this.players = playersStub;
+  async connectToLWSS(port: string): Promise<void> {
+    this.ws = new WebSocket('ws://localhost:5002'); // LWSS
+    this.ws.onopen = () => {
+      console.log('Connected');
+    };
+
+    this.ws.onmessage = (message) => {
+      const currentHost = JSON.parse(message.data).hosts[port];
+      console.log(currentHost);
+      this.hostDescription = {
+        hostName: currentHost.hostName,
+        hostId: currentHost.id,
+        world: `it's world's id: ${currentHost.world}`,
+        level: `it's level's id: ${currentHost.level}`,
+        difficulty: Difficulty.EASY,
+        maxPlayers: currentHost.maxPlayers,
+      };
+
+      // GWSS
+      this.players = playersStub;
+    };
+
+    // this.hostDescription = hostDescriptionStub;
+  }
+
+  @action.bound
+  closeConnections() {
+    this.ws?.close();
   }
 }
 
 export default PreGameStore;
-
-const hostDescriptionStub: HostDescription = {
-  hostName: 'superHost',
-  hostId: 'asdasda-dasdadasd-ad',
-  world: 'zombie-killer',
-  level: '32',
-  difficulty: Difficulty.EASY,
-  playersAmount: 5,
-  maxPlayers: 7,
-};
 
 const playersStub = [
   {

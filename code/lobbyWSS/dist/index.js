@@ -3,26 +3,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.hostService = void 0;
 const ws_1 = __importDefault(require("ws"));
 const OnConnect_1 = __importDefault(require("./OnConnect"));
 const express_1 = __importDefault(require("express"));
 const HostsService_1 = require("./HostsService");
 const cors_1 = __importDefault(require("cors"));
+const body_parser_1 = __importDefault(require("body-parser"));
 const app = express_1.default();
 app.use(cors_1.default());
-const hostService = new HostsService_1.HostsService();
+app.use(body_parser_1.default()); //deprecated
+exports.hostService = new HostsService_1.HostsService();
 const expressPort = 5499;
 app.listen(expressPort, () => {
     console.log(`Example app listening at http://localhost:${expressPort}`);
 });
 app.post("/create-host", (req, res, next) => {
     console.log(req.body);
-    const { host, port } = hostService.createHost({
+    const { host, port } = exports.hostService.createHost({
         hostName: req.body.hostName,
         worldId: req.body.worldId,
-        difficulty: req.body.difficulty,
         maxPlayers: req.body.maxPlayers,
-        level: req.body.level,
+        levelId: req.body.levelId,
     });
     // its port for game and for pre game page
     res.status(200).send(JSON.stringify({ host, port }));

@@ -3,11 +3,14 @@ import onConnect from "./OnConnect";
 import express from "express";
 import { HostsService } from "./HostsService";
 import cors from "cors";
+import bodyParser from "body-parser";
+
 
 const app = express();
 app.use(cors());
+app.use(bodyParser()); //deprecated
 
-const hostService = new HostsService();
+export const hostService = new HostsService();
 
 const expressPort = 5499;
 
@@ -20,9 +23,8 @@ app.post("/create-host", (req, res, next) => {
   const { host, port } = hostService.createHost({
     hostName: req.body.hostName,
     worldId: req.body.worldId,
-    difficulty: req.body.difficulty,
     maxPlayers: req.body.maxPlayers,
-    level: req.body.level,
+    levelId: req.body.levelId,
   });
 
   // its port for game and for pre game page

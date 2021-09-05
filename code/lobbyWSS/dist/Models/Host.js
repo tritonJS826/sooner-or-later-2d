@@ -7,9 +7,8 @@ class Host {
         this.id = uuid_1.v4();
         this.hostName = hostParameters.hostName;
         this.world = hostParameters.worldId;
-        this.difficulty = hostParameters.difficulty;
         this.maxPlayers = hostParameters.maxPlayers;
-        this.level = hostParameters.level;
+        this.level = hostParameters.levelId;
     }
 }
 exports.Host = Host;

@@ -58,13 +58,13 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
   };
 
   const createGame = async () => {
-    // const gameSettings = await gameConfigurationStore.createGame({ multiplayer: !!JSON.parse(`${props.multiplayer}`) });
-    // const hostId = gameSettings.host.hostName;
-    // const port = String(gameSettings.port);
-    // stub
-    const hostId = 'test';
-    const port = 'test';
-    history.push(AppRoutes.preGame.toUrl({ hostId, port }));
+    const gameSettings = await gameConfigurationStore.createGame({ multiplayer: !!JSON.parse(`${props.multiplayer}`) });
+    const hostId = gameSettings.host.hostName;
+    const port = String(gameSettings.port);
+    const multiplayer = JSON.parse(props.multiplayer ?? 'false');
+    const levelId = gameConfigurationStore.currentLevel.id;
+    const worldId = gameConfigurationStore.currentLevel.id;
+    history.push(AppRoutes.preGame.toUrl({ hostId, port, multiplayer, levelId, worldId }));
   };
 
   const changeWorld = (e: React.ChangeEvent<HTMLSelectElement>) => {

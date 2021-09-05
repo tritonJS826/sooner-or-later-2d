@@ -23,8 +23,7 @@ const MultiPlayer: React.FC = () => {
   const multiplayerStore = useLocalStore(() => new MultiplayerStore());
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:5002');
-    multiplayerStore.loadData(ws);
+    multiplayerStore.connectToLWSS();
     return multiplayerStore.closeConnections;
   }, []);
 
@@ -153,7 +152,7 @@ const MultiPlayer: React.FC = () => {
           </div>
         </div>
 
-        Players watch(dev-test):
+        Players connected to LWSS(dev-test):
         {' '}
         {multiplayerStore.playersAvailable}
       </div>

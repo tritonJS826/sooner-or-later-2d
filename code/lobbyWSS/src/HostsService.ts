@@ -30,6 +30,7 @@ export class HostsService {
     createHost(hostParameters: HostParameters): {host:Host, port: number} {
         const newHost = new Host(hostParameters);
         const freePort = this.getFreePort();
+        console.log(newHost, hostParameters);
         if (!freePort) {
             throw new Error('all ports is using');
         }

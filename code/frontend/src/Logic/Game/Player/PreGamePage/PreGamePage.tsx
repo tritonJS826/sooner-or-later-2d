@@ -15,7 +15,10 @@ import Space from 'Components/Space/Space';
 interface PreGameProps {
   hostId: string | undefined;
   port: string | undefined;
-}
+  multiplayer: string | undefined; // remove
+  levelId: string | undefined; // remove
+  worldId: string | undefined; // remove
+ }
 
 /**
  * PreGame page
@@ -25,7 +28,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   console.log('PreGameProps', props);
   const preGameStore = useLocalObservable(() => new PreGameStore());
   useEffect(() => {
-    preGameStore.loadData();
+    preGameStore.connectToLWSS(props.port!);
   }, []);
 
   return (
@@ -61,7 +64,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
 
           <div className={styles['table-row']}>
             <div className={styles.cell}>{multiLang.text(multiText.preGamePage.descriptionTable.playersAmount)}</div>
-            <div className={styles.cell}>{preGameStore.hostDescription.playersAmount}</div>
+            <div className={styles.cell}>{preGameStore.players.length}</div>
           </div>
 
           <Space vertical />
