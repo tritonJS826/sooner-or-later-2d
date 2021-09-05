@@ -10,4 +10,4 @@ bash -ic "kitty --title='static data server' yarn --cwd $SCRIPTPATH/staticDataSe
 
 bash -ic "kitty --title='frontend' yarn --cwd $SCRIPTPATH/frontend/ run start" & 
 
-bash -ic "kitty --title='websockets' yarn --cwd $SCRIPTPATH/websockets/ run start" &
+bash -ic "kitty --title='lobbyWSS' yarn --cwd $SCRIPTPATH/lobbyWSS/ run start" &

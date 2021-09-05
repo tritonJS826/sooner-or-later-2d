@@ -13,7 +13,7 @@ services:
 
   websockets:
     build:
-      context: ./websockets
+      context: ./lobbyWSS
       dockerfile: Dockerfile
     command: yarn run start
     ports:
