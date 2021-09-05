@@ -109,10 +109,8 @@ class GameConfigurationStore {
     });
   }
 
-  // LWSS request instead of WSS (deprecated)
   async createGame({ multiplayer }: {multiplayer: boolean}): Promise<CreateHostResponse> {
     if (multiplayer) {
-      // host service works on ws:localhost:5002
       const responseRaw = await fetch('http://localhost:5499/create-host', {
         method: 'POST',
         mode: 'cors',

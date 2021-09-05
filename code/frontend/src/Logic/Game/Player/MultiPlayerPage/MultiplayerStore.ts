@@ -49,18 +49,28 @@ class MultiplayerStore {
   }
 
   @action.bound
+  setTableData(tableData: HostTableData[]) {
+    this.tableData = tableData;
+  }
+
+  @action.bound
   async connectToLWSS(): Promise<void> {
-    this.ws = new WebSocket('ws://localhost:5002'); // LWSS
+    this.ws = new WebSocket('ws://localhost:5002');
     this.ws.onopen = () => {
-      console.log('Connected');
+      console.log('Connected to LWSS');
     };
 
     this.ws.onmessage = (message) => {
-      console.log('!message!', JSON.parse(message.data).gamersWatch);
+      const hostsList = Object.values(JSON.parse(message.data).hosts ?? {});
+
+      this.setTableData(hostsList.map((host: any) => ({
+        id: host.id,
+        world: host.world, // it's just id
+        hostName: host.hostName,
+        difficulty: Difficulty.EASY,
+      })));
       this.setPlayersAvailable(JSON.parse(message.data).gamersWatch);
     };
-
-    this.tableData = tableData;
   }
 
   @action.bound

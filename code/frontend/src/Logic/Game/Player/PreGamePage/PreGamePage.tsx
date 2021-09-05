@@ -15,9 +15,6 @@ import Space from 'Components/Space/Space';
 interface PreGameProps {
   hostId: string | undefined;
   port: string | undefined;
-  multiplayer: string | undefined; // remove
-  levelId: string | undefined; // remove
-  worldId: string | undefined; // remove
  }
 
 /**
@@ -29,6 +26,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   const preGameStore = useLocalObservable(() => new PreGameStore());
   useEffect(() => {
     preGameStore.connectToLWSS(props.port!);
+    return preGameStore.closeConnections;
   }, []);
 
   return (

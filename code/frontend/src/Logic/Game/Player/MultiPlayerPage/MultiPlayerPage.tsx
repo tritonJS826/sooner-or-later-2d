@@ -14,6 +14,20 @@ import Difficulty from 'Model/Difficulty';
 import { Link } from 'react-router-dom';
 import PageBorder from 'Logic/PageBorder/PageBorder';
 import Space from 'Components/Space/Space';
+import { gql, useApolloClient } from '@apollo/client';
+
+const GET_WORLDS = gql`
+  query GetWorlds {
+    worlds {
+      id
+      name
+      levels {
+        id
+        title
+      }
+    }
+  }
+`;
 
 /*
  * MultiPlayer page
@@ -21,9 +35,11 @@ import Space from 'Components/Space/Space';
 const MultiPlayer: React.FC = () => {
   const history = useHistory();
   const multiplayerStore = useLocalStore(() => new MultiplayerStore());
+  const client = useApolloClient();
 
   useEffect(() => {
     multiplayerStore.connectToLWSS();
+    const worldsData = client.query({ query: GET_WORLDS });
     return multiplayerStore.closeConnections;
   }, []);
 
@@ -118,7 +134,7 @@ const MultiPlayer: React.FC = () => {
 
         <Space vertical />
 
-        <div className={styles.table}  style={{ marginBottom: 'auto' }}>
+        <div className={styles.table} style={{ marginBottom: 'auto' }}>
           <div className={styles['table-row']}>
             <div className={styles.cell}>{multiLang.text(multiText.multiplayerPage.filter.id)}</div>
             <div className={styles.cell}>{multiLang.text(multiText.multiplayerPage.filter.world)}</div>

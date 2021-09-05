@@ -52,9 +52,7 @@ class PreGameStore {
   @action.bound
   async connectToLWSS(port: string): Promise<void> {
     this.ws = new WebSocket('ws://localhost:5002'); // LWSS
-    this.ws.onopen = () => {
-      console.log('Connected');
-    };
+    this.ws.onopen = () => console.log('Connected');
 
     this.ws.onmessage = (message) => {
       const currentHost = JSON.parse(message.data).hosts[port];
