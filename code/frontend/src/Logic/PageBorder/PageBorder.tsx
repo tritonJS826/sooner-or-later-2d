@@ -17,6 +17,7 @@ import BloodMoon12 from 'Resources/bloodBack12+.jpg';
 import BloodMoon13 from 'Resources/bloodBack13+.jpg';
 import BloodMoon14 from 'Resources/bloodBack14+.jpg';
 import BloodMoon15 from 'Resources/bloodBack15+.jpg';
+import Logo from 'Resources/logo.png';
 import styles from 'Logic/PageBorder/PageBorder.module.scss';
 import globalStyles from 'index.module.scss';
 import InputButton from 'Components/InputButton';
@@ -45,30 +46,29 @@ const images = [
   BloodMoon13,
   BloodMoon14,
   BloodMoon15,
+  Logo,
+];
+
+const stylesList = [
+  { right: 0 },
+  { left: 0 },
+  {
+    left: 'calc(-50vw + 50%)',
+    right: 'calc(-50vw + 50%)',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
 ];
 
 const PageBorder: React.FC<PropsWithChildren<PageBorderProps>> = (props: PropsWithChildren<PageBorderProps>) => {
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
-
     return images[randomIndex];
   };
 
   const getImageRandomStyle = () => {
-    const variants = [
-      { right: 0 },
-      { left: 0 },
-      {
-        left: 'calc(-50vw + 50%)',
-        right: 'calc(-50vw + 50%)',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
-    ];
-
-    const randomIndex = Math.floor(Math.random() * variants.length);
-
-    return variants[randomIndex];
+    const randomIndex = Math.floor(Math.random() * stylesList.length);
+    return stylesList[randomIndex];
   };
 
   const [imageStyle, setImageStyle] = useState(getImageRandomStyle());

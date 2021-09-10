@@ -15,21 +15,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// example
-
-// client
-//   .query({
-//     query: gql`
-//       query World {
-//         worlds {
-//           id
-//           name
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result));
-
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
