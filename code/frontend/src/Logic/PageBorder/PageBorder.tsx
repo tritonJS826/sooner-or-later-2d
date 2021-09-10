@@ -18,6 +18,7 @@ import BloodMoon13 from 'Resources/bloodBack13+.jpg';
 import BloodMoon14 from 'Resources/bloodBack14+.jpg';
 import BloodMoon15 from 'Resources/bloodBack15+.jpg';
 import Logo from 'Resources/logo.png';
+import Logo2 from 'Resources/logo2.png';
 import styles from 'Logic/PageBorder/PageBorder.module.scss';
 import globalStyles from 'index.module.scss';
 import InputButton from 'Components/InputButton';
@@ -30,23 +31,24 @@ interface PageBorderProps {
 }
 
 const images = [
-  BloodMoon,
-  BloodMoon0,
-  BloodMoon1,
-  BloodMoon2,
-  BloodMoon3,
-  BloodMoon12,
-  BloodMoon5,
-  BloodMoon6,
-  BloodMoon7,
-  BloodMoon8,
-  BloodMoon9,
-  BloodMoon10,
-  BloodMoon11,
-  BloodMoon13,
-  BloodMoon14,
-  BloodMoon15,
-  Logo,
+  // BloodMoon,
+  // BloodMoon0,
+  // BloodMoon1,
+  // BloodMoon2,
+  // BloodMoon3,
+  // BloodMoon12,
+  // BloodMoon5,
+  // BloodMoon6,
+  // BloodMoon7,
+  // BloodMoon8,
+  // BloodMoon9,
+  // BloodMoon10,
+  // BloodMoon11,
+  // BloodMoon13,
+  // BloodMoon14,
+  // BloodMoon15,
+  // Logo,
+  Logo2,
 ];
 
 const stylesList = [
