@@ -19,12 +19,10 @@ Technologies
 ------------
 * We love javascript because most team members understand it and can support services written in it, but in general we are open to any languages ​​and approaches that can be effective.
 * MainStack:
-    * Typescript
-    * Front: React
-    * API: Express
-    * BD: Mongo
-    * Tests: Cypress  
-       
+    * FS: React, typescript, mobX
+    * GWSS: node, typescript, webSockets
+    * LWSS: node, typescript, webSockets
+    * SDS: node, typescript, GraphQL    
 Git
 ---
 * In the default branch, we do not fill in anything and do not merge without approval.
