@@ -18,7 +18,6 @@ const onConnect = (wsClient: any) => {
 
   // action on each connection
   wsServer.clients.forEach((client) => {
-    // console.log(hostService.hosts)
     client.send(JSON.stringify({
       gamersWatch,
       hosts: hostService.hosts,

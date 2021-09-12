@@ -19,7 +19,6 @@ app.listen(expressPort, () => {
     console.log(`Example app listening at http://localhost:${expressPort}`);
 });
 app.post("/create-host", (req, res, next) => {
-    console.log(req.body);
     const { host, port } = exports.hostService.createHost({
         hostName: req.body.hostName,
         worldId: req.body.worldId,
@@ -28,6 +27,10 @@ app.post("/create-host", (req, res, next) => {
     });
     // its port for game and for pre game page
     res.status(200).send(JSON.stringify({ host, port }));
+});
+app.delete("/host", (req, res, next) => {
+    console.log(req.body);
+    exports.hostService.removeHostById(req.body.hostId);
 });
 const wsServer = new ws_1.default.Server({ port: 5002 });
 console.log("Server running on port 5002");

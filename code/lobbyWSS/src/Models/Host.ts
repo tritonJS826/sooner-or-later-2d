@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 
 export class Host {
-    id: string;
+    hostId: string;
     hostName: string;
     maxPlayers: number;
     level: string;
@@ -12,7 +12,7 @@ export class Host {
     world: string;
 
     constructor(hostParameters: HostParameters) {
-        this.id = v4();
+        this.hostId = v4();
         this.hostName = hostParameters.hostName;
         this.world = hostParameters.worldId;
         this.maxPlayers = hostParameters.maxPlayers;

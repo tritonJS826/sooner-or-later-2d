@@ -1,4 +1,6 @@
+import { hostService } from 'Apis';
 import { SelectOption } from 'Components/SelectWithLabel/SelectWithLabel';
+import { CreateHostResponse } from 'Services/LWSS/Host';
 import {
   action, computed, makeObservable, observable,
 } from 'mobx';
@@ -109,24 +111,13 @@ class GameConfigurationStore {
     });
   }
 
-  async createGame({ multiplayer }: {multiplayer: boolean}): Promise<CreateHostResponse> {
+  async createGame({
+    multiplayer,
+  }: {
+    multiplayer: boolean;
+  }): Promise<CreateHostResponse> {
     if (multiplayer) {
-      const responseRaw = await fetch('http://localhost:5499/create-host', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          hostName: this.settings.hostName,
-          maxPlayers: this.settings.maxPlayers,
-          worldId: this.settings.currentWorldId,
-          levelId: this.settings.currentLevelId,
-        }),
-      });
-
-      const response: CreateHostResponse = await responseRaw.json();
-      return response;
+      return hostService.createHost(this.settings);
     }
     return {
       host: {
@@ -141,13 +132,3 @@ class GameConfigurationStore {
 }
 
 export default GameConfigurationStore;
-
-export interface CreateHostResponse {
-  host: {
-    hostName: string;
-    maxPlayers: number;
-    worldId: string;
-    levelId: string;
-  };
-  port: number;
-}

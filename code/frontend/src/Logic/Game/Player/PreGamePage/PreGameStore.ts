@@ -1,6 +1,8 @@
+import { hostService } from 'Apis';
 import { action, makeObservable, observable } from 'mobx';
 import Difficulty from 'Model/Difficulty';
 import PlayerStatus from 'Model/PlayerStatus';
+import Lobby from 'Services/LWSS/Lobby';
 
 interface Player {
   id: string;
@@ -18,10 +20,7 @@ interface HostDescription {
 }
 
 class PreGameStore {
-  /**
-   * LWSS websocket
-   */
-   ws?: WebSocket;
+  ws?: Lobby;
 
   @observable
   isPlayerReady = false;
@@ -51,31 +50,33 @@ class PreGameStore {
 
   @action.bound
   async connectToLWSS(port: string): Promise<void> {
-    this.ws = new WebSocket('ws://localhost:5002'); // LWSS
-    this.ws.onopen = () => console.log('Connected');
+    this.ws = new Lobby({
+      onOpen: () => console.log('Connected'),
+      onMessage: (message) => {
+        const currentHost = JSON.parse(message.data).hosts[port];
+        this.setHostDescription(currentHost);
+      },
+    });
+    // GWSS
+    this.players = playersStub;
+  }
 
-    this.ws.onmessage = (message) => {
-      const currentHost = JSON.parse(message.data).hosts[port];
-      console.log(currentHost);
-      this.hostDescription = {
-        hostName: currentHost.hostName,
-        hostId: currentHost.id,
-        world: `it's world's id: ${currentHost.world}`,
-        level: `it's level's id: ${currentHost.level}`,
-        difficulty: Difficulty.EASY,
-        maxPlayers: currentHost.maxPlayers,
-      };
-
-      // GWSS
-      this.players = playersStub;
+  @action.bound
+  setHostDescription(hostDescription: HostDescription) {
+    this.hostDescription = {
+      hostName: hostDescription.hostName,
+      hostId: hostDescription.hostId,
+      world: `it's world's id: ${hostDescription.world}`,
+      level: `it's level's id: ${hostDescription.level}`,
+      difficulty: Difficulty.EASY,
+      maxPlayers: hostDescription.maxPlayers,
     };
-
-    // this.hostDescription = hostDescriptionStub;
   }
 
   @action.bound
   closeConnections() {
-    this.ws?.close();
+    this.ws?.disconnect();
+    hostService.removeGame(this.hostDescription.hostId);
   }
 }
 

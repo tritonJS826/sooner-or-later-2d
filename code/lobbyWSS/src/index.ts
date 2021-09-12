@@ -19,7 +19,6 @@ app.listen(expressPort, () => {
 });
 
 app.post("/create-host", (req, res, next) => {
-  console.log(req.body);
   const { host, port } = hostService.createHost({
     hostName: req.body.hostName,
     worldId: req.body.worldId,
@@ -29,6 +28,12 @@ app.post("/create-host", (req, res, next) => {
 
   // its port for game and for pre game page
   res.status(200).send(JSON.stringify({ host, port }));
+});
+
+app.delete("/host", (req, res, next) => {
+  console.log(req.body);
+
+  hostService.removeHostById(req.body.hostId);
 });
 
 const wsServer = new WebSocket.Server({ port: 5002 });

@@ -4,4 +4,4 @@ enum Difficulty {
     'HARD' = 'hard',
 }
 
-export default Difficulty
+export default Difficulty;

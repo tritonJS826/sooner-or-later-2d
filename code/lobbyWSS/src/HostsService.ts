@@ -1,7 +1,5 @@
 import {Host, HostParameters} from './Models/Host';
 
-
-
 export class HostsService {
     /**
      * The key is a hosts port from 5500 to 6000
@@ -20,7 +18,7 @@ export class HostsService {
     }
     
     getHostById(hostId: string): Host | undefined {
-        return Object.values(this.hosts).find(host => host.id === hostId);
+        return Object.values(this.hosts).find(host => host.hostId === hostId);
     }
     
     getHostByPort(port: number): Host | undefined {
@@ -39,7 +37,7 @@ export class HostsService {
     }
     
     updateHostById(hostParameters: Host): Host {
-        const port = this.getPortByHostId(hostParameters.id);
+        const port = this.getPortByHostId(hostParameters.hostId);
         if (!port) {
             throw new Error('host id is undefined');
         }
@@ -71,7 +69,7 @@ export class HostsService {
     }
     
     private getPortByHostId(hostId: string): number | undefined {
-        const [port] = Object.entries(this.hosts).find(([port, host]) => host.id === hostId) ?? [];
+        const [port] = Object.entries(this.hosts).find(([port, host]) => host.hostId === hostId) ?? [];
         return Number(port);
     }
 }
