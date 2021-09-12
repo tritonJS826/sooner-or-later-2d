@@ -24,68 +24,129 @@ import globalStyles from 'index.module.scss';
 import InputButton from 'Components/InputButton';
 
 interface PageBorderProps {
-    backButton?: {
-      onClick: () => void;
-      text: string
-    }
+  backButton?: {
+    onClick: () => void;
+    text: string
+  }
 }
 
-const images = [
-  // BloodMoon,
-  // BloodMoon0,
-  // BloodMoon1,
-  // BloodMoon2,
-  // BloodMoon3,
-  // BloodMoon12,
-  // BloodMoon5,
-  // BloodMoon6,
-  // BloodMoon7,
-  // BloodMoon8,
-  // BloodMoon9,
-  // BloodMoon10,
-  // BloodMoon11,
-  // BloodMoon13,
-  // BloodMoon14,
-  // BloodMoon15,
-  // Logo,
-  Logo2,
-];
-
-const stylesList = [
-  { right: 0 },
-  { left: 0 },
-  {
+const imageStyles = {
+  right: {
+    right: '0',
+  },
+  left: {
+    left: '0',
+  },
+  center: {
     left: 'calc(-50vw + 50%)',
     right: 'calc(-50vw + 50%)',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-];
+};
+
+const images = {
+  1: {
+    image: BloodMoon,
+    styles: [imageStyles.left, imageStyles.right],
+  },
+  2: {
+    image: BloodMoon0,
+    styles: [imageStyles.left, imageStyles.right],
+  },
+  3: {
+    image: BloodMoon1,
+    styles: [imageStyles.left, imageStyles.right, imageStyles.center],
+  },
+  4: {
+    image: BloodMoon2,
+    styles: [imageStyles.left, imageStyles.right, imageStyles.center],
+  },
+  5: {
+    image: BloodMoon3,
+    styles: [imageStyles.left, imageStyles.right, imageStyles.center],
+  },
+  6: {
+    image: BloodMoon5,
+    styles: [imageStyles.center],
+  },
+  7: {
+    image: BloodMoon6,
+    styles: [imageStyles.left, imageStyles.right],
+  },
+  8: {
+    image: BloodMoon7,
+    styles: [imageStyles.center],
+  },
+  9: {
+    image: BloodMoon8,
+    styles: [imageStyles.center],
+  },
+  10: {
+    image: BloodMoon9,
+    styles: [imageStyles.center],
+  },
+  11: {
+    image: BloodMoon10,
+    styles: [imageStyles.center],
+  },
+  12: {
+    image: BloodMoon11,
+    styles: [imageStyles.center],
+  },
+  13: {
+    image: BloodMoon12,
+    styles: [imageStyles.center],
+  },
+  14: {
+    image: BloodMoon13,
+    styles: [imageStyles.right],
+  },
+  15: {
+    image: BloodMoon14,
+    styles: [imageStyles.center],
+  },
+  16: {
+    image: BloodMoon15,
+    styles: [imageStyles.left, imageStyles.right, imageStyles.center],
+  },
+  17: {
+    image: Logo,
+    styles: [imageStyles.center],
+  },
+  18: {
+    image: Logo2,
+    styles: [imageStyles.center],
+  },
+};
+
+const getRandomImage = () => {
+  const imagesList = Object.values(images);
+  const randomIndex = Math.floor(Math.random() * imagesList.length);
+  const randomImage = imagesList[randomIndex].image;
+  const randomStyleIndex = Math.floor(Math.random() * imagesList[randomIndex].styles.length);
+  const randomStyle = imagesList[randomIndex].styles[randomStyleIndex];
+  return {
+    image: randomImage,
+    style: randomStyle,
+  };
+};
 
 const PageBorder: React.FC<PropsWithChildren<PageBorderProps>> = (props: PropsWithChildren<PageBorderProps>) => {
-  const getRandomImage = () => {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    return images[randomIndex];
-  };
-
-  const getImageRandomStyle = () => {
-    const randomIndex = Math.floor(Math.random() * stylesList.length);
-    return stylesList[randomIndex];
-  };
-
-  const [imageStyle, setImageStyle] = useState(getImageRandomStyle());
-  const [image, setImage] = useState(getRandomImage());
+  const [currentImageStyle, setCurrentImageStyle] = useState<any>(imageStyles.center);
+  const [currentImage, setCurrentImage] = useState(Logo);
   useEffect(() => {
-    setImage(getRandomImage());
-    setImageStyle(getImageRandomStyle());
+    const { image, style } = getRandomImage();
+    setCurrentImage(image);
+    setCurrentImageStyle(style);
   }, []);
 
   return (
     <>
       <Image
-        src={image}
+        src={currentImage}
         className={styles['appear-from-dark']}
-        style={imageStyle}
+        style={currentImageStyle}
       />
       <div className={styles.wrapper}>
         <header className={globalStyles['sol-header']}>
