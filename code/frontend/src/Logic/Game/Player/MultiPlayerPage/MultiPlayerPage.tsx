@@ -150,7 +150,7 @@ const MultiPlayer: React.FC = () => {
               <div className={styles.cell}>{rowData.hostName}</div>
               <div className={styles.cell}>{rowData.difficulty}</div>
               <div className={styles.cell}>
-                <Link className={styles.link} to={AppRoutes.preGame.toUrl({ hostId: 'test', port: 'test' })}>
+                <Link className={styles.link} to={AppRoutes.preGame.toUrl({ hostId: rowData.id, port: rowData.port })}>
                   {multiLang.text(multiText.multiplayerPage.join)}
                 </Link>
               </div>

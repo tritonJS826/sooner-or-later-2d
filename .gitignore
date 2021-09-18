@@ -1,9 +1,4 @@
 node_modules
-
-api/dist
-
-websockets/dist/
-
-websockets/package-lock.json
-websockets/yarn.lock
-websockets/yarn-error.log
+dist
+yarn-error.log
+package-lock.json

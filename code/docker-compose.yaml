@@ -11,7 +11,7 @@ services:
     networks:
       - app-network
 
-  websockets:
+  lwss:
     build:
       context: ./lobbyWSS
       dockerfile: Dockerfile
@@ -21,6 +21,14 @@ services:
       - "5002:5002"
       - "5500-6000"
 
+  fwss:
+    build:
+      context: ./gameWSS
+      dockerfile: Dockerfile
+    command: yarn run start
+    ports: 
+      - "6001: 6001"
+
   frontend:
     build:
       context: ./frontend
@@ -28,6 +36,7 @@ services:
     command: yarn run start
     ports:
       - "3000:3000"
+      
 #  mongo:
 #    image: mongo
 #    volumes:

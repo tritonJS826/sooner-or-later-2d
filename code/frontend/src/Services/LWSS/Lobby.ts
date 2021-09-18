@@ -1,3 +1,5 @@
+import PlayerStatus from 'Model/PlayerStatus';
+
 export interface LobbyHandlers {
     onOpen: () => void;
 
@@ -16,6 +18,12 @@ class Lobby {
 
     disconnect() {
       this.ws.close();
+    }
+
+    connectToHost(port: string, playerInfo: {id: string, name: string, status: PlayerStatus}) {
+      setTimeout(() => {
+        this.ws.send(JSON.stringify({ type: 'connectToHost', port, playerInfo }));
+      }, 300); // sometimes we need to wait before websocket get connection
     }
 }
 

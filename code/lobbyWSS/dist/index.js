@@ -29,10 +29,11 @@ app.post("/create-host", (req, res, next) => {
     res.status(200).send(JSON.stringify({ host, port }));
 });
 app.delete("/host", (req, res, next) => {
-    console.log(req.body);
+    console.log('host deleted', req.body);
     exports.hostService.removeHostById(req.body.hostId);
 });
-const wsServer = new ws_1.default.Server({ port: 5002 });
-console.log("Server running on port 5002");
+const port = 5002;
+const wsServer = new ws_1.default.Server({ port });
+console.log(`LWSS running on port${port}`);
 wsServer.on("connection", OnConnect_1.default);
 exports.default = wsServer;

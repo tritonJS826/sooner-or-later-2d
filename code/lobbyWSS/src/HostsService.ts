@@ -1,3 +1,4 @@
+import { RawPlayer } from 'Models/Player';
 import {Host, HostParameters} from './Models/Host';
 
 export class HostsService {
@@ -12,6 +13,14 @@ export class HostsService {
 
     constructor() {}
 
+    addPlayerToHostByPort(port: string, playerInfo: RawPlayer) {
+        const oldHost = this.getHostByPort(Number(port));
+        if (!oldHost) {
+            throw new Error('Host is undefined');
+        }
+        oldHost?.players.push(playerInfo);
+        this.updateHostById(oldHost)
+    }
     
     getAllHosts(): Host[] {
         return Object.values(this.hosts);
@@ -28,11 +37,12 @@ export class HostsService {
     createHost(hostParameters: HostParameters): {host:Host, port: number} {
         const newHost = new Host(hostParameters);
         const freePort = this.getFreePort();
-        console.log(newHost, hostParameters);
+
         if (!freePort) {
             throw new Error('all ports is using');
         }
         this.hosts[freePort] = newHost;
+
         return {host: newHost, port: freePort};
     }
     

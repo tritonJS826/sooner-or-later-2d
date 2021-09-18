@@ -20,7 +20,7 @@ Technologies
 * We love javascript because most team members understand it and can support services written in it, but in general we are open to any languages ​​and approaches that can be effective.
 * MainStack:
     * FS: React, typescript, mobX
-    * GWSS: node, typescript, webSockets
+    * GWSS: node, typescript, socket.io
     * LWSS: node, typescript, webSockets
     * SDS: node, typescript, GraphQL    
 Git

@@ -31,14 +31,16 @@ app.post("/create-host", (req, res, next) => {
 });
 
 app.delete("/host", (req, res, next) => {
-  console.log(req.body);
+  console.log('host deleted', req.body);
 
   hostService.removeHostById(req.body.hostId);
 });
 
-const wsServer = new WebSocket.Server({ port: 5002 });
+const port = 5002;
 
-console.log("Server running on port 5002");
+const wsServer = new WebSocket.Server({ port });
+console.log(`LWSS running on port${port}`);
+
 
 wsServer.on("connection", onConnect);
 

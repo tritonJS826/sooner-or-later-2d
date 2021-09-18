@@ -22,10 +22,11 @@ interface PreGameProps {
  */
 const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   const history = useHistory();
-  console.log('PreGameProps', props);
   const preGameStore = useLocalObservable(() => new PreGameStore());
   useEffect(() => {
-    preGameStore.connectToLWSS(props.port!);
+    if (props.port) {
+      preGameStore.connectToLWSS(props.port);
+    }
     return preGameStore.closeConnections;
   }, []);
 
@@ -62,7 +63,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
 
           <div className={styles['table-row']}>
             <div className={styles.cell}>{multiLang.text(multiText.preGamePage.descriptionTable.playersAmount)}</div>
-            <div className={styles.cell}>{preGameStore.players.length}</div>
+            <div className={styles.cell}>{preGameStore.hostDescription.players.length}</div>
           </div>
 
           <Space vertical />
@@ -81,7 +82,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
             <div className={styles.cell}>{multiLang.text(multiText.preGamePage.table.status)}</div>
           </div>
 
-          {preGameStore.players.map((player) => (
+          {preGameStore.hostDescription.players.map((player) => (
             <div className={styles['table-row']} key={player.id}>
               <div className={styles.cell}>{player.name}</div>
               <div className={styles.cell}>

@@ -5,6 +5,7 @@ import Difficulty from 'Model/Difficulty';
 
 interface HostTableData {
   id: string;
+  port: string;
   world: string;
   hostName: string;
   difficulty: string;
@@ -61,10 +62,11 @@ class MultiplayerStore {
     };
 
     this.ws.onmessage = (message) => {
-      const hostsList = Object.values(JSON.parse(message.data).hosts ?? {});
-
-      this.setTableData(hostsList.map((host: any) => ({
-        id: host.id,
+      const hostsList = Object.entries(JSON.parse(message.data).hosts ?? {});
+      console.log(hostsList);
+      this.setTableData(hostsList.map(([port, host]: any) => ({
+        id: host.hostId,
+        port,
         world: host.world, // it's just id
         hostName: host.hostName,
         difficulty: Difficulty.EASY,
@@ -101,78 +103,3 @@ class MultiplayerStore {
 }
 
 export default MultiplayerStore;
-
-const tableData = [
-  {
-    id: '1',
-    world: 'world1',
-    hostName: 'hostName',
-    difficulty: 'easy',
-  },
-  {
-    id: '2',
-    world: 'world2',
-    hostName: 'hostName2',
-    difficulty: 'hard',
-  },
-  {
-    id: '3',
-    world: 'world1',
-    hostName: 'hostName',
-    difficulty: 'easy',
-  },
-  {
-    id: '4',
-    world: 'world2',
-    hostName: 'hostName2',
-    difficulty: 'hard',
-  },
-  {
-    id: '5',
-    world: 'world1',
-    hostName: 'hostName',
-    difficulty: 'easy',
-  },
-  {
-    id: '6',
-    world: 'world2',
-    hostName: 'hostName2hostName2',
-    difficulty: 'hard',
-  },
-  {
-    id: '7',
-    world: 'world1',
-    hostName: 'hostName',
-    difficulty: 'easy',
-  },
-  {
-    id: '8',
-    world: 'world2',
-    hostName: 'hostName2',
-    difficulty: 'hard',
-  },
-  {
-    id: '9',
-    world: 'world1',
-    hostName: 'hostName',
-    difficulty: 'easy',
-  },
-  {
-    id: '10',
-    world: 'world2',
-    hostName: 'hostName2',
-    difficulty: 'hard',
-  },
-  {
-    id: '11',
-    world: 'world1',
-    hostName: 'hostName',
-    difficulty: 'easy',
-  },
-  {
-    id: '12',
-    world: 'world2',
-    hostName: 'hostName2',
-    difficulty: 'hard',
-  },
-];
