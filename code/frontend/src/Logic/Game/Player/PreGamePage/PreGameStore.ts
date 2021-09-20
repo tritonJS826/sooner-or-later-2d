@@ -2,6 +2,7 @@ import { hostService } from 'Apis';
 import { action, makeObservable, observable } from 'mobx';
 import Difficulty from 'Model/Difficulty';
 import PlayerStatus from 'Model/PlayerStatus';
+import GameWSS from 'Services/GWSS/PreGame';
 import Lobby from 'Services/LWSS/Lobby';
 
 interface Player {
@@ -23,6 +24,8 @@ interface HostDescription {
 
 class PreGameStore {
   lobby?: Lobby;
+
+  gwss?: GameWSS;
 
   @observable
   isPlayerReady = false;
@@ -47,9 +50,22 @@ class PreGameStore {
   }
 
   @action.bound
+  connectToGWSS(hostId: string) {
+    this.gwss = new GameWSS();
+    this.gwss.connect(hostId);
+  }
+
+  @action.bound
   async setPlayerReady() {
     // try async request on wsserver
     this.isPlayerReady = true;
+    this.gwss?.setMeReady();
+  }
+
+  @action.bound
+  async setPlayerNotReady() {
+    this.isPlayerReady = false;
+    this.gwss?.setMeNotReady();
   }
 
   @action.bound

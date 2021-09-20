@@ -14,7 +14,7 @@ import Space from 'Components/Space/Space';
 
 interface PreGameProps {
   hostId: string | undefined;
-  port: string | undefined;
+  port: string | undefined; // it prop used in LWSS like "id", it's better to use hostId instead
  }
 
 /**
@@ -24,8 +24,9 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   const history = useHistory();
   const preGameStore = useLocalObservable(() => new PreGameStore());
   useEffect(() => {
-    if (props.port) {
-      preGameStore.connectToLWSS(props.port);
+    if (props.port && props.hostId) {
+      preGameStore.connectToLWSS(props.port); // it's better to use just hostID instead of port
+      preGameStore.connectToGWSS(props.hostId);
     }
     return preGameStore.closeConnections;
   }, []);
@@ -70,7 +71,9 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
           <div className={styles['action-block']}>
             <InputButton
               value={multiLang.text(multiText.preGamePage.ready)}
-              onClick={preGameStore.setPlayerReady}
+              onClick={preGameStore.isPlayerReady
+                ? preGameStore.setPlayerNotReady
+                : preGameStore.setPlayerReady}
             />
           </div>
         </div>

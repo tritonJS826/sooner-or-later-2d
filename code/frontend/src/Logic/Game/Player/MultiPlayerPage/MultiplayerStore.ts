@@ -56,14 +56,11 @@ class MultiplayerStore {
 
   @action.bound
   async connectToLWSS(): Promise<void> {
-    this.ws = new WebSocket('ws://localhost:5002');
-    this.ws.onopen = () => {
-      console.log('Connected to LWSS');
-    };
+    this.ws = new WebSocket('ws://localhost:5002'); // Better to use LWSS service (Loobby) (like in PreGameStore)
+    this.ws.onopen = () => console.log('Connected to LWSS');
 
     this.ws.onmessage = (message) => {
       const hostsList = Object.entries(JSON.parse(message.data).hosts ?? {});
-      console.log(hostsList);
       this.setTableData(hostsList.map(([port, host]: any) => ({
         id: host.hostId,
         port,
