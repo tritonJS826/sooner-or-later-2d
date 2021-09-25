@@ -4,6 +4,8 @@ import { CreateHostResponse } from 'Services/LWSS/Host';
 import {
   action, computed, makeObservable, observable,
 } from 'mobx';
+import GameWSS from 'Services/GWSS/PreGame';
+import PlayerStatus from 'Model/PlayerStatus';
 
 interface World {
   id: string;
@@ -20,6 +22,7 @@ interface Level {
 
 interface Settings {
   hostName: string;
+  hostId: string;
   maxPlayers: number;
   currentWorldId: string;
   currentLevelId: string;
@@ -28,7 +31,8 @@ interface Settings {
 class GameConfigurationStore {
   @observable
   settings: Settings = {
-    hostName: 'singlePlayer',
+    hostName: 'host name',
+    hostId: 'host',
     maxPlayers: 2,
     currentWorldId: '0',
     currentLevelId: '0',
@@ -37,13 +41,22 @@ class GameConfigurationStore {
   @observable
   worlds: World[] = [];
 
+  gwss?: GameWSS;
+
   /**
    * LWSS websocket
    */
-  ws?: WebSocket;
+  lobby?: WebSocket;
 
   constructor() {
     makeObservable(this);
+  }
+
+  @action.bound
+  connectToGWSS() { // better to get player data and hostId instead just host Id
+    this.gwss = new GameWSS();
+    const player = playerInfoStub(); // add real player data
+    this.gwss.connect(player);
   }
 
   @action.bound
@@ -117,11 +130,14 @@ class GameConfigurationStore {
     multiplayer: boolean;
   }): Promise<CreateHostResponse> {
     if (multiplayer) {
-      return hostService.createHost(this.settings);
+      const host = await hostService.createHost(this.settings);
+      this.gwss?.createNewRoom(host.host.hostId);
+      return host;
     }
     return {
       host: {
-        hostName: 'test',
+        hostName: 'single player',
+        hostId: 'single player id',
         maxPlayers: 1,
         worldId: this.settings.currentWorldId,
         levelId: this.settings.currentLevelId,
@@ -132,3 +148,13 @@ class GameConfigurationStore {
 }
 
 export default GameConfigurationStore;
+
+const playerInfoStub = () => {
+  const player = {
+    id: String(Math.random()),
+    name: `Random name stub: ${Math.random()}`,
+    status: PlayerStatus.READY,
+  };
+
+  return player;
+};

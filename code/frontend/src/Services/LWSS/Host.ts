@@ -8,6 +8,7 @@ export interface CreateHostProperties {
 export interface CreateHostResponse {
     host: {
       hostName: string;
+      hostId: string;
       maxPlayers: number;
       worldId: string;
       levelId: string;
@@ -19,6 +20,7 @@ class HostsService {
   constructor() {}
 
   async createHost(CreateHostProperties: CreateHostProperties) {
+    // set this via LWSS servise
     const responseRaw = await fetch('http://localhost:5499/create-host', {
       method: 'POST',
       mode: 'cors',

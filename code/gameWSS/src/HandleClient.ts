@@ -1,4 +1,7 @@
 import {Socket as SocketType } from "socket.io";
+import { roomService } from "./RoomService";
+import Room from "./Models/Room";
+
 
 class HandleClient {
 
@@ -6,16 +9,29 @@ class HandleClient {
         console.log('HandleClient service initialized');
     }
 
-    static handleClientJoin(client: SocketType): void {
-        console.log('room created');
-        if (client.data.hostId) { // data.hostId is a sign that room was created
-            client.join(client.data.hostId);
-            client.to(client.data.hostId).emit('join-players')
-        } else {
-            client.join(client.data.playerId) // create new room which have host player id
+    /**
+     * 
+     * @param data = {
+     * hostId: string;
+     * }
+     */
+    static handleCreateRoom(client: SocketType, data: any): void {
+        client.join(data.hostId);
+        roomService.createRoom(new Room(data.hostId));
+    }
+
+    static handleClientJoin(client: SocketType, data: any): void {
+        if (!data.hostId) {
+            throw new Error('hostId is undefined');
         }
-        console.log(`handleClientJoin (client${client.id, client.data})`);
-        client.emit('init-test', {player: 'test', id: 'test'}); // test request
+        if (!data.player) {
+            throw new Error('player is undefined');
+        }
+
+        if (data.hostId) { // data.hostId is a sign that room was created
+            client.join(data.hostId);
+            client.to(data.hostId).emit('players/update', {});
+        }
     }
 
     static handleRemoveClient(client: SocketType): void {

@@ -50,7 +50,7 @@ class PreGameStore {
   connectToGWSS(hostId: string) { // better to get player data and hostId instead just host Id
     this.gwss = new GameWSS();
     const player = playerInfoStub(); // add real player data
-    this.gwss.connect(hostId, player);
+    this.gwss.connect(player, hostId);
   }
 
   @action.bound

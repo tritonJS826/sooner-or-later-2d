@@ -74,7 +74,6 @@ class MultiplayerStore {
 
   @action.bound
   closeConnections() {
-    console.log('DisConnected');
     this.ws?.close();
   }
 

@@ -49,6 +49,7 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
   useEffect(() => {
     if (!loading) {
       gameConfigurationStore.loadData(data.worlds);
+      gameConfigurationStore.connectToGWSS();
       setInit(true);
     }
   }, [loading]);
@@ -59,7 +60,7 @@ const GameConfigurationPage: React.FC<GameConfigurationPageProps> = (props: Game
 
   const createGame = async () => {
     const gameSettings = await gameConfigurationStore.createGame({ multiplayer: !!JSON.parse(`${props.multiplayer}`) });
-    const hostId = gameSettings.host.hostName;
+    const { hostId } = gameSettings.host;
     const port = String(gameSettings.port);
     history.push(AppRoutes.preGame.toUrl({ hostId, port }));
   };

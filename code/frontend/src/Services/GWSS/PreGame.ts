@@ -6,10 +6,12 @@ class GameWSS {
 
     constructor() {}
 
-    connect(hostId: string, player: Player) {
+    connect(player: Player, hostId?: string) {
       this.socket = io('http://localhost:6001');
       this.socket.on('players/update', handleUpdatePlayers);
-      this.socket.emit('player/join-room', player);
+      if (hostId) {
+        this.socket.emit('player/join-room', { hostId, player });
+      }
       // emit join-players to server to give all chance to know about you
     }
 
@@ -32,15 +34,23 @@ class GameWSS {
 
       this.socket.emit('player/exit');
     }
+
+    createNewRoom(hostId: string) {
+      if (!this.socket) {
+        throw new Error('gwss is not exist');
+      }
+
+      this.socket.emit('room/create', { hostId });
+    }
 }
 
 function handleUpdatePlayers(message: any) { // message.players consist of players data with statuses
-  console.log('players gwss updated!!', message);
+  // console.log('players gwss updated!!', message);
 }
 
 function handleSocketInit(message: any) {
-  console.log(message);
-  console.log(`init-test GWSS socket ${message?.id}`);
+  // console.log(message);
+  // console.log(`init-test GWSS socket ${message?.id}`);
 }
 
 export default GameWSS;

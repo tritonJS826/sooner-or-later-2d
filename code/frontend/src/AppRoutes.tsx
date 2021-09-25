@@ -40,7 +40,7 @@ const AppRoutes = {
     render: (props) => <GameConfigurationPage multiplayer={props.match.params.multiplayer} />,
   }),
 
-  preGame: new PageMeta<{ hostId: string, port: string}>({
+  preGame: new PageMeta<{ hostId?: string, port: string}>({
     renderParameters: (object) => ({
       hostId: object.hostId,
       port: object.port,
