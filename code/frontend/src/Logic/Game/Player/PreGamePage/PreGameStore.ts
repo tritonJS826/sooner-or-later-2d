@@ -5,7 +5,7 @@ import PlayerStatus from 'Model/PlayerStatus';
 import GameWSS from 'Services/GWSS/PreGame';
 import Lobby from 'Services/LWSS/Lobby';
 
-interface Player {
+export interface Player {
   id: string;
   name: string;
   status: PlayerStatus;
@@ -30,9 +30,6 @@ class PreGameStore {
   @observable
   isPlayerReady = false;
 
-  // @observable
-  // players: Player[] = [];
-
   @observable
   hostDescription: HostDescription = {
     port: 0,
@@ -50,37 +47,35 @@ class PreGameStore {
   }
 
   @action.bound
-  connectToGWSS(hostId: string) {
+  connectToGWSS(hostId: string) { // better to get player data and hostId instead just host Id
     this.gwss = new GameWSS();
-    this.gwss.connect(hostId);
+    const player = playerInfoStub(); // add real player data
+    this.gwss.connect(hostId, player);
   }
 
   @action.bound
   async setPlayerReady() {
     // try async request on wsserver
     this.isPlayerReady = true;
-    this.gwss?.setMeReady();
+    this.gwss?.setReadyStatus(true);
   }
 
   @action.bound
   async setPlayerNotReady() {
     this.isPlayerReady = false;
-    this.gwss?.setMeNotReady();
+    this.gwss?.setReadyStatus(false);
   }
 
   @action.bound
   async connectToLWSS(port: string): Promise<void> {
     this.lobby = new Lobby({
-      onOpen: () => console.log('Connected'),
+      onOpen: () => console.log('Connected to LWSS'),
       onMessage: (message) => {
         const currentHost = JSON.parse(message.data).hosts[port];
         this.setHostDescription(currentHost);
       },
     });
-    const message = JSON.stringify({
-      action: 'connect to host',
-      port,
-    });
+
     this.lobby.connectToHost(port, playerInfoStub());
 
     // GWSS

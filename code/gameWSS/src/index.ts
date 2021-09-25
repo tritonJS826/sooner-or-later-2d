@@ -12,13 +12,18 @@ const io = new Server(httpServer, {
 });
 
 io.on('connection', (client: SocketType) => {
-    client.emit('init', {data: 'hello!'});
-
-    client.on('update-players', () => HandleClient.handleClientJoin(client)); // join
-    client.on('client-ready-to-next-stage', () => HandleClient.handleClientReadyToNextStage(client));
-    client.on('client-not-ready-to-next-stage', () => HandleClient.handleClientNotReadyToNextStage(client));
+    client.on('player/join-room', () => HandleClient.handleClientJoin(client)); 
+    client.on('player/exit', () => HandleClient.handleRemoveClient(client));
+    client.on('stage/status/ready', () => HandleClient.handleClientReadyToNextStage(client));
+    client.on('stage/status/not-ready', () => HandleClient.handleClientNotReadyToNextStage(client));
     // client.on('choose-target', HandleClient.handleChooseTarget);
     // client.on('shoot', HandleClient.handleShoot);
+    
+
+    // server emit methods
+    // players/update
+    // stage/next
+    // stage/fail 
 });
 
 

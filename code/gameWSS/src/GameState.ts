@@ -58,6 +58,37 @@ class GameState {
     }
   }
 
+  addPlayer(player: Player) {
+    if (!this.state) {
+      throw new Error('State is not defined');
+    }
+    this.state.players[player.id] = player;
+  }
+
+  removePlayerById(playerId: string) {
+    if (!this.state) {
+      throw new Error('State is not defined');
+    }
+
+    delete this.state.players[playerId];
+  }
+
+  private setCurrentLevel(level: any) {
+    if (!this.state) {
+      throw new Error('State is not defined');
+    }
+
+    this.state.currentLevel = level;
+  }
+
+  private setCurrentWorkd(world: any) {
+    if (!this.state) {
+      throw new Error('State is not defined');
+    }
+
+    this.state.currentWorld = world;
+  }
+
   nextLevel() {
     console.log("nextLevel");
   }

@@ -9,13 +9,12 @@ import bodyParser from "body-parser";
 const app = express();
 app.use(cors());
 app.use(bodyParser()); //deprecated
-
 export const hostService = new HostsService();
 
 const expressPort = 5499;
 
 app.listen(expressPort, () => {
-  console.log(`Example app listening at http://localhost:${expressPort}`);
+  console.log(`Express example  listening at http://localhost:${expressPort}`);
 });
 
 app.post("/create-host", (req, res, next) => {

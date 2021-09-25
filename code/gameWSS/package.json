@@ -9,9 +9,7 @@
   "scripts": {
     "test": "echo 'test not found'",
     "build": "rimraf dist && tsc",
-    "preserve": "yarn run build",
-    "start": "tsc && nodemon ./dist/index.js",
-    "prestart": "yarn run build"
+    "start": "nodemon"
   },
   "dependencies": {
     "rimraf": "^3.0.2",

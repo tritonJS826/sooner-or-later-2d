@@ -7,14 +7,19 @@ class HandleClient {
     }
 
     static handleClientJoin(client: SocketType): void {
+        console.log('room created');
         if (client.data.hostId) { // data.hostId is a sign that room was created
-            console.log('!!!!here!!!!')
             client.join(client.data.hostId);
-            client.to(client.data.hostId).emit('update-players')
+            client.to(client.data.hostId).emit('join-players')
         } else {
             client.join(client.data.playerId) // create new room which have host player id
         }
         console.log(`handleClientJoin (client${client.id, client.data})`);
+        client.emit('init-test', {player: 'test', id: 'test'}); // test request
+    }
+
+    static handleRemoveClient(client: SocketType): void {
+        // remove client from his room
     }
 
     static handleClientReadyToNextStage(client: SocketType): void {

@@ -9,15 +9,13 @@ class ErrorHandling {
 
   addErrorListener() {
     window.addEventListener('error', (event) => {
-      console.error(event);
-      alert(event);
+      console.log(event);
       this.setError(new Error());
       // setError(event.error);
     });
 
     window.addEventListener('unhandledrejection', (promiseRejectionEvent) => {
-      console.error(promiseRejectionEvent);
-      alert(promiseRejectionEvent);
+      console.log(promiseRejectionEvent);
       this.setError(new Error());
       // setError(promiseRejectionEvent.reason);
     });
