@@ -1,5 +1,6 @@
-const settings = {
-    FRAME_RATE: 10,
+const SETTINGS = {
+    // updates per second
+    FRAME_RATE: 1,
 }
 
-export default settings;
+export default SETTINGS;

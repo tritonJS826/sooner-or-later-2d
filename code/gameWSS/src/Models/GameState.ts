@@ -1,5 +1,5 @@
-import { GameStatus } from "Models/GameStatus";
-import { Player } from "Models/Player";
+import { GameStatus } from "../Models/GameStatus";
+import { Player } from "../Models/Player";
 
 type State = {
   currentLevelStage: GameStatus;
@@ -31,7 +31,7 @@ class GameState {
     this.state = initialGameState;
   }
 
-  nextLevelStage() {
+  nextLevelStage(): void {
     console.log("Next level stage");
     this.state?.currentLevelStage
     switch (this.state?.currentLevelStage) {
@@ -58,14 +58,14 @@ class GameState {
     }
   }
 
-  addPlayer(player: Player) {
+  addPlayer(player: Player): void {
     if (!this.state) {
       throw new Error('State is not defined');
     }
     this.state.players[player.id] = player;
   }
 
-  removePlayerById(playerId: string) {
+  removePlayerById(playerId: string):void {
     if (!this.state) {
       throw new Error('State is not defined');
     }
@@ -89,8 +89,8 @@ class GameState {
     this.state.currentWorld = world;
   }
 
-  nextLevel() {
-    console.log("nextLevel");
+  nextLevel(): void {
+    console.log("nextLevel"); // stub
   }
 }
 

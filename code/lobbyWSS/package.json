@@ -1,7 +1,7 @@
 {
   "name": "@sol/websockets",
   "version": "0.1.0",
-  "description": "server for communication between players during the game",
+  "description": "server for sol lobby",
   "main": "./src/index.js",
   "scripts": {
     "test": "echo 'test not found'",

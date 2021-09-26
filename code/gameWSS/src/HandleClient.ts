@@ -1,6 +1,7 @@
 import {Socket as SocketType } from "socket.io";
 import { roomService } from "./RoomService";
 import Room from "./Models/Room";
+import { Player } from "./Models/Player";
 
 
 class HandleClient {
@@ -20,6 +21,13 @@ class HandleClient {
         roomService.createRoom(new Room(data.hostId));
     }
 
+    /**
+     * 
+     * @param data = {
+     *      hostId: string;
+     *      player: clientPlayer;
+     * }
+     */
     static handleClientJoin(client: SocketType, data: any): void {
         if (!data.hostId) {
             throw new Error('hostId is undefined');
@@ -28,10 +36,17 @@ class HandleClient {
             throw new Error('player is undefined');
         }
 
-        if (data.hostId) { // data.hostId is a sign that room was created
-            client.join(data.hostId);
-            client.to(data.hostId).emit('players/update', {});
-        }
+        client.join(data.hostId);
+        roomService.getRoomById(data.hostId).addPlayer(new Player(data.player));
+        client.to(data.hostId).emit('players/update', {
+            players: roomService.getRoomById(data.hostId).players,
+        });
+
+        // next line -- because new client cant get prev message (maybe i just don't understand socket.io)
+        // it is temp crutch 
+        client.emit('players/update', {
+            players: roomService.getRoomById(data.hostId).players,
+        })
     }
 
     static handleRemoveClient(client: SocketType): void {

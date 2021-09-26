@@ -6,6 +6,7 @@ import {
 } from 'mobx';
 import GameWSS from 'Services/GWSS/PreGame';
 import PlayerStatus from 'Model/PlayerStatus';
+import { gameStore } from 'Logic/Game/GameStore';
 
 interface World {
   id: string;
@@ -56,7 +57,7 @@ class GameConfigurationStore {
   connectToGWSS() { // better to get player data and hostId instead just host Id
     this.gwss = new GameWSS();
     const player = playerInfoStub(); // add real player data
-    this.gwss.connect(player);
+    this.gwss.connect(player, gameStore.setPlayers);
   }
 
   @action.bound

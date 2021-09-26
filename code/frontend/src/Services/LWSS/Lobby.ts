@@ -1,4 +1,4 @@
-import PlayerStatus from 'Model/PlayerStatus';
+import { Player } from 'Logic/Game/Player/PreGamePage/PreGameStore';
 
 export interface LobbyHandlers {
     onOpen: () => void;
@@ -20,11 +20,11 @@ class Lobby {
       this.ws.close();
     }
 
-    connectToHost(port: string, playerInfo: {id: string, name: string, status: PlayerStatus}) {
-      setTimeout(() => {
-        this.ws.send(JSON.stringify({ type: 'connectToHost', port, playerInfo }));
-      }, 300); // sometimes we need to wait before websocket get connection
-    }
+    // connectToHost(port: string, playerInfo: Player) {
+    //   setTimeout(() => {
+    //     this.ws.send(JSON.stringify({ type: 'connectToHost', port, playerInfo }));
+    //   }, 300); // sometimes we need to wait before websocket get connection
+    // }
 }
 
 export default Lobby;

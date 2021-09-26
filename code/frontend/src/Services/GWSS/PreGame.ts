@@ -6,13 +6,12 @@ class GameWSS {
 
     constructor() {}
 
-    connect(player: Player, hostId?: string) {
+    connect(player: Player, handleUpdatePlayers: (players: Player[]) => void, hostId?: string) {
       this.socket = io('http://localhost:6001');
-      this.socket.on('players/update', handleUpdatePlayers);
+      this.socket.on('players/update', (playersData) => handleUpdatePlayers(playersData.players));
       if (hostId) {
         this.socket.emit('player/join-room', { hostId, player });
       }
-      // emit join-players to server to give all chance to know about you
     }
 
     setReadyStatus(status: boolean) {
@@ -42,10 +41,6 @@ class GameWSS {
 
       this.socket.emit('room/create', { hostId });
     }
-}
-
-function handleUpdatePlayers(message: any) { // message.players consist of players data with statuses
-  // console.log('players gwss updated!!', message);
 }
 
 function handleSocketInit(message: any) {

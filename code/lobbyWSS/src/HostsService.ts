@@ -13,15 +13,6 @@ export class HostsService {
 
     constructor() {}
 
-    addPlayerToHostByPort(port: string, playerInfo: RawPlayer) {
-        const oldHost = this.getHostByPort(Number(port));
-        if (!oldHost) {
-            throw new Error('Host is undefined');
-        }
-        oldHost?.players.push(playerInfo);
-        this.updateHostById(oldHost)
-    }
-    
     getAllHosts(): Host[] {
         return Object.values(this.hosts);
     }

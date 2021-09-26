@@ -7,9 +7,6 @@ export class Host {
     maxPlayers: number;
     level: string;
     
-    /**test */
-    players: RawPlayer[];
-
     /**
      * World name
      */
@@ -21,23 +18,8 @@ export class Host {
         this.world = hostParameters.worldId;
         this.maxPlayers = hostParameters.maxPlayers;
         this.level = hostParameters.levelId;
-        this.players = [];
     }
 
-    // addPlayer(player: RawPlayer) {
-        // if (this.players.has(player.id)) {
-        //     console.log('Error, player already exist')
-        // }
-        // this.players.set(player.id, player);
-    //     this.playerArr.push(player)
-    // }
-
-    // removePlayer(player: RawPlayer) {
-    //     // if (!this.players.has(player.id)) {
-    //     //     console.log('Error, player is undefined!')
-    //     // }
-    //     // this.players.delete(player.id);
-    // }
 }
 
 export interface HostParameters {

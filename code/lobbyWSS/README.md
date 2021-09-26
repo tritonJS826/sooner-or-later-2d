@@ -1,6 +1,4 @@
-#Websocket service for SoL project
-
-players can share messages via this service
+#Lobby service for SoL project
 
 ### build
 yarn run build 

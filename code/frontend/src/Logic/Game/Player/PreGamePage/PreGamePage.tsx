@@ -11,6 +11,7 @@ import PreGameStore from 'Logic/Game/Player/PreGamePage/PreGameStore';
 import PlayerStatus from 'Model/PlayerStatus';
 import PageBorder from 'Logic/PageBorder/PageBorder';
 import Space from 'Components/Space/Space';
+import { gameStore } from 'Logic/Game/GameStore';
 
 interface PreGameProps {
   hostId: string | undefined;
@@ -23,6 +24,7 @@ interface PreGameProps {
 const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
   const history = useHistory();
   const preGameStore = useLocalObservable(() => new PreGameStore());
+
   useEffect(() => {
     if (props.port && props.hostId) {
       preGameStore.connectToLWSS(props.port); // it's better to use just hostID instead of port
@@ -64,7 +66,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
 
           <div className={styles['table-row']}>
             <div className={styles.cell}>{multiLang.text(multiText.preGamePage.descriptionTable.playersAmount)}</div>
-            <div className={styles.cell}>{preGameStore.hostDescription.players.length}</div>
+            <div className={styles.cell}>{gameStore.players.length}</div>
           </div>
 
           <Space vertical />
@@ -85,7 +87,7 @@ const PreGame: React.FC<PreGameProps> = (props: PreGameProps) => {
             <div className={styles.cell}>{multiLang.text(multiText.preGamePage.table.status)}</div>
           </div>
 
-          {preGameStore.hostDescription.players.map((player) => (
+          {gameStore.players.map((player) => (
             <div className={styles['table-row']} key={player.id}>
               <div className={styles.cell}>{player.name}</div>
               <div className={styles.cell}>

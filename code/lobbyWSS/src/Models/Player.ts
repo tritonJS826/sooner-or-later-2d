@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export class Player {
   id: string;
 

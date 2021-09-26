@@ -3,7 +3,6 @@ import { IncomingMessage } from 'http';
 import wsServer from './index';
 import { hostService } from './index';
 import { Host } from './Models/Host';
-import { Player } from './Models/Player';
 
 // const hostSore = new HostsService();
 let gamersWatch = 0;
@@ -34,7 +33,6 @@ const onConnect = (wsClient: any) => {
       const {port, playerInfo} = message;
 
       console.log(port)
-      hostService.addPlayerToHostByPort(port, playerInfo);
       console.log(hostService.hosts);
     }
 

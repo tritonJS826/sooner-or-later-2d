@@ -1,4 +1,5 @@
 import { hostService } from 'Apis';
+import { gameStore } from 'Logic/Game/GameStore';
 import { action, makeObservable, observable } from 'mobx';
 import Difficulty from 'Model/Difficulty';
 import PlayerStatus from 'Model/PlayerStatus';
@@ -19,7 +20,6 @@ interface HostDescription {
   level: string;
   difficulty: Difficulty;
   maxPlayers: number;
-  players: Player[];
 }
 
 class PreGameStore {
@@ -39,7 +39,6 @@ class PreGameStore {
     level: '',
     difficulty: Difficulty.ALL,
     maxPlayers: 1,
-    players: [],
   };
 
   constructor() {
@@ -50,7 +49,11 @@ class PreGameStore {
   connectToGWSS(hostId: string) { // better to get player data and hostId instead just host Id
     this.gwss = new GameWSS();
     const player = playerInfoStub(); // add real player data
-    this.gwss.connect(player, hostId);
+    this.gwss.connect(
+      player,
+      gameStore.setPlayers,
+      hostId,
+    );
   }
 
   @action.bound
@@ -76,7 +79,7 @@ class PreGameStore {
       },
     });
 
-    this.lobby.connectToHost(port, playerInfoStub());
+    // this.lobby.connectToHost(port, playerInfoStub());
 
     // GWSS
     // this.players = playersStub; -- find in hostDescription
@@ -92,7 +95,7 @@ class PreGameStore {
       level: `it's level's id: ${hostDescription.level}`,
       difficulty: Difficulty.EASY,
       maxPlayers: hostDescription.maxPlayers,
-      players: hostDescription.players,
+      // players: hostDescription.players,
     };
   }
 
