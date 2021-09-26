@@ -5,6 +5,7 @@
   "workspaces": [
     "staticDataServer",
     "frontend",
-    "lobbyWSS"
+    "lobbyWSS",
+    "gameWSS"
   ]
 }
